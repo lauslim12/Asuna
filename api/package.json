@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "npx eslint . --ext .js",
     "format": "prettier --write ./**/*.js",
+    "migrate": "cd .dev-data && node import-data.js --delete && node import-data.js --import",
     "start": "node server.js",
     "dev": "nodemon server.js --trace-sync-io"
   },
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
+    "validator": "^13.5.2",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
