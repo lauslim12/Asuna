@@ -1,0 +1,19 @@
+{
+  "name": "asuna-api",
+  "version": "0.0.0",
+  "description": "API for Asuna",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauslim12/Asuna.git"
+  },
+  "author": "Nicholas Dwiarto <nicholasdwiarto@yahoo.com> (https://nicholasdw.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lauslim12/Asuna/issues"
+  },
+  "homepage": "https://github.com/lauslim12/Asuna#readme"
+}
