@@ -44,4 +44,7 @@ if (process.env.NODE_ENV === 'development') {
 // Compress the responses
 app.use(compression());
 
+// Routing
+app.use('/api', limiter);
+
 module.exports = app;
