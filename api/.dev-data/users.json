@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "600e764744995c00179f86cd",
+    "name": "Muhammad Dzulfiqar Ramadhan",
+    "email": "muhammad.dzulfiqar@student.umn.ac.id",
+    "username": "dzulfiqar",
+    "password": "test1234",
+    "passwordConfirm": "test1234",
+    "role": "admin"
+  },
+  {
+    "_id": "600f7fb8f75d2100173e013a",
+    "name": "Alfatah Wibisono",
+    "email": "david1776@gmail.com",
+    "username": "alfatah",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  }
+]
