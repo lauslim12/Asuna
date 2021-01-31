@@ -6,13 +6,13 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 // Models
-const Employee = require('../models/employeeModel');
-const Floor = require('../models/floorModel');
-const Room = require('../models/roomModel');
-const User = require('../models/userModel');
+const Employee = require('../../models/employeeModel');
+const Floor = require('../../models/floorModel');
+const Room = require('../../models/roomModel');
+const User = require('../../models/userModel');
 
 // Configurations
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: '../../.env' });
 
 // Mongoose
 const DB = process.env.DATABASE;
