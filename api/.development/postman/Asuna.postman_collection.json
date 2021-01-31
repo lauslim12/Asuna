@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "a374350d-4d61-4d4a-8733-257b8de6fb2f",
+		"name": "Asuna",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/employees",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/employees/5c8a1d5b0190b214360dc057",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"5c8a1d5b0190b214360dc057"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create One Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alfatah David Wibisono\",\r\n    \"address\": \"Slamet Riyadi, Surakarta\",\r\n    \"birthdate\": \"2000-02-01\",\r\n    \"email\": \"alfatah.wibisono@gmail.com\",\r\n    \"salary\": 4750000,\r\n    \"picture\": \"alfatah.jpg\",\r\n    \"jobdesc\": \"customer-service\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/employees",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Employee",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Marcus Wibisono\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/employees/5c8a1dfa2f8fb814b56fa181",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"5c8a1dfa2f8fb814b56fa181"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/employees/5c8a1dfa2f8fb814b56fa181",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"5c8a1dfa2f8fb814b56fa181"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Floors",
+			"item": [
+				{
+					"name": "Get All Floors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/floors",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"floors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Floor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/floors/5fc0605d97166d0017d249d5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"floors",
+								"5fc0605d97166d0017d249d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create One Floor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": 3,\r\n    \"name\": \"Japan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/floors/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"floors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Floor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kingdom\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/floors/5fc0605d97166d0017d249d5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"floors",
+								"5fc0605d97166d0017d249d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Floor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/floors/5fc0605d97166d0017d249d5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"floors",
+								"5fc0605d97166d0017d249d5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "Get All Rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/rooms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/rooms/5c88fa8cf4afda39709c2955",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rooms",
+								"5c88fa8cf4afda39709c2955"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create One Room",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hu Tao\",\r\n    \"description\": \"Hu Tao is a co-working space with a volcano background.\",\r\n    \"thumbnail\": \"hu-tao.jpg\",\r\n    \"photos\": [\"hu-tao-1.jpg\", \"hu-tao-2.jpg\", \"hu-tao-3.jpg\"],\r\n    \"price\": 65000,\r\n    \"type\": \"coworking-space\",\r\n    \"floor\": \"5fc0605d97166d0017d249d5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/rooms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Room",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jean\",\r\n    \"description\": \"Jean is an office with dandelion decorations.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/rooms/5c88fa8cf4afda39709c2955",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rooms",
+								"5c88fa8cf4afda39709c2955"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Room",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/rooms/5c88fa8cf4afda39709c2955",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rooms",
+								"5c88fa8cf4afda39709c2955"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
