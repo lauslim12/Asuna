@@ -9,6 +9,17 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 
+// Routing
+const employeeRouter = require('./routes/employeeRoutes');
+const floorRouter = require('./routes/floorRoutes');
+const roomRouter = require('./routes/roomRoutes');
+
+// Utilities
+const AppError = require('./utils/appError');
+
+// Middlewares
+const errorMiddleware = require('./middlewares/errorMiddleware');
+
 // Application Setup.
 const app = express();
 
@@ -18,6 +29,7 @@ app.use(helmet());
 
 // Body Parser
 app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 // Sanitize inputs (NoSQL query attacks)
@@ -46,5 +58,19 @@ app.use(compression());
 
 // Routing
 app.use('/api', limiter);
+app.use('/api/v1/employees', employeeRouter);
+app.use('/api/v1/floors', floorRouter);
+app.use('/api/v1/rooms', roomRouter);
+
+// Defining undefined routes.
+// If we are able to reach this point - then no route match.
+// If we are able to reach other routes - then the request - response cycle would have been finished in the routes.
+// If next() is passed anything - Express will assume that it is an error.
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+// Middleware for error handling.
+app.use(errorMiddleware);
 
 module.exports = app;
