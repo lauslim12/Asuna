@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const Employee = require('../../models/employeeModel');
 const Floor = require('../../models/floorModel');
 const Room = require('../../models/roomModel');
-const User = require('../../models/userModel');
+const Customer = require('../../models/customerModel');
 
 // Configurations
 dotenv.config({ path: '../../.env' });
@@ -37,7 +37,9 @@ const employees = JSON.parse(
 );
 const floors = JSON.parse(fs.readFileSync(`${__dirname}/floors.json`, 'utf-8'));
 const rooms = JSON.parse(fs.readFileSync(`${__dirname}/rooms.json`, 'utf-8'));
-const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const users = JSON.parse(
+  fs.readFileSync(`${__dirname}/customers.json`, 'utf-8')
+);
 
 // Import the data to the database.
 const importDevData = async () => {
@@ -45,7 +47,7 @@ const importDevData = async () => {
     await Employee.create(employees);
     await Floor.create(floors);
     await Room.create(rooms);
-    await User.create(users);
+    await Customer.create(users);
 
     console.log('Data has been successfully inserted!');
   } catch (err) {
@@ -61,7 +63,7 @@ const deleteDevData = async () => {
     await Employee.deleteMany();
     await Floor.deleteMany();
     await Room.deleteMany();
-    await User.deleteMany();
+    await Customer.deleteMany();
 
     console.log('Data has been successfully deleted!');
   } catch (err) {

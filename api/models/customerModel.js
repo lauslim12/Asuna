@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const validate = require('validator');
 
-const userSchema = new mongoose.Schema({
+const customerSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please tell us your name!'],
@@ -43,11 +43,6 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same!',
     },
   },
-  role: {
-    type: String,
-    enum: ['user', 'admin', 'owner'],
-    default: 'user',
-  },
   isActive: {
     type: Boolean,
     default: true,
@@ -61,7 +56,7 @@ const userSchema = new mongoose.Schema({
 
 // Document middleware, only works on save() and create()!
 // Doesn't work on update() and insert()!
-userSchema.pre('save', async function (next) {
+customerSchema.pre('save', async function (next) {
   // Only run the encryption if the password is modified.
   if (!this.isModified('password')) {
     return next();
@@ -73,10 +68,13 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.isPasswordCorrect = async function (password, userPassword) {
+customerSchema.methods.isPasswordCorrect = async function (
+  password,
+  userPassword
+) {
   return await bcrypt.compare(password, userPassword);
 };
 
-const User = mongoose.model('User', userSchema);
+const Customer = mongoose.model('Customer', customerSchema);
 
-module.exports = User;
+module.exports = Customer;
