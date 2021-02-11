@@ -7,10 +7,7 @@
     "email": "nicholasdwiarto@yahoo.com",
     "salary": 0,
     "picture": "nicholas.jpg",
-    "jobdesc": "owner",
-    "username": "nicholas",
-    "password": "test1234",
-    "passwordConfirm": "test1234"
+    "jobdesc": "owner"
   },
   {
     "_id": "5c8a1dfa2f8fb814b56fa181",
@@ -20,9 +17,6 @@
     "email": "marcus.santoso@gmail.com",
     "salary": 5000000,
     "picture": "marcus.jpg",
-    "jobdesc": "receptionist",
-    "username": "marcus",
-    "password": "test1234",
-    "passwordConfirm": "test1234"
+    "jobdesc": "receptionist"
   }
 ]
