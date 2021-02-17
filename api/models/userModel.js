@@ -3,16 +3,24 @@ const mongoose = require('mongoose');
 const validate = require('validator');
 
 const userSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
-    required: [true, 'Please tell us your name!'],
+    required: [true, 'Please tell us your first name!'],
+  },
+  lastName: {
+    type: String,
+    required: [true, 'Please tell us your last name!'],
+  },
+  address: {
+    type: String,
+    required: [true, 'Please tell us your address!'],
   },
   email: {
     type: String,
     required: [true, 'Please tell us your email!'],
     unique: true,
     lowercase: true,
-    validate: [validate.isEmail, 'An employee must have a valid email!'],
+    validate: [validate.isEmail, 'The email must be a valid email!'],
   },
   username: {
     type: String,
@@ -43,14 +51,14 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same!',
     },
   },
+  role: {
+    type: String,
+    enum: ['user', 'admin', 'owner'],
+    default: 'user',
+  },
   isActive: {
     type: Boolean,
     default: true,
-    select: false,
-  },
-  employee: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Employee',
   },
   createdAt: {
     type: Date,

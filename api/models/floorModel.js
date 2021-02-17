@@ -14,6 +14,10 @@ const floorSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  lastModified: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const Floor = mongoose.model('Floor', floorSchema);

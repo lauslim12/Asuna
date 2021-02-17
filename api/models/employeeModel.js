@@ -1,33 +1,9 @@
 const mongoose = require('mongoose');
-const validate = require('validator');
 
 const employeeSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'An employee must have a name!'],
-  },
-  address: {
-    type: String,
-    required: [true, 'An employee must have an address!'],
-  },
-  birthdate: {
-    type: Date,
-    required: [true, 'An employee must have a birthdate!'],
-  },
-  email: {
-    type: String,
-    required: [true, 'An employee must have an email!'],
-    unique: true,
-    lowercase: true,
-    validate: [validate.isEmail, 'An employee must have a valid email!'],
-  },
   salary: {
     type: Number,
     required: [true, 'An employee must have a salary!'],
-  },
-  picture: {
-    type: String,
-    required: [true, 'An employee must have a picture!'],
   },
   jobdesc: {
     type: String,
@@ -41,6 +17,14 @@ const employeeSchema = new mongoose.Schema({
       'owner',
     ],
     required: [true, 'An employee must have a job description!'],
+  },
+  joinDate: {
+    type: Date,
+    default: Date.now(),
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
 });
 

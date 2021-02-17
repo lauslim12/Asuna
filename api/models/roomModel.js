@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const roomSchema = new mongoose.Schema({
   name: {
@@ -18,11 +19,18 @@ const roomSchema = new mongoose.Schema({
     ],
     required: [true, 'A room must have a description!'],
   },
+  roomFeatures: {
+    type: [String],
+    required: [true, 'A room must have its features!'],
+  },
   thumbnail: {
     type: String,
     default: 'thumbnail-placeholder.jpg',
   },
-  photos: [String],
+  photos: {
+    type: [String],
+    required: [true, 'A room must have its pictures!'],
+  },
   price: {
     type: Number,
     required: [true, 'A room must have a price!'],
@@ -31,11 +39,7 @@ const roomSchema = new mongoose.Schema({
     type: String,
     enum: ['office', 'coworking-space'],
   },
-  floor: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Floor',
-    required: ['A room must have a floor!'],
-  },
+  slug: String,
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -44,6 +48,17 @@ const roomSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  floor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Floor',
+    required: [true, 'A room must have a floor!'],
+  },
+});
+
+roomSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+
+  next();
 });
 
 const Room = mongoose.model('Room', roomSchema);
