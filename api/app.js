@@ -13,6 +13,7 @@ const xss = require('xss-clean');
 const employeeRouter = require('./routes/employeeRoutes');
 const floorRouter = require('./routes/floorRoutes');
 const roomRouter = require('./routes/roomRoutes');
+const userRouter = require('./routes/userRoutes');
 
 // Utilities
 const AppError = require('./utils/appError');
@@ -61,6 +62,7 @@ app.use('/api', limiter);
 app.use('/api/v1/employees', employeeRouter);
 app.use('/api/v1/floors', floorRouter);
 app.use('/api/v1/rooms', roomRouter);
+app.use('/api/v1/users', userRouter);
 
 // Defining undefined routes.
 // If we are able to reach this point - then no route match.
