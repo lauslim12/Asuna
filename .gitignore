@@ -1,5 +1,11 @@
 # Dependencies.
 node_modules/
 
+# Build files.
+.next/
+out/
+dist/
+deployed/
+
 # Environment files.
 .env
