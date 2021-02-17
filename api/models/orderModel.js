@@ -32,6 +32,7 @@ const orderSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ['ordered', 'processed', 'accepted', 'finished', 'cancelled'],
+    default: 'ordered',
     required: [true, 'An order must have a status!'],
   },
   totalPrice: {
@@ -39,6 +40,10 @@ const orderSchema = new mongoose.Schema({
     required: [true, 'An order must have a total price!'],
   },
   createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  lastModified: {
     type: Date,
     default: Date.now(),
   },
