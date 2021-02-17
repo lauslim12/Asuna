@@ -55,14 +55,15 @@ const createAndSendToken = (user, statusCode, req, res) => {
  * @param {next} next - Express's next function
  */
 exports.signup = asyncHandler(async (req, res, next) => {
-  const { name, email, username, password, passwordConfirm } = req.body;
-
   const newUser = await User.create({
-    name,
-    email,
-    username,
-    password,
-    passwordConfirm,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    address: req.body.address,
+    birthdate: req.body.birthdate,
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+    passwordConfirm: req.body.passwordConfirm,
   });
 
   res.status(200).json({
