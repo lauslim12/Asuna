@@ -40,12 +40,13 @@ const rooms = JSON.parse(fs.readFileSync(`${__dirname}/rooms.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 
 // Import the data to the database.
+// Do imports in order - not following the order might cause the import to fail (foreign key checks).
 const importDevData = async () => {
   try {
+    await User.create(users);
     await Employee.create(employees);
     await Floor.create(floors);
     await Room.create(rooms);
-    await User.create(users);
 
     console.log('Data has been successfully inserted!');
   } catch (err) {

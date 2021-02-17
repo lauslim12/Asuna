@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Alfatah David Wibisono\",\r\n    \"address\": \"Slamet Riyadi, Surakarta\",\r\n    \"birthdate\": \"2000-02-01\",\r\n    \"email\": \"alfatah.wibisono@gmail.com\",\r\n    \"salary\": 4750000,\r\n    \"picture\": \"alfatah.jpg\",\r\n    \"jobdesc\": \"customer-service\"\r\n}",
+							"raw": "{\r\n    \"salary\": 4750000,\r\n    \"jobdesc\": \"customer-service\",\r\n    \"user\": \"600f7fb8f75d2100173e013a\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Marcus Wibisono\"\r\n}",
+							"raw": "{\r\n    \"salary\": 50000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -297,7 +297,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Hu Tao\",\r\n    \"description\": \"Hu Tao is a co-working space with a volcano background.\",\r\n    \"thumbnail\": \"hu-tao.jpg\",\r\n    \"photos\": [\"hu-tao-1.jpg\", \"hu-tao-2.jpg\", \"hu-tao-3.jpg\"],\r\n    \"price\": 65000,\r\n    \"type\": \"coworking-space\",\r\n    \"floor\": \"5fc0605d97166d0017d249d5\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Hu Tao\",\r\n    \"description\": \"Hu Tao is a co-working space with a volcano background.\",\r\n    \"roomFeatures\": [\"Elegant volanic style\", \"Impressive heat!\"],\r\n    \"thumbnail\": \"hu-tao.jpg\",\r\n    \"photos\": [\"hu-tao-1.jpg\", \"hu-tao-2.jpg\", \"hu-tao-3.jpg\"],\r\n    \"price\": 65000,\r\n    \"type\": \"coworking-space\",\r\n    \"floor\": \"5fc0605d97166d0017d249d5\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -379,7 +379,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Muhammad Dzul\",\r\n    \"email\": \"muhammad.dzulfiqar@gmail.com\",\r\n    \"username\": \"dzulfiqar12\",\r\n    \"password\": \"dzulfiqar12\",\r\n    \"passwordConfirm\": \"dzulfiqar12\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Muhammad\",\r\n    \"lastName\": \"Dzulfiqar\",\r\n    \"address\": \"Jl. Joglo Barat, Jakarta Barat\",\r\n    \"birthdate\": \"1999-12-12\",\r\n    \"email\": \"muhammad.dzulfiqar@gmail.com\",\r\n    \"username\": \"dzulfiqar\",\r\n    \"password\": \"dzulfiqar12\",\r\n    \"passwordConfirm\": \"dzulfiqar12\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -408,7 +408,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"dzulfiqar12\",\r\n    \"password\": \"dzulfiqar12\"\r\n}",
+							"raw": "{\r\n    \"username\": \"dzulfiqar12\",\r\n    \"password\": \"test1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

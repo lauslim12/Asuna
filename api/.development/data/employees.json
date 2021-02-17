@@ -1,22 +1,16 @@
 [
   {
     "_id": "5c8a1d5b0190b214360dc057",
-    "name": "Nicholas Dwiarto Wirasbawa",
-    "address": "Lebak Bulus, Jakarta Selatan",
-    "birthdate": "2000-04-07",
-    "email": "nicholasdwiarto@yahoo.com",
     "salary": 0,
-    "picture": "nicholas.jpg",
-    "jobdesc": "owner"
+    "jobdesc": "owner",
+    "joinDate": "2021-02-17",
+    "user": "5c8a1d5b0190b214360dc056"
   },
   {
     "_id": "5c8a1dfa2f8fb814b56fa181",
-    "name": "Marcus",
-    "address": "Pondok Indah, Jakarta Selatan",
-    "birthdate": "2000-01-02",
-    "email": "marcus.santoso@gmail.com",
     "salary": 5000000,
-    "picture": "marcus.jpg",
-    "jobdesc": "receptionist"
+    "jobdesc": "receptionist",
+    "joinDate": "2021-02-17",
+    "user": "5c8a1dfa2f8fb814b56fa180"
   }
 ]

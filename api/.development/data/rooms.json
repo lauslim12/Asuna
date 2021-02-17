@@ -3,20 +3,32 @@
     "_id": "5c88fa8cf4afda39709c2955",
     "name": "Keqing",
     "description": "Keqing is an office with a nature-like working space.",
+    "roomFeatures": [
+      "Elegant working space",
+      "Spacious",
+      "Forest-like environment"
+    ],
     "thumbnail": "keqing.jpg",
     "photos": ["keqing-1.jpg", "keqing-2.jpg", "keqing-3.jpg"],
     "price": 250000,
     "type": "office",
+    "slug": "keqing",
     "floor": "5fc0605d97166d0017d249d5"
   },
   {
     "_id": "5c88fa8cf4afda39709c2951",
     "name": "Ganyu",
     "description": "Ganyu is a co-working space with a snowfield.",
+    "roomFeatures": [
+      "Elegant working space",
+      "Simple yet spacious",
+      "Snow-like environment"
+    ],
     "thumbnail": "ganyu.jpg",
     "photos": ["ganyu-1.jpg", "ganyu-2.jpg", "ganyu-3.jpg"],
     "price": 50000,
     "type": "coworking-space",
+    "slug": "ganyu",
     "floor": "5fc0605d97166d0017d249d5"
   }
 ]

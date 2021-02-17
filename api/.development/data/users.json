@@ -1,18 +1,47 @@
 [
   {
+    "_id": "5c8a1d5b0190b214360dc056",
+    "firstName": "Nicholas",
+    "lastName": "Dwiarto Wirasbawa",
+    "address": "Jl. Pertanian Raya, Jakarta Selatan",
+    "birthdate": "2000-04-07",
+    "email": "nicholasdwiarto@yahoo.com",
+    "username": "nicholasdwiarto",
+    "password": "test1234",
+    "passwordConfirm": "test1234",
+    "role": "admin"
+  },
+  {
     "_id": "600e764744995c00179f86cd",
-    "name": "Muhammad Dzulfiqar Ramadhan",
+    "firstName": "Muhammad",
+    "lastName": "Dzulfiqar Ramadhan",
+    "address": "Jl. Scientia Boulevard, Gading Serpong",
+    "birthdate": "1999-12-12",
     "email": "muhammad.dzulfiqar@student.umn.ac.id",
-    "username": "dzulfiqar",
+    "username": "dzulfiqar12",
     "password": "test1234",
     "passwordConfirm": "test1234",
     "role": "admin"
   },
   {
     "_id": "600f7fb8f75d2100173e013a",
-    "name": "Alfatah Wibisono",
+    "firstName": "Alfatah",
+    "lastName": "Wibisono",
+    "address": "Jl. Slamet Riyadi, Surakarta",
+    "birthdate": "2000-02-02",
     "email": "david1776@gmail.com",
     "username": "alfatah",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "_id": "5c8a1dfa2f8fb814b56fa180",
+    "firstName": "Marcus",
+    "lastName": "Wibisono",
+    "address": "Jl. Terogong Raya, Jakarta Selatan",
+    "birthdate": "2000-01-02",
+    "email": "marcus.wibisono@gmail.com",
+    "username": "marcus",
     "password": "test1234",
     "passwordConfirm": "test1234"
   }
