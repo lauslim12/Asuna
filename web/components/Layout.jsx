@@ -6,7 +6,7 @@ import Header from './Header';
 
 const Layout = ({ children }) => {
   return (
-    <Flex minH="100vh" direction="column">
+    <Flex minH="100vh" direction="column" maxW="1200px" mx="auto">
       <Header />
 
       <chakra.div p={4}>{children}</chakra.div>
