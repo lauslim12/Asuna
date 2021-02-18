@@ -1,6 +1,7 @@
 // Third party imports.
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
 const hpp = require('hpp');
@@ -25,6 +26,9 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 const app = express();
 
 // Global Middlewares.
+// Enable CORS (Access-Control-Allow-Origin: *)
+app.use(cors());
+
 // Security Headers
 app.use(helmet());
 
