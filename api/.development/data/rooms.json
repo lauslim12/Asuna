@@ -8,7 +8,7 @@
       "Spacious",
       "Forest-like environment"
     ],
-    "thumbnail": "keqing.jpg",
+    "thumbnail": "keqing.png",
     "photos": ["keqing-1.jpg", "keqing-2.jpg", "keqing-3.jpg"],
     "price": 250000,
     "type": "office",
@@ -24,7 +24,7 @@
       "Simple yet spacious",
       "Snow-like environment"
     ],
-    "thumbnail": "ganyu.jpg",
+    "thumbnail": "ganyu.png",
     "photos": ["ganyu-1.jpg", "ganyu-2.jpg", "ganyu-3.jpg"],
     "price": 50000,
     "type": "coworking-space",
