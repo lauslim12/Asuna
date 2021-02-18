@@ -9,3 +9,4 @@ deployed/
 
 # Environment files.
 .env
+.env.local
