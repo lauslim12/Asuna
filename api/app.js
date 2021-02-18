@@ -1,3 +1,6 @@
+// Natural imports.
+const path = require('path');
+
 // Third party imports.
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
@@ -28,6 +31,9 @@ const app = express();
 // Global Middlewares.
 // Enable CORS (Access-Control-Allow-Origin: *)
 app.use(cors());
+
+// Static Files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Security Headers
 app.use(helmet());
