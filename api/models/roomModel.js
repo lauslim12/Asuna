@@ -61,6 +61,15 @@ roomSchema.pre('save', function (next) {
   next();
 });
 
+roomSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'floor',
+    select: 'name number',
+  });
+
+  next();
+});
+
 const Room = mongoose.model('Room', roomSchema);
 
 module.exports = Room;
