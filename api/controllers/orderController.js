@@ -21,9 +21,7 @@ exports.changeOrderStatus = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      data: updatedOrder,
-    },
+    data: updatedOrder,
   });
 });
 

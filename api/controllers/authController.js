@@ -41,9 +41,7 @@ const createAndSendToken = (user, statusCode, req, res) => {
   res.status(statusCode).json({
     status: 'success',
     token,
-    data: {
-      data: user,
-    },
+    data: user,
   });
 };
 
@@ -68,9 +66,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      data: newUser,
-    },
+    data: newUser,
   });
 });
 

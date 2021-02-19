@@ -10,14 +10,12 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      roomData: data,
+      rooms: data,
     },
   };
 }
 
-const Rooms = ({ roomData }) => {
-  const rooms = roomData.data;
-
+const Rooms = ({ rooms }) => {
   return (
     <Layout>
       <ListOfRooms rooms={rooms} />
@@ -26,7 +24,7 @@ const Rooms = ({ roomData }) => {
 };
 
 Rooms.propTypes = {
-  roomData: PropTypes.instanceOf(Object).isRequired,
+  rooms: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Rooms;

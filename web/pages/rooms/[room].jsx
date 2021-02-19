@@ -17,13 +17,9 @@ export async function getServerSideProps(ctx) {
 }
 
 const RoomInfo = ({ roomData }) => {
-  const room = roomData.data;
-
-  console.log(room);
-
   return (
     <Layout>
-      <div>{`This is the page for ${room.name}.`}</div>
+      <div>{`This is the page for ${roomData.name}.`}</div>
     </Layout>
   );
 };
