@@ -32,6 +32,17 @@ const app = express();
 // Enable CORS (Access-Control-Allow-Origin: only from the client!)
 app.use(cors({ credentials: true, origin: process.env.CLIENT_SIDE_URL }));
 
+// Before the real request is done, first respond to the OPTIONS request (it's a HTTP method).
+// Send back the Access-Control-Allow-Origin to confirm that the request is safe to send.
+// Apply this request on everything.
+app.options(
+  '*',
+  cors({ credentials: true, origin: process.env.CLIENT_SIDE_URL })
+);
+
+// Trust Proxies
+app.enable('trust proxy');
+
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
 
