@@ -16,7 +16,7 @@ export const getServerSideProps = async (ctx) => {
   } catch (err) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/sign-in',
         permanent: false,
       },
     };
