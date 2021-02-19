@@ -10,6 +10,33 @@ Asuna is an open-source building management system.
 - `/rooms/:slug`, showcases a single room.
 - `/login`, shows the login form.
 
+## How to Use
+
+To use this repository, both front-end and back-end must be active simultaneously.
+
+```bash
+git clone https://github.com/lauslim12/Asuna.git
+cd Asuna
+```
+
+Fill the environment variables in both `web` and `api`.
+
+Then, run both front-end and back-end with two terminals.
+
+```bash
+# terminal 1
+cd Asuna/web/
+npm run dev
+
+# terminal 2
+cd Asuna/api
+npm run dev
+```
+
+If necessary, run `npm run migrate` in the `api` folder first.
+
+Happy coding!
+
 ## Route To Implement
 
 - `/admin`, to access the admin panel.
