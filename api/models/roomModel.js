@@ -55,6 +55,8 @@ const roomSchema = new mongoose.Schema({
   },
 });
 
+roomSchema.index({ slug: 1 });
+
 roomSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
 
