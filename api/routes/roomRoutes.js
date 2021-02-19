@@ -27,4 +27,6 @@ router
     roomController.deleteRoom
   );
 
+router.route('/view/:slug').get(roomController.showRoom);
+
 module.exports = router;
