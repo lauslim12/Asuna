@@ -31,6 +31,7 @@ const createAndSendToken = (user, statusCode, req, res) => {
     // Send a cookie to be secure if its on a production environment.
     // Check if the connection is secure, OR if the header contains HTTPS.
     secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+    sameSite: 'none',
   };
 
   // Send a cookie.
