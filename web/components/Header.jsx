@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { chakra, HStack, Icon, Image, Link, Spacer } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { GoKey } from 'react-icons/go';
 import { HiOfficeBuilding, HiUser } from 'react-icons/hi';
 
 const Header = () => {
@@ -31,6 +32,14 @@ const Header = () => {
             <HStack spacing={2}>
               <Icon as={HiUser} />
               <chakra.div>Profile</chakra.div>
+            </HStack>
+          </Link>
+        </NextLink>
+        <NextLink href="/sign-in" passHref>
+          <Link flexShrink={0}>
+            <HStack spacing={2}>
+              <Icon as={GoKey} />
+              <chakra.div>Login</chakra.div>
             </HStack>
           </Link>
         </NextLink>
