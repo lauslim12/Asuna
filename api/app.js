@@ -29,8 +29,8 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 const app = express();
 
 // Global Middlewares.
-// Enable CORS (Access-Control-Allow-Origin: *)
-app.use(cors());
+// Enable CORS (Access-Control-Allow-Origin: only from the client!)
+app.use(cors({ credentials: true, origin: process.env.CLIENT_SIDE_URL }));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
