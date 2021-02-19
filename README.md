@@ -52,3 +52,7 @@ Happy coding!
 
 - NProgress
 - ScrollPreserver
+
+## License
+
+MIT License.
