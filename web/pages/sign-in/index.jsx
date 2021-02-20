@@ -17,7 +17,7 @@ const signIn = async (username, password) => {
   let apiResponse;
 
   try {
-    apiResponse = await axios.post(`${process.env.NEXT_PUBLIC_HOST_URL}/api/login`, {
+    apiResponse = await axios.post('api/login', {
       username,
       password,
     });
