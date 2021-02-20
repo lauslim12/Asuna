@@ -20,7 +20,6 @@ export default async (req, res) => {
   const cookies = new Cookies(req, res);
   cookies.set('jwt', response.data.token, {
     httpOnly: true,
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 60 * 60 * 1000),
     sameSite: 'lax',
   });
