@@ -52,6 +52,7 @@ Happy coding!
 
 - NProgress
 - ScrollPreserver
+- Personal and secure authentication with `httpOnly` cookies
 
 ## License
 
