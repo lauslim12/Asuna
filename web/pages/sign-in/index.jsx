@@ -17,14 +17,10 @@ const signIn = async (username, password) => {
   let apiResponse;
 
   try {
-    apiResponse = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
-      {
-        username,
-        password,
-      },
-      { withCredentials: true }
-    );
+    apiResponse = await axios.post(`${process.env.NEXT_PUBLIC_HOST_URL}/api/login`, {
+      username,
+      password,
+    });
   } catch (err) {
     apiResponse = err.response;
   }
@@ -86,7 +82,7 @@ const SignIn = () => {
 
               return toast({
                 title: 'Failed to login!',
-                description: response.data.message,
+                description: response.data.response.message,
                 status: 'error',
                 isClosable: true,
               });
