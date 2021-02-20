@@ -31,10 +31,9 @@ const createAndSendToken = (user, statusCode, req, res) => {
     // Send a cookie to be secure if its on a production environment.
     // Check if the connection is secure, OR if the header contains HTTPS.
     secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
-    sameSite: 'none',
   };
 
-  // Send a cookie.
+  // Send a cookie (back-end, must be assigned again in Next.js's proxy).
   res.cookie('jwt', token, cookieOptions);
 
   // Remove passwords from output, then send response.
