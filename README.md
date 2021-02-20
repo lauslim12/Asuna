@@ -52,7 +52,7 @@ Happy coding!
 
 - NProgress
 - ScrollPreserver
-- Personal and secure authentication with `httpOnly` cookies
+- Personal and secure authentication with `httpOnly` / `sameSite` cookies and JWT
 
 ## License
 
