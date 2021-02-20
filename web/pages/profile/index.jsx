@@ -1,4 +1,6 @@
+import { Button, useToast } from '@chakra-ui/react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
@@ -30,11 +32,29 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Profile = ({ myData }) => {
+  const toast = useToast();
+  const router = useRouter();
   console.log(myData);
 
   return (
     <Layout>
       <div>Test</div>
+      <Button
+        onClick={async () => {
+          await axios.get('api/logout');
+
+          toast({
+            title: 'Successfully logged out!',
+            description: 'You will be redirected shortly...',
+            status: 'success',
+            isClosable: true,
+          });
+
+          return setTimeout(() => router.push('/'), 1000);
+        }}
+      >
+        Logout
+      </Button>
     </Layout>
   );
 };
