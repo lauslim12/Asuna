@@ -1,7 +1,3 @@
-/**
- * Current maximum floor in this building is 2. Change in production. (Environment variable)
- */
-
 import { Grid, Heading, HStack, IconButton, Spacer, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
@@ -9,7 +5,7 @@ import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
 import RoomCard from './RoomCard';
 
-const ListOfRooms = ({ rooms }) => {
+const ListOfRooms = ({ rooms, maxFloor }) => {
   const [roomsInFloor, setRoomsInFloor] = useState([]);
   const [currentFloor, setCurrentFloor] = useState(1);
 
@@ -31,14 +27,14 @@ const ListOfRooms = ({ rooms }) => {
             icon={<AiFillMinusCircle />}
             variant="outline"
             size="xs"
-            onClick={() => setCurrentFloor((previousFloor) => Math.max(previousFloor - 1, 1))}
+            onClick={() => setCurrentFloor((prevFloor) => Math.max(prevFloor - 1, 1))}
           />
           <IconButton
             aria-label="Next floor"
             icon={<AiFillPlusCircle />}
             variant="outline"
             size="xs"
-            onClick={() => setCurrentFloor((previousFloor) => Math.min(previousFloor + 1, 2))}
+            onClick={() => setCurrentFloor((prevFloor) => Math.min(prevFloor + 1, maxFloor))}
           />
         </HStack>
       </HStack>
@@ -53,6 +49,7 @@ const ListOfRooms = ({ rooms }) => {
 
 ListOfRooms.propTypes = {
   rooms: PropTypes.instanceOf(Array).isRequired,
+  maxFloor: PropTypes.number.isRequired,
 };
 
 export default ListOfRooms;
