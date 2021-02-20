@@ -1,23 +1,22 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
 import ListOfRooms from '../../components/ListOfRooms';
+import { get } from '../../helpers/apiHelper';
 
-export async function getServerSideProps() {
-  const responseRoom = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms`);
-  const responseFloor = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/floors`);
+export const getServerSideProps = async () => {
+  const roomRequest = await get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms`);
+  const floorRequest = await get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/floors`);
 
-  const maxFloor = Math.max(...responseFloor.data.data.map((e) => e.number), 1);
-  const { data } = responseRoom.data;
+  const maxFloor = Math.max(...floorRequest.data.map((e) => e.number), 1);
 
   return {
     props: {
-      rooms: data,
+      rooms: roomRequest.data,
       maxFloor,
     },
   };
-}
+};
 
 const Rooms = ({ rooms, maxFloor }) => {
   return (

@@ -4,18 +4,13 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
+import { getAuth } from '../../helpers/apiHelper';
 
 export const getServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.jwt;
-  let response;
+  const response = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/users/me`, token);
 
-  try {
-    response = await axios.get(`${process.env.PRIVATE_API_URL}/api/v1/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  } catch (err) {
+  if (response.status === 'error') {
     return {
       redirect: {
         destination: '/sign-in',
@@ -26,7 +21,7 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
-      myData: response.data,
+      myData: response,
     },
   };
 };
