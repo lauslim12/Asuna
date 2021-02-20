@@ -1,20 +1,19 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
+import { get } from '../../helpers/apiHelper';
 
-export async function getServerSideProps(ctx) {
-  const request = await axios.get(
+export const getServerSideProps = async (ctx) => {
+  const request = await get(
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms/view/${ctx.params.room}`
   );
-  const { data } = request.data;
 
   return {
     props: {
-      roomData: data,
+      roomData: request.data,
     },
   };
-}
+};
 
 const RoomInfo = ({ roomData }) => {
   return (
