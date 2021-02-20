@@ -7,23 +7,14 @@ import {
   useToast,
   VStack,
 } from '@chakra-ui/react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import Layout from '../../components/Layout';
+import { post } from '../../helpers/apiHelper';
 
 const signIn = async (username, password) => {
-  let apiResponse;
-
-  try {
-    apiResponse = await axios.post('api/login', {
-      username,
-      password,
-    });
-  } catch (err) {
-    apiResponse = err.response;
-  }
+  const apiResponse = await post({ username, password }, 'api/login');
 
   return apiResponse;
 };
@@ -43,8 +34,8 @@ const SignIn = () => {
           <Input
             id="username"
             placeholder="Username"
-            autoComplete="username"
             value={username}
+            isRequired
             onChange={({ currentTarget: { value } }) => setUsername(value)}
           />
         </FormControl>
@@ -54,8 +45,11 @@ const SignIn = () => {
             id="password"
             type="password"
             placeholder="Password"
-            autoComplete="current-password"
             value={password}
+            errorBorderColor="red.500"
+            minLength={8}
+            isRequired
+            isInvalid={password.length < 8 && password.length > 0}
             onChange={({ currentTarget: { value } }) => setPassword(value)}
           />
         </FormControl>
@@ -64,12 +58,13 @@ const SignIn = () => {
           <Button
             type="submit"
             colorScheme="blue"
+            disabled={!username || !password || password.length < 8}
             onClick={async (e) => {
               e.preventDefault();
 
-              const response = await signIn(username, password);
+              const apiResponse = await signIn(username, password);
 
-              if (response.data.status === 'success') {
+              if (apiResponse.status === 'success') {
                 toast({
                   title: 'Successful login!',
                   description: 'Welcome!',
@@ -77,12 +72,12 @@ const SignIn = () => {
                   isClosable: true,
                 });
 
-                return setTimeout(() => router.push('/'));
+                return setTimeout(() => router.push('/'), 1000);
               }
 
               return toast({
                 title: 'Failed to login!',
-                description: response.data.response.message,
+                description: apiResponse.response.message,
                 status: 'error',
                 isClosable: true,
               });
