@@ -38,17 +38,32 @@ const Profile = ({ myData }) => {
     <Layout>
       <div>Test</div>
       <Button
-        onClick={async () => {
-          await axios.get('api/logout');
+        onClick={() => {
+          // Has to be done like this so Vercel removes the cookie perfectly.
+          axios
+            .post('api/logout', { isLoggedOut: true })
+            .then((res) => {
+              if (res.data.status === 'success') {
+                toast({
+                  title: 'Successfully logged out!',
+                  description: 'You will be redirected shortly...',
+                  status: 'success',
+                  isClosable: true,
+                });
 
-          toast({
-            title: 'Successfully logged out!',
-            description: 'You will be redirected shortly...',
-            status: 'success',
-            isClosable: true,
-          });
+                return setTimeout(() => router.push('/'), 2000);
+              }
 
-          return setTimeout(() => router.push('/'), 1000);
+              return null;
+            })
+            .catch(() => {
+              toast({
+                title: 'Failed to log out!',
+                description: 'Something has happened. Please try again!',
+                status: 'error',
+                isClosable: true,
+              });
+            });
         }}
       >
         Logout
