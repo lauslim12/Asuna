@@ -37,6 +37,23 @@ If necessary, run `npm run migrate` in the `api` folder first.
 
 Happy coding!
 
+## Development Notes - Deployment Guidelines
+
+Before doing this, ensure that the current working directory is `Asuna`. In order to deploy the back-end, do the following command.
+
+```bash
+git subtree push --prefix api heroku master
+```
+
+To deploy the front-end, do the following command.
+
+```bash
+npx vercel # preview mode
+npx vercel --prod # production mode
+```
+
+To prevent spamming of emails, I did not set up a hook that would instantly perform deployment after merging to the remote repository.
+
 ## Route To Implement
 
 - `/admin`, to access the admin panel.
