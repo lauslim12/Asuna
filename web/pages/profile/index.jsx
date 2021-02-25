@@ -9,6 +9,15 @@ export const getServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.jwt;
   let apiResponse;
 
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/sign-in',
+        permanent: false,
+      },
+    };
+  }
+
   try {
     apiResponse = await axios.get(`${process.env.PRIVATE_API_URL}/api/v1/users/me`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -35,7 +44,7 @@ const Profile = ({ myData }) => {
   console.log(myData);
 
   return (
-    <Layout>
+    <Layout title={['Profile']}>
       <div>Test</div>
       <Button
         onClick={() => {

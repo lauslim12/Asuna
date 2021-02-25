@@ -1,24 +1,34 @@
 import { chakra, Flex, Spacer } from '@chakra-ui/react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 import Footer from './Footer';
 import Header from './Header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title }) => {
   return (
-    <Flex minH="100vh" direction="column" maxW="1200px" mx="auto">
-      <Header />
+    <>
+      <Head>
+        <title>
+          {[...title.map((x) => x?.trim()).filter((x) => x), 'Project Asuna'].join(' · ')}
+        </title>
+      </Head>
 
-      <chakra.div p={4}>{children}</chakra.div>
-      <Spacer />
+      <Flex minH="100vh" direction="column" maxW="1200px" mx="auto">
+        <Header />
 
-      <Footer />
-    </Flex>
+        <chakra.div p={4}>{children}</chakra.div>
+        <Spacer />
+
+        <Footer />
+      </Flex>
+    </>
   );
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.arrayOf(String).isRequired,
 };
 
 export default Layout;

@@ -20,7 +20,7 @@ export const getServerSideProps = async () => {
 
 const Rooms = ({ rooms, maxFloor }) => {
   return (
-    <Layout>
+    <Layout title={['Rooms']}>
       <ListOfRooms rooms={rooms} maxFloor={maxFloor} />
     </Layout>
   );

@@ -10,21 +10,29 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
-      roomData: request.data,
+      roomData: request.data || null,
     },
   };
 };
 
 const RoomInfo = ({ roomData }) => {
   return (
-    <Layout>
-      <div>{`This is the page for ${roomData.name}.`}</div>
+    <Layout title={[roomData?.name || 'Room Not Found']}>
+      {roomData ? (
+        <div>{`This is the page for ${roomData.name}.`}</div>
+      ) : (
+        <div>No such room exist.</div>
+      )}
     </Layout>
   );
 };
 
 RoomInfo.propTypes = {
-  roomData: PropTypes.instanceOf(Object).isRequired,
+  roomData: PropTypes.instanceOf(Object),
+};
+
+RoomInfo.defaultProps = {
+  roomData: null,
 };
 
 export default RoomInfo;

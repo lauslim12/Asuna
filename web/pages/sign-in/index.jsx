@@ -26,7 +26,7 @@ const SignIn = () => {
   const router = useRouter();
 
   return (
-    <Layout>
+    <Layout title={['Sign In']}>
       <VStack as="form" spacing={5}>
         <Heading fontSize="lg">Temporary Sign In Form</Heading>
 
