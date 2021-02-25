@@ -7,60 +7,61 @@ import {
   HStack,
   Spacer,
   VStack,
-  Wrap,
-  WrapItem,
 } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
-const FloorShowCard = () => {
+const FloorShowCard = ({ data }) => {
   return (
-    <Wrap>
-      <WrapItem>
-        <Flex>
-          <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
-            <Heading fontSize="xl">FLOOR</Heading>
+    <Flex>
+      <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
+        <Heading fontSize="xl">FLOOR</Heading>
 
-            <Spacer />
+        <Spacer />
 
-            <Heading>1</Heading>
-          </VStack>
+        <Heading>{data.number}</Heading>
+      </VStack>
 
-          <Spacer />
+      <VStack
+        p={5}
+        direction="column"
+        align="center"
+        bg="green.200"
+        borderTopRightRadius="md"
+        borderBottomRightRadius="md"
+        w="175px"
+      >
+        <Heading fontSize="md">{data.name}</Heading>
 
-          <VStack
-            p={5}
-            direction="column"
-            align="center"
-            bg="green.200"
-            borderTopRightRadius="md"
-            borderBottomRightRadius="md"
-            w="175px"
-          >
-            <Heading fontSize="md">Teyvat</Heading>
+        <Spacer />
 
-            <Spacer />
+        <VStack>
+          <Badge colorScheme="red">
+            {`Since ${new Date(data.createdAt).toISOString().split('T')[0]}`}
+          </Badge>
+          <Badge colorScheme="red">
+            {`Modified ${new Date(data.lastModified).toISOString().split('T')[0]}`}
+          </Badge>
+        </VStack>
 
-            <VStack>
-              <Badge colorScheme="red">Since 2020/02/05</Badge>
-              <Badge colorScheme="red">Modified 2020/02/05</Badge>
-            </VStack>
+        <Spacer />
 
-            <Spacer />
-
-            <HStack>
-              <ButtonGroup>
-                <Button size="xs" colorScheme="orange">
-                  Edit
-                </Button>
-                <Button size="xs" colorScheme="red">
-                  Delete
-                </Button>
-              </ButtonGroup>
-            </HStack>
-          </VStack>
-        </Flex>
-      </WrapItem>
-    </Wrap>
+        <HStack>
+          <ButtonGroup>
+            <Button size="xs" colorScheme="orange">
+              Edit
+            </Button>
+            <Button size="xs" colorScheme="red">
+              Delete
+            </Button>
+          </ButtonGroup>
+        </HStack>
+      </VStack>
+    </Flex>
   );
+};
+
+FloorShowCard.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default FloorShowCard;

@@ -63,7 +63,7 @@ Below table is used as a guide for the Front-End System.
 |     Admin: Accept Visitors    |           |                  |           `/admin/visitors`           |
 | Owner: Create & Edit Entities |     ✔️     |                  | `/admin/entities/create-:entity-name` |
 |      Owner: See Earnings      |           |                  |           `/admin/earnings`           |
-|    Owner: List of Entities    |     ✔️     |                  |     `/admin/entities/:entity-name`    |
+|    Owner: List of Entities    |     ✔️     |         ✔️        |     `/admin/entities/:entity-name`    |
 
 Hopefully, the table will be all green soon.
 

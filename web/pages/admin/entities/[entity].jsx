@@ -1,9 +1,10 @@
-/* eslint-disable no-underscore-dangle */
-import { Button, HStack, Spacer } from '@chakra-ui/react';
+import { Button, Grid, HStack, Spacer } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
-import EntityTable from '../../../components/Admin/EntityTable';
+import EmployeeShowCard from '../../../components/Admin/Entities/EmployeeShowCard';
+import FloorShowCard from '../../../components/Admin/Entities/FloorShowCard';
+import RoomShowCard from '../../../components/Admin/Entities/RoomShowCard';
 import Layout from '../../../components/Layout';
 import { getAuth } from '../../../helpers/apiHelper';
 import webRoutes from '../../../helpers/webRoutes';
@@ -11,8 +12,6 @@ import webRoutes from '../../../helpers/webRoutes';
 export const getServerSideProps = async (ctx) => {
   const { entity } = ctx.params;
   const token = ctx.req.cookies.jwt;
-  const data = [];
-  let headers = [];
 
   if (!token) {
     return {
@@ -23,76 +22,66 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const response = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/${entity}`, token);
-
-  if (entity === 'floors') {
-    headers = ['number', 'name', 'lastModified', 'createdAt'];
-
-    response.data.forEach((e) => {
-      const filteredObject = {
-        id: e._id,
-        number: e.number,
-        name: e.name,
-        lastModified: new Date(e.lastModified).toISOString().split('T')[0],
-        createdAt: new Date(e.createdAt).toISOString().split('T')[0],
-      };
-
-      data.push(filteredObject);
-    });
-  } else if (entity === 'rooms') {
-    headers = ['name', 'description', 'lastModified', 'createdAt'];
-
-    response.data.forEach((e) => {
-      const filteredObject = {
-        id: e._id,
-        name: e.name,
-        description: e.description,
-        lastModified: new Date(e.lastModified).toISOString().split('T')[0],
-        createdAt: new Date(e.createdAt).toISOString().split('T')[0],
-      };
-
-      data.push(filteredObject);
-    });
-  } else {
-    headers = ['fullName', 'email', 'address', 'jobdesc', 'joinDate'];
-
-    response.data.forEach((e) => {
-      const filteredObject = {
-        id: e._id,
-        fullName: `${e.user.firstName} ${e.user.lastName}`,
-        address: e.user.address,
-        jobdesc: e.jobdesc,
-        joinDate: new Date(e.joinDate).toISOString().split('T')[0],
-      };
-
-      data.push(filteredObject);
-    });
-  }
+  const { data } = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/${entity}`, token);
 
   return {
     props: {
       data,
-      headers,
       entity,
     },
   };
 };
 
-const AdminEntities = ({ data, headers, entity }) => (
+const AdminEntities = ({ data, entity }) => (
   <Layout title={['Entities']}>
     <HStack>
+      <Button textTransform="capitalize" colorScheme="purple" variant="outline" size="sm">
+        <NextLink href={webRoutes.adminHomepage}>Back to Home</NextLink>
+      </Button>
       <Spacer />
       <Button textTransform="capitalize" colorScheme="orange" size="sm">
         <NextLink href={webRoutes.adminCreateEntities(entity)}>{`Add New ${entity}`}</NextLink>
       </Button>
     </HStack>
-    <EntityTable data={data} headers={headers} entity={entity} />
+
+    {(() => {
+      if (entity === 'floors') {
+        return (
+          <Grid p={4} templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={10}>
+            {data.map((floor) => (
+              <FloorShowCard data={floor} />
+            ))}
+          </Grid>
+        );
+      }
+
+      if (entity === 'rooms') {
+        return (
+          <Grid p={4} templateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap={3}>
+            {data.map((room) => (
+              <RoomShowCard data={room} />
+            ))}
+          </Grid>
+        );
+      }
+
+      if (entity === 'employees') {
+        return (
+          <Grid p={4} templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={3}>
+            {data.map((employee) => (
+              <EmployeeShowCard data={employee} />
+            ))}
+          </Grid>
+        );
+      }
+
+      return null;
+    })()}
   </Layout>
 );
 
 AdminEntities.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
-  headers: PropTypes.arrayOf(String).isRequired,
   entity: PropTypes.string.isRequired,
 };
 
