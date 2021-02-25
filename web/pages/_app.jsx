@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import '../components/NProgress.css';
+import '../styles/NProgress.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
 
