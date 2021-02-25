@@ -1,7 +1,6 @@
 const AppError = require('../utils/appError');
 const asyncHandler = require('../utils/asyncHandler');
 const Order = require('../models/orderModel');
-const User = require('../models/userModel');
 
 /**
  * This function is used to change an order status.
@@ -35,12 +34,6 @@ exports.changeOrderStatus = asyncHandler(async (req, res, next) => {
     status: 'success',
     data: updatedOrder,
   });
-});
-
-exports.makeAdmin = asyncHandler(async (req, res, next) => {
-  // 1. Choose user to be made admin.
-  // 2. Choose the employee ID to be associated with that account.
-  // 3. Done.
 });
 
 exports.placeOrder = asyncHandler(async (req, res, next) => {
