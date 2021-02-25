@@ -72,8 +72,8 @@ const MenuCard = () => {
         </Stack>
         <Stack direction={['column', 'column', 'row']} spacing={5}>
           <SingleMenuCard
-            headingText="Create Entities"
-            description="Create a new floor, room, or an employee!"
+            headingText="Entity Information"
+            description="Manipualte the data of a floor, room, or an employee!"
             icon={SiFormstack}
             gradientStart="#f5c042"
             gradientEnd="#f8cc47"
