@@ -2,14 +2,6 @@
 
 Asuna is an open-source building management system.
 
-## Available Routes
-
-- `/`, showcases the homepage.
-- `/rooms`, showcases all rooms.
-- `/profile`, showcases personal profile.
-- `/rooms/:slug`, showcases a single room.
-- `/login`, shows the login form.
-
 ## How to Use
 
 To use this repository, both front-end and back-end must be active simultaneously.
@@ -54,16 +46,26 @@ npx vercel --prod # production mode
 
 To prevent spamming of emails, I did not set up a hook that would instantly perform deployment after merging to the remote repository.
 
-## Route To Implement
+## Implementation of the Front-End System
 
-- `/admin`, to access the admin panel.
-- `/admin/orders`, to see all pending orders.
-- `/admin/visitor`, to create a new booking for a visitor.
-- `/admin/earnings`, to check for earnings.
-- `/admin/{employees,floors,rooms}/`, to show all entities and their data.
-- `/admin/{employees,floors,rooms}/edit`, to edit all of the entities.
-- `/admin/{employees,floors,rooms}/create`, to create all entities.
-- `/register`, shows the registration form.
+Below table is used as a guide for the Front-End System.
+
+|             Pages             | hasRoute? | hasBeenDesigned? |               routeName               |
+|:-----------------------------:|:---------:|:----------------:|:-------------------------------------:|
+|            Homepage           |     ✔️     |                  |                  `/`                  |
+|             Login             |     ✔️     |                  |                `/login`               |
+|            Register           |           |                  |              `/register`              |
+|          User Profile         |     ✔️     |                  |               `/profile`              |
+|         List of Rooms         |     ✔️     |         ✔️        |                `/rooms`               |
+|          Detail Room          |     ✔️     |                  |             `/rooms/:slug`            |
+|         Admin Homepage        |     ✔️     |         ✔️        |                `/admin`               |
+|     Admin: See All Orders     |     ✔️     |         ✔️        |            `/admin/orders`            |
+|     Admin: Accept Visitors    |           |                  |           `/admin/visitors`           |
+| Owner: Create & Edit Entities |     ✔️     |                  | `/admin/entities/create-:entity-name` |
+|      Owner: See Earnings      |           |                  |           `/admin/earnings`           |
+|    Owner: List of Entities    |     ✔️     |                  |     `/admin/entities/:entity-name`    |
+
+Hopefully, the table will be all green soon.
 
 ## QoL Features
 
