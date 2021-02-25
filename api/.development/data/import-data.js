@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 // Models
 const Employee = require('../../models/employeeModel');
 const Floor = require('../../models/floorModel');
+const Order = require('../../models/orderModel');
 const Room = require('../../models/roomModel');
 const User = require('../../models/userModel');
 
@@ -36,6 +37,7 @@ const employees = JSON.parse(
   fs.readFileSync(`${__dirname}/employees.json`, 'utf-8')
 );
 const floors = JSON.parse(fs.readFileSync(`${__dirname}/floors.json`, 'utf-8'));
+const orders = JSON.parse(fs.readFileSync(`${__dirname}/orders.json`, 'utf-8'));
 const rooms = JSON.parse(fs.readFileSync(`${__dirname}/rooms.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 
@@ -47,6 +49,7 @@ const importDevData = async () => {
     await Employee.create(employees);
     await Floor.create(floors);
     await Room.create(rooms);
+    await Order.create(orders);
 
     console.log('Data has been successfully inserted!');
   } catch (err) {
@@ -63,6 +66,7 @@ const deleteDevData = async () => {
     await Floor.deleteMany();
     await Room.deleteMany();
     await User.deleteMany();
+    await Order.deleteMany();
 
     console.log('Data has been successfully deleted!');
   } catch (err) {
