@@ -28,6 +28,12 @@ const employeeSchema = new mongoose.Schema({
   },
 });
 
+employeeSchema.pre(/^find/, function (next) {
+  this.populate('user');
+
+  next();
+});
+
 const Employee = mongoose.model('Employee', employeeSchema);
 
 module.exports = Employee;
