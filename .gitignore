@@ -10,3 +10,6 @@ deployed/
 # Environment files.
 .env
 .env.local
+
+# Deployment files.
+.vercel/
