@@ -12,5 +12,12 @@
     "jobdesc": "receptionist",
     "joinDate": "2021-02-17",
     "user": "5c8a1dfa2f8fb814b56fa180"
+  },
+  {
+    "_id": "5c8a1d5b0190b214360dc058",
+    "salary": 4500000,
+    "jobdesc": "customer-service",
+    "joinDate": "2021-02-25",
+    "user": "600e764744995c00179f86cd"
   }
 ]
