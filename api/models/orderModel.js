@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validate = require('validator');
 
 const orderSchema = new mongoose.Schema({
   user: {
@@ -19,14 +18,22 @@ const orderSchema = new mongoose.Schema({
   startDate: {
     type: Date,
     required: [true, 'An order must have a start date!'],
-    validate: [
-      validate.isAfter,
-      'An order must be booked starting from today!',
-    ],
+    validate: {
+      validator: function (value) {
+        return new Date(Date.now()) < new Date(value);
+      },
+      message: 'The start date must be equal or after this day!',
+    },
   },
   endDate: {
     type: Date,
     required: [true, 'An order must have an end date!'],
+    validate: {
+      validator: function (value) {
+        return new Date(value) > new Date(this.startDate);
+      },
+      message: 'The end date must be after the start date!',
+    },
   },
   status: {
     type: String,
@@ -48,6 +55,6 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
-const Order = mongoose.Model('Order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;
