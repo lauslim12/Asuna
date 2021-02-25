@@ -16,6 +16,7 @@ const xss = require('xss-clean');
 // Routing
 const employeeRouter = require('./routes/employeeRoutes');
 const floorRouter = require('./routes/floorRoutes');
+const orderRouter = require('./routes/orderRoutes');
 const roomRouter = require('./routes/roomRoutes');
 const userRouter = require('./routes/userRoutes');
 
@@ -79,6 +80,7 @@ app.use(compression());
 app.use('/api', limiter);
 app.use('/api/v1/employees', employeeRouter);
 app.use('/api/v1/floors', floorRouter);
+app.use('/api/v1/orders', orderRouter);
 app.use('/api/v1/rooms', roomRouter);
 app.use('/api/v1/users', userRouter);
 
