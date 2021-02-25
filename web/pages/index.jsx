@@ -31,6 +31,9 @@ const Home = () => {
           <ListItem>
             <NextLink href="/admin">Admin: Admin Homepage (done)</NextLink>
           </ListItem>
+          <ListItem>
+            <NextLink href="/entities">Owner: See All Entities (example is rooms) (NG)</NextLink>
+          </ListItem>
         </OrderedList>
       </Box>
       <Box mt={5}>
@@ -39,7 +42,6 @@ const Home = () => {
           <ListItem>Register</ListItem>
           <ListItem>Admin: Accept Guests</ListItem>
           <ListItem>Owner: See Earnings</ListItem>
-          <ListItem>Owner: See All Entities</ListItem>
           <ListItem>Owner: Create Entities</ListItem>
         </OrderedList>
       </Box>
