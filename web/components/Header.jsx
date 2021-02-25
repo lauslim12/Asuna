@@ -10,7 +10,7 @@ const Header = () => {
         <Link flexShrink={0}>
           <HStack spacing={2}>
             <Image src="/logo.png" w={6} h={6} borderRadius="md" />
-            <chakra.span fontSize="lg">Project Asuna</chakra.span>
+            <chakra.span fontSize="lg">Asuna</chakra.span>
           </HStack>
         </Link>
       </NextLink>
