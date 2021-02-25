@@ -6,7 +6,7 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  ButtonGroup,
+  VStack,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
@@ -22,22 +22,24 @@ const CreationModal = ({ isOpen, onClose }) => {
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader>Check An Entity</AlertDialogHeader>
-          <AlertDialogBody>Choose the entity that you want to check!</AlertDialogBody>
+          <AlertDialogBody textAlign="center">
+            Choose the entity that you want to check!
+          </AlertDialogBody>
           <AlertDialogFooter>
-            <ButtonGroup spacing={4}>
-              <Button ref={cancelRef} onClick={onClose} colorScheme="red">
+            <VStack w="full">
+              <Button ref={cancelRef} onClick={onClose} colorScheme="red" w="full">
                 Cancel
               </Button>
-              <Button colorScheme="green">
+              <Button colorScheme="green" w="full">
                 <NextLink href={`${webRoutes.adminEntities}/employees`}>Employee</NextLink>
               </Button>
-              <Button colorScheme="orange">
+              <Button colorScheme="orange" w="full">
                 <NextLink href={`${webRoutes.adminEntities}/floors`}>Floor</NextLink>
               </Button>
-              <Button colorScheme="blue">
+              <Button colorScheme="blue" w="full">
                 <NextLink href={`${webRoutes.adminEntities}/rooms`}>Rooms</NextLink>
               </Button>
-            </ButtonGroup>
+            </VStack>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialogOverlay>

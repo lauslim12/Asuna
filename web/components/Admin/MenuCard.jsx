@@ -23,8 +23,8 @@ const SingleMenuCard = ({
       <VStack
         bg="twitter.400"
         p={5}
-        w={400}
-        h={175}
+        w={[275, 400]}
+        h={[175, 200]}
         justify="center"
         spacing={5}
         borderRadius="md"
@@ -38,7 +38,7 @@ const SingleMenuCard = ({
         onClick={() => (isClickable ? setModalOpen(true) : null)}
       >
         <Heading fontSize="lg">{headingText}</Heading>
-        <Text>{description}</Text>
+        <Text textAlign="center">{description}</Text>
         <Icon as={icon} boxSize="30px" />
       </VStack>
 
