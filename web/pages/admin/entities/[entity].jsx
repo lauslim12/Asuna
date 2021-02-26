@@ -24,6 +24,15 @@ export const getServerSideProps = async (ctx) => {
 
   const { data } = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/${entity}`, token);
 
+  if (!data) {
+    return {
+      redirect: {
+        destination: '/error',
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       data,
