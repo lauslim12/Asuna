@@ -31,13 +31,13 @@ const CreationModal = ({ isOpen, onClose }) => {
                 Cancel
               </Button>
               <Button colorScheme="green" w="full">
-                <NextLink href={`${webRoutes.adminEntities}/employees`}>Employee</NextLink>
+                <NextLink href={webRoutes.adminEntities('employees')}>Employee</NextLink>
               </Button>
               <Button colorScheme="orange" w="full">
-                <NextLink href={`${webRoutes.adminEntities}/floors`}>Floor</NextLink>
+                <NextLink href={webRoutes.adminEntities('floors')}>Floor</NextLink>
               </Button>
               <Button colorScheme="blue" w="full">
-                <NextLink href={`${webRoutes.adminEntities}/rooms`}>Rooms</NextLink>
+                <NextLink href={webRoutes.adminEntities('rooms')}>Rooms</NextLink>
               </Button>
             </VStack>
           </AlertDialogFooter>

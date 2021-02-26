@@ -2,9 +2,11 @@ import { Center, Image, Text, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
+import webRoutes from '../../helpers/webRoutes';
+
 const RoomCard = ({ roomData }) => {
   return (
-    <NextLink href={`/rooms/${roomData.slug}`} passHref>
+    <NextLink href={webRoutes.roomDetail(roomData.slug)} passHref>
       <VStack
         align="stretch"
         borderWidth={1}

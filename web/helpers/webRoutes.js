@@ -1,10 +1,9 @@
 export default {
   adminHomepage: '/admin',
-  adminEntities: '/admin/entities',
+  adminEntities: (entityName) => `/admin/entities/${entityName}`,
   adminCreateEntities: (entityName) => `/admin/entities/create-${entityName}`,
   adminOrders: `/admin/orders`,
   homepage: '/',
-  listOfEntities: (entityName) => `/admin/entities/${entityName}`,
   listOfRooms: '/rooms',
   profile: '/profile',
   roomDetail: (roomSlug) => `/rooms/${roomSlug}`,

@@ -2,6 +2,7 @@ import { Box, ListItem, OrderedList, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import Layout from '../components/Layout';
+import webRoutes from '../helpers/webRoutes';
 
 const Home = () => {
   return (
@@ -11,28 +12,30 @@ const Home = () => {
         <Text>All available pages (click):</Text>
         <OrderedList textDecoration="underline">
           <ListItem>
-            <NextLink href="/">Homepage (NG)</NextLink>
+            <NextLink href={webRoutes.homepage}>Homepage</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/rooms">All Rooms (G)</NextLink>
+            <NextLink href={webRoutes.listOfRooms}>All Rooms</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/rooms/ganyu">A single example room (NG)</NextLink>
+            <NextLink href={webRoutes.roomDetail('ganyu')}>A single example room</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/profile">Profile (must be logged in) (NG)</NextLink>
+            <NextLink href={webRoutes.profile}>Profile</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/sign-in">Login (NG)</NextLink>
+            <NextLink href={webRoutes.signIn}>Login</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/admin/orders">Admin: See All Orders (done)</NextLink>
+            <NextLink href={webRoutes.adminOrders}>Admin: See All Orders (done)</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/admin">Admin: Admin Homepage (done)</NextLink>
+            <NextLink href={webRoutes.adminHomepage}>Admin: Admin Homepage (done)</NextLink>
           </ListItem>
           <ListItem>
-            <NextLink href="/entities">Owner: See All Entities (example is rooms) (NG)</NextLink>
+            <NextLink href={webRoutes.adminEntities('rooms')}>
+              Owner: See All Entities (Check One Entity) (room example)
+            </NextLink>
           </ListItem>
         </OrderedList>
       </Box>
