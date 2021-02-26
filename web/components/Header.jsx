@@ -1,12 +1,31 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { chakra, HStack, Icon, Image, Link, Spacer } from '@chakra-ui/react';
+import {
+  chakra,
+  HStack,
+  Icon,
+  IconButton,
+  Image,
+  Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Spacer,
+  useColorMode,
+} from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { FaMoon, FaSignInAlt } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiOfficeBuilding, HiUser } from 'react-icons/hi';
 
+import webRoutes from '../helpers/webRoutes';
+
 const Header = () => {
+  const { toggleColorMode } = useColorMode();
+
   return (
-    <HStack as="nav" p={4} spacing={2} bg="white" color="black">
-      <NextLink href="/" passHref>
+    <HStack as="nav" p={4} spacing={2}>
+      <NextLink href={webRoutes.homepage} passHref>
         <Link flexShrink={0}>
           <HStack spacing={2}>
             <Image src="/logo.png" w={6} h={6} borderRadius="md" />
@@ -17,23 +36,47 @@ const Header = () => {
 
       <Spacer />
 
-      <HStack spacing={4}>
-        <NextLink href="/rooms" passHref>
-          <Link flexShrink={0}>
-            <HStack spacing={2}>
-              <Icon as={HiOfficeBuilding} />
-              <chakra.div>Rooms</chakra.div>
-            </HStack>
-          </Link>
-        </NextLink>
-        <NextLink href="/profile" passHref>
-          <Link flexShrink={0}>
-            <HStack spacing={2}>
-              <Icon as={HiUser} />
-              <chakra.div>Personal</chakra.div>
-            </HStack>
-          </Link>
-        </NextLink>
+      <HStack spacing={3}>
+        <IconButton
+          colorScheme="blue"
+          aria-label="Activate Dark Mode"
+          icon={<Icon as={FaMoon} />}
+          variant="outline"
+          onClick={() => toggleColorMode()}
+        />
+
+        <Menu isLazy>
+          <MenuButton
+            as={IconButton}
+            aria-label="Navigation Menu"
+            size="md"
+            variant="solid"
+            icon={<Icon as={GiHamburgerMenu} color="blue.400" />}
+          />
+          <MenuList>
+            <NextLink href={webRoutes.listOfRooms} passHref>
+              <Link flexShrink={0}>
+                <MenuItem icon={<Icon as={HiOfficeBuilding} />} command="⌘T">
+                  Rooms
+                </MenuItem>
+              </Link>
+            </NextLink>
+            <NextLink href={webRoutes.profile} passHref>
+              <Link flexShrink={0}>
+                <MenuItem icon={<Icon as={HiUser} />} command="⌘N">
+                  Profile
+                </MenuItem>
+              </Link>
+            </NextLink>
+            <NextLink href={webRoutes.signIn} passHref>
+              <Link flexShrink={0}>
+                <MenuItem icon={<Icon as={FaSignInAlt} />} command="⌘⇧N">
+                  Sign In
+                </MenuItem>
+              </Link>
+            </NextLink>
+          </MenuList>
+        </Menu>
       </HStack>
     </HStack>
   );
