@@ -53,7 +53,7 @@ Below table is used as a guide for the Front-End System.
 |             Pages             | hasRoute? | hasBeenDesigned? |               routeName               |
 |:-----------------------------:|:---------:|:----------------:|:-------------------------------------:|
 |            Homepage           |     ✔️     |                  |                  `/`                  |
-|             Login             |     ✔️     |                  |                `/login`               |
+|             Login             |     ✔️     |         ✔️        |                `/login`               |
 |            Register           |           |                  |              `/register`              |
 |          User Profile         |     ✔️     |                  |               `/profile`              |
 |         List of Rooms         |     ✔️     |         ✔️        |                `/rooms`               |
