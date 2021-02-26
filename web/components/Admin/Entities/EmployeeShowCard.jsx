@@ -8,7 +8,6 @@ const EmployeeShowCard = ({ data }) => {
       borderColor="white"
       borderRadius="md"
       p={4}
-      bg="white"
       boxShadow="0 30px 60px rgba(0, 0, 0, 0.15)"
     >
       <Box mb={4} textAlign="center">
@@ -21,8 +20,9 @@ const EmployeeShowCard = ({ data }) => {
         <VStack spacing={3}>
           <Box>
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}/images/thumbnails/ganyu.png`}
-              h="full"
+              src={`${process.env.NEXT_PUBLIC_API_URL}/images/users/${data.user.photo}`}
+              h="100px"
+              w="100px"
               borderRadius="full"
             />
           </Box>

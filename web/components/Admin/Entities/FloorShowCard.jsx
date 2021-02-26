@@ -6,11 +6,14 @@ import {
   Heading,
   HStack,
   Spacer,
+  useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 const FloorShowCard = ({ data }) => {
+  const bg = useColorModeValue('green.200', 'green.500');
+
   return (
     <Flex>
       <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
@@ -25,7 +28,7 @@ const FloorShowCard = ({ data }) => {
         p={5}
         direction="column"
         align="center"
-        bg="green.200"
+        bg={bg}
         borderTopRightRadius="md"
         borderBottomRightRadius="md"
         w="175px"

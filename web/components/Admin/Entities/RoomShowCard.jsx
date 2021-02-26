@@ -8,7 +8,6 @@ const RoomShowCard = ({ data }) => {
       borderColor="white"
       borderRadius="md"
       p={4}
-      bg="white"
       boxShadow="0 30px 60px rgba(0, 0, 0, 0.15)"
     >
       <Box mb={4} textAlign="center">
