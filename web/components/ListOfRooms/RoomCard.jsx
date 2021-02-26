@@ -7,7 +7,6 @@ const RoomCard = ({ roomData }) => {
     <NextLink href={`/rooms/${roomData.slug}`} passHref>
       <VStack
         align="stretch"
-        bg="white"
         borderWidth={1}
         borderColor="gray.200"
         borderRadius="md"
