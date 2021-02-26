@@ -1,4 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
   Badge,
   Button,
   ButtonGroup,
@@ -7,59 +14,139 @@ import {
   HStack,
   Spacer,
   useColorModeValue,
+  useToast,
   VStack,
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import PropTypes from 'prop-types';
+import { useRef, useState } from 'react';
+
+import { post } from '../../../helpers/apiHelper';
+import webRoutes from '../../../helpers/webRoutes';
 
 const FloorShowCard = ({ data }) => {
+  const [currentData, setCurrentData] = useState(data);
+  const [modalData, setModalData] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const toast = useToast();
+  const cancelRef = useRef();
   const bg = useColorModeValue('green.200', 'green.500');
 
+  const handleDelete = async (id, entityData) => {
+    const apiResponse = await post({ id, entity: entityData }, '/api/delete');
+
+    if (apiResponse.status === 'success') {
+      setIsOpen(false);
+      setCurrentData(null);
+
+      toast({
+        title: 'Successfully deleted!',
+        description: 'Floor has been deleted!',
+        status: 'success',
+        isClosable: true,
+      });
+
+      return true;
+    }
+
+    return toast({
+      title: 'Failed to delete!',
+      description: 'Floor failed to delete! Please try again!',
+      status: 'error',
+      isClosable: true,
+    });
+  };
+
   return (
-    <Flex>
-      <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
-        <Heading fontSize="xl">FLOOR</Heading>
+    <>
+      {currentData ? (
+        <Flex>
+          <AlertDialog
+            isOpen={isOpen}
+            leastDestructiveRef={cancelRef}
+            onClose={() => setIsOpen(false)}
+          >
+            <AlertDialogOverlay>
+              <AlertDialogContent>
+                <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  Delete Entity
+                </AlertDialogHeader>
 
-        <Spacer />
+                <AlertDialogBody>
+                  {`Are you sure to delete ${modalData.name}? You cannot undo this action afterwards.`}
+                </AlertDialogBody>
 
-        <Heading>{data.number}</Heading>
-      </VStack>
+                <AlertDialogFooter>
+                  <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
+                    Cancel
+                  </Button>
+                  <Button
+                    colorScheme="red"
+                    onClick={() => handleDelete(modalData._id, 'floors')}
+                    ml={3}
+                  >
+                    Delete
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
 
-      <VStack
-        p={5}
-        direction="column"
-        align="center"
-        bg={bg}
-        borderTopRightRadius="md"
-        borderBottomRightRadius="md"
-        w="175px"
-      >
-        <Heading fontSize="md">{data.name}</Heading>
+          <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
+            <Heading fontSize="xl">FLOOR</Heading>
 
-        <Spacer />
+            <Spacer />
 
-        <VStack>
-          <Badge colorScheme="red">
-            {`Since ${new Date(data.createdAt).toISOString().split('T')[0]}`}
-          </Badge>
-          <Badge colorScheme="red">
-            {`Modified ${new Date(data.lastModified).toISOString().split('T')[0]}`}
-          </Badge>
-        </VStack>
+            <Heading>{currentData.number}</Heading>
+          </VStack>
 
-        <Spacer />
+          <VStack
+            p={5}
+            direction="column"
+            align="center"
+            bg={bg}
+            borderTopRightRadius="md"
+            borderBottomRightRadius="md"
+            w="175px"
+          >
+            <Heading fontSize="md">{currentData.name}</Heading>
 
-        <HStack>
-          <ButtonGroup>
-            <Button size="xs" colorScheme="orange">
-              Edit
-            </Button>
-            <Button size="xs" colorScheme="red">
-              Delete
-            </Button>
-          </ButtonGroup>
-        </HStack>
-      </VStack>
-    </Flex>
+            <Spacer />
+
+            <VStack>
+              <Badge colorScheme="red">
+                {`Since ${new Date(currentData.createdAt).toISOString().split('T')[0]}`}
+              </Badge>
+              <Badge colorScheme="red">
+                {`Modified ${new Date(currentData.lastModified).toISOString().split('T')[0]}`}
+              </Badge>
+            </VStack>
+
+            <Spacer />
+
+            <HStack>
+              <ButtonGroup>
+                <Button size="xs" colorScheme="orange">
+                  <NextLink href={webRoutes.adminEditEntities('floors', currentData._id)}>
+                    Edit
+                  </NextLink>
+                </Button>
+                <Button
+                  size="xs"
+                  colorScheme="red"
+                  onClick={() => {
+                    setModalData(data);
+                    setIsOpen(true);
+                  }}
+                >
+                  Delete
+                </Button>
+              </ButtonGroup>
+            </HStack>
+          </VStack>
+        </Flex>
+      ) : null}
+    </>
   );
 };
 

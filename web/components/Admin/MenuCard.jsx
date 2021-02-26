@@ -61,7 +61,7 @@ const SingleMenuCard = forwardRef(
 const MenuCard = () => {
   return (
     <>
-      <Heading fontSize="md">Welcome, Admin Dzulfiqar!</Heading>
+      <Heading fontSize="md">Welcome, Admin!</Heading>
       <VStack spacing={5} mt={10}>
         <Stack direction={['column', 'column', 'row']} spacing={5}>
           <NextLink href={webRoutes.adminOrders} passHref>

@@ -9,6 +9,7 @@ import {
   Icon,
   Input,
   Text,
+  useColorModeValue,
   useToast,
   VStack,
 } from '@chakra-ui/react';
@@ -24,6 +25,8 @@ const LoginForm = () => {
   const toast = useToast();
   const router = useRouter();
 
+  const bg = useColorModeValue('#fafafa');
+
   return (
     <Flex as="form" borderRadius="md" direction="column" align="center" justify="center">
       <VStack
@@ -32,7 +35,7 @@ const LoginForm = () => {
         spacing={5}
         borderRadius="md"
         w={['full', 'full', '60%']}
-        bg="#fafafa"
+        bg={bg}
       >
         <Heading
           textAlign="center"
