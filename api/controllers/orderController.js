@@ -41,7 +41,7 @@ exports.changeOrderStatus = asyncHandler(async (req, res, next) => {
 
   const updatedOrder = await Order.findByIdAndUpdate(
     req.params.id,
-    { status },
+    { status, employee: req.user._id },
     { new: true, runValidators: true }
   );
 
@@ -93,5 +93,19 @@ exports.placeOrder = asyncHandler(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     data: newOrder,
+  });
+});
+
+exports.getAdminManagedOrders = asyncHandler(async (req, res, next) => {
+  // 1. Get all data whose 'employee' is either undefined or his ID.
+  const myOrders = await Order.find({
+    $or: [{ employee: req.user._id }, { employee: null }],
+  })
+    .populate('user', 'firstName lastName')
+    .populate('room', 'name thumbnail');
+
+  res.status(200).json({
+    status: 'success',
+    data: myOrders,
   });
 });
