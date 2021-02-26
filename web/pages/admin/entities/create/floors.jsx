@@ -10,14 +10,9 @@ import {
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import Layout from '../../../components/Layout';
-import { post } from '../../../helpers/apiHelper';
-
-const createFloor = async (number, name) => {
-  const apiResponse = await post({ number, name, entity: 'floors' }, '/api/create');
-
-  return apiResponse;
-};
+import Layout from '../../../../components/Layout';
+import { post } from '../../../../helpers/apiHelper';
+import webRoutes from '../../../../helpers/webRoutes';
 
 const CreateFloors = () => {
   const [number, setNumber] = useState(0);
@@ -59,7 +54,7 @@ const CreateFloors = () => {
             onClick={async (e) => {
               e.preventDefault();
 
-              const apiResponse = await createFloor(number, name);
+              const apiResponse = await post({ number, name, entity: 'floors' }, '/api/create');
 
               if (apiResponse.status === 'success') {
                 toast({
@@ -69,7 +64,7 @@ const CreateFloors = () => {
                   isClosable: true,
                 });
 
-                return setTimeout(() => router.push('/admin'), 1000);
+                return setTimeout(() => router.push(webRoutes.adminEntities('floors')), 1000);
               }
 
               return toast({
@@ -80,7 +75,7 @@ const CreateFloors = () => {
               });
             }}
           >
-            Sign In
+            Create
           </Button>
           <Button>Cancel</Button>
         </ButtonGroup>

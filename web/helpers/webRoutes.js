@@ -1,7 +1,8 @@
+// Entities should be an enum of: 'employees', 'floors', or 'rooms'.
 export default {
   adminHomepage: '/admin',
   adminEntities: (entityName) => `/admin/entities/${entityName}`,
-  adminCreateEntities: (entityName) => `/admin/entities/create-${entityName}`,
+  adminCreateEntities: (entityName) => `/admin/entities/create/${entityName}`,
   adminOrders: `/admin/orders`,
   homepage: '/',
   listOfRooms: '/rooms',
