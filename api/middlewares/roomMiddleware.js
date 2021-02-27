@@ -13,7 +13,6 @@ exports.resizeRoomImages = asyncHandler(async (req, res, next) => {
   await sharp(req.files.thumbnail[0].buffer)
     .resize(106, 106)
     .toFormat('png')
-    .flatten({ background: { r: 255, g: 255, b: 255, alpha: 1 } })
     .toFile(`public/images/thumbnails/${imageCoverFilename}`);
 
   // Remember, in the 'updateMe', we used req.file.filename because it is a dependency.
