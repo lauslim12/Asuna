@@ -1,6 +1,7 @@
 const express = require('express');
 const authMiddleware = require('../middlewares/authMiddleware');
 const roomController = require('../controllers/roomController');
+const roomMiddleware = require('../middlewares/roomMiddleware');
 
 const router = express.Router();
 
@@ -10,6 +11,8 @@ router
   .post(
     authMiddleware.checkLoggedUser,
     authMiddleware.routeGuard('admin', 'owner'),
+    roomController.uploadRoomImages,
+    roomMiddleware.resizeRoomImages,
     roomController.createRoom
   );
 
@@ -19,6 +22,8 @@ router
   .patch(
     authMiddleware.checkLoggedUser,
     authMiddleware.routeGuard('admin', 'owner'),
+    roomController.uploadRoomImages,
+    roomMiddleware.resizeRoomImages,
     roomController.updateRoom
   )
   .delete(

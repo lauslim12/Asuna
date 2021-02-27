@@ -39,6 +39,15 @@ exports.changeOrderStatus = asyncHandler(async (req, res, next) => {
     return next(new AppError('Invalid status!', 400));
   }
 
+  const order = await Order.findById(req.params.id);
+
+  if (order.employee && order.employee !== req.user._id) {
+    return next(
+      new AppError('You cannot update orders that are not yours!'),
+      400
+    );
+  }
+
   const updatedOrder = await Order.findByIdAndUpdate(
     req.params.id,
     { status, employee: req.user._id },

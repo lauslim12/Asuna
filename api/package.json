@@ -34,6 +34,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "sharp": "^0.27.2",
     "slugify": "^1.4.6",
     "validator": "^13.5.2",
     "xss-clean": "^0.1.1"

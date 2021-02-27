@@ -1,7 +1,32 @@
+const multer = require('multer');
 const AppError = require('../utils/appError');
 const asyncHandler = require('../utils/asyncHandler');
 const Room = require('../models/roomModel');
 const factory = require('../utils/handlerFactory');
+
+const multerStorage = multer.memoryStorage();
+
+// Multer Filter, we do not want any file other than images!
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(
+      new AppError('The file is not an image! Please upload only images!', 400),
+      false
+    );
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadRoomImages = upload.fields([
+  { name: 'thumbnail', maxCount: 1 },
+  { name: 'photos', maxCount: 3 },
+]);
 
 /**
  * Creates a single room.
