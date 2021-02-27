@@ -1,5 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 import { Badge, Box, Button, ButtonGroup, Image, Stack, Text, VStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import PropTypes from 'prop-types';
+
+import webRoutes from '../../../helpers/webRoutes';
 
 const RoomShowCard = ({ data }) => {
   return (
@@ -32,7 +36,7 @@ const RoomShowCard = ({ data }) => {
         <VStack>
           <ButtonGroup>
             <Button size="xs" colorScheme="green" w="75px">
-              Edit Room
+              <NextLink href={webRoutes.adminEditEntities('rooms', data._id)}>Edit Room</NextLink>
             </Button>
             <Button size="xs" colorScheme="red" w="75px">
               Delete Room
