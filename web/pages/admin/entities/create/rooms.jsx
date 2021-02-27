@@ -82,6 +82,10 @@ const CreateFloors = ({ data }) => {
     formData.append('type', type);
     formData.append('floor', floor);
 
+    if (features.length > 0) {
+      features.forEach((feature) => formData.append('roomFeatures', feature));
+    }
+
     // 'FileList' cannot be iterated with 'forEach' as it is not an Array.
     // We have to transform it into an array first.
     [...photos].forEach((photo) => formData.append('photos', photo));
