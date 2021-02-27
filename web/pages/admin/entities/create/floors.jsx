@@ -2,17 +2,8 @@ import {
   Button,
   ButtonGroup,
   Flex,
-  FormControl,
-  FormHelperText,
-  FormLabel,
   Heading,
   Icon,
-  Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   Text,
   useColorMode,
   useColorModeValue,
@@ -24,6 +15,8 @@ import { useState } from 'react';
 import { IoCreateOutline } from 'react-icons/io5';
 import { MdCancel } from 'react-icons/md';
 
+import ControlledNumber from '../../../../components/Admin/Forms/ControlledNumber';
+import ControlledText from '../../../../components/Admin/Forms/ControlledText';
 import Layout from '../../../../components/Layout';
 import { post } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
@@ -62,41 +55,20 @@ const CreateFloors = () => {
             Hello Owner! Please fill up some details first!
           </Text>
 
-          <FormControl isRequired>
-            <FormLabel htmlFor="number">Floor Number</FormLabel>
-            <NumberInput
-              id="number"
-              defaultValue={1}
-              min={1}
-              max={20}
-              onChange={(value) => setNumber(value)}
-              focusBorderColor="green.500"
-              size="lg"
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+          <ControlledNumber
+            stateValue={number}
+            stateDispatch={setNumber}
+            formLabel="Floor Number"
+            formHelper="The floor number to input."
+          />
 
-            <FormHelperText fontSize="xs">The floor number.</FormHelperText>
-          </FormControl>
-
-          <FormControl isRequired>
-            <FormLabel htmlFor="name">Floor Name</FormLabel>
-            <Input
-              id="name"
-              autoComplete="off"
-              placeholder="Name of the floor..."
-              value={name}
-              onChange={({ currentTarget: { value } }) => setName(value)}
-              focusBorderColor="green.500"
-              size="lg"
-            />
-
-            <FormHelperText fontSize="xs">The floor name.</FormHelperText>
-          </FormControl>
+          <ControlledText
+            stateValue={name}
+            stateDispatch={setName}
+            formLabel="Floor Name"
+            formHelper="The floor name."
+            formPlaceholder="Name of the floor..."
+          />
 
           <ButtonGroup variant="outline" spacing={6}>
             <Button

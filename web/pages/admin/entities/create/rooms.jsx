@@ -7,19 +7,9 @@ import {
   FormHelperText,
   FormLabel,
   Heading,
-  HStack,
   Icon,
-  Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Radio,
-  RadioGroup,
   Select,
   Text,
-  Textarea,
   useColorMode,
   useColorModeValue,
   useToast,
@@ -31,6 +21,12 @@ import { useState } from 'react';
 import { IoCreateOutline } from 'react-icons/io5';
 import { MdCancel } from 'react-icons/md';
 
+import ControlledMultipleFiles from '../../../../components/Admin/Forms/ControlledMultipleFiles';
+import ControlledNumber from '../../../../components/Admin/Forms/ControlledNumber';
+import ControlledRadioGroup from '../../../../components/Admin/Forms/ControlledRadioGroup';
+import ControlledSingleFile from '../../../../components/Admin/Forms/ControlledSingleFile';
+import ControlledText from '../../../../components/Admin/Forms/ControlledText';
+import ControlledTextarea from '../../../../components/Admin/Forms/ControlledTextarea';
 import Layout from '../../../../components/Layout';
 import { get, post, postAuth } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
@@ -51,7 +47,7 @@ const CreateFloors = ({ data }) => {
   const [roomFeatures, setRoomFeatures] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [photos, setPhotos] = useState('');
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(1);
   const [type, setType] = useState('office');
   const [floor, setFloor] = useState(data[0]._id);
   const { colorMode } = useColorMode();
@@ -94,17 +90,39 @@ const CreateFloors = ({ data }) => {
     // Next.js does not support 'FormData' in its API route.
     // A bit dangerous. Would have to refactor later.
     const authResponse = await post({ key: 'upload_key' }, '/api/checkAuth');
-    let apiResponse;
 
-    if (authResponse.status === 'success') {
-      apiResponse = await postAuth(
-        formData,
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms`,
-        authResponse.token
-      );
+    if (authResponse.status === 'fail') {
+      return toast({
+        title: 'Failed to fetch cookie!',
+        description: 'Failed to fetch cookie! Please contact your system admin.',
+        status: 'error',
+        isClosable: true,
+      });
     }
 
-    console.log(apiResponse);
+    const apiResponse = await postAuth(
+      formData,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms`,
+      authResponse.token
+    );
+
+    if (apiResponse.status === 'success') {
+      toast({
+        title: 'Successfully created!',
+        description: 'Thank you! You will be redirected shortly.',
+        status: 'success',
+        isClosable: true,
+      });
+
+      return setTimeout(() => router.push(webRoutes.adminEntities('rooms')), 1000);
+    }
+
+    return toast({
+      title: 'Failed to create!',
+      description: apiResponse.response.message,
+      status: 'error',
+      isClosable: true,
+    });
   };
 
   return (
@@ -140,99 +158,61 @@ const CreateFloors = ({ data }) => {
             Hello Owner! Please fill up some details first!
           </Text>
 
-          <FormControl isRequired>
-            <FormLabel htmlFor="name">Room Name</FormLabel>
-            <Input
-              id="name"
-              autoComplete="off"
-              placeholder="Name of the floor..."
-              value={name}
-              onChange={({ currentTarget: { value } }) => setName(value)}
-              focusBorderColor="green.500"
-              size="lg"
-            />
+          <ControlledText
+            stateValue={name}
+            stateDispatch={setName}
+            formLabel="Room Name"
+            formHelper="The room name."
+            formPlaceholder="Name of the floor..."
+          />
 
-            <FormHelperText fontSize="xs">The room name.</FormHelperText>
-          </FormControl>
+          <ControlledTextarea
+            stateValue={description}
+            stateDispatch={setDescription}
+            formLabel="Room Description"
+            formHelper="The room description."
+            formPlaceholder="My awesome room!"
+          />
 
-          <FormControl isRequired>
-            <FormLabel htmlFor="description">Room Description</FormLabel>
-            <Textarea
-              id="description"
-              autoComplete="off"
-              placeholder="My awesome room!"
-              value={description}
-              onChange={({ currentTarget: { value } }) => setDescription(value)}
-              focusBorderColor="green.500"
-              size="lg"
-              isRequired
-            />
+          <ControlledText
+            stateValue={roomFeatures}
+            stateDispatch={setRoomFeatures}
+            formLabel="Room Features"
+            formHelper="The rooms features. Split by commas, no spaces."
+            formPlaceholder="Beautiful room,Full of dolls!"
+          />
 
-            <FormHelperText fontSize="xs">The room description.</FormHelperText>
-          </FormControl>
+          <ControlledSingleFile
+            stateDispatch={setThumbnail}
+            formLabel="Room Thumbnail"
+            formHelper="The room thumbnail."
+          />
 
-          <FormControl isRequired>
-            <FormLabel htmlFor="features">Room Features</FormLabel>
-            <Textarea
-              id="features"
-              autoComplete="off"
-              placeholder="Beautiful room,life enjoyment!"
-              value={roomFeatures}
-              onChange={({ currentTarget: { value } }) => setRoomFeatures(value)}
-              focusBorderColor="green.500"
-              size="lg"
-              isRequired
-            />
+          <ControlledMultipleFiles
+            stateDispatch={setPhotos}
+            formLabel="Room Pictures"
+            formHelper="3 of the room pictures!"
+          />
 
-            <FormHelperText fontSize="xs">
-              The room features. Split features by commas, no spaces.
-            </FormHelperText>
-          </FormControl>
-
-          <FormControl isRequired>
-            <FormLabel htmlFor="room-type">Room Thumbnail</FormLabel>
-            <input
-              id="room-type"
-              type="file"
-              onChange={({ currentTarget: { files } }) => setThumbnail(files[0])}
-            />
-
-            <FormHelperText fontSize="xs">The room thumbnail.</FormHelperText>
-          </FormControl>
-
-          <FormControl isRequired>
-            <FormLabel htmlFor="room-pictures">Room Pictures</FormLabel>
-            <input
-              id="room-pictures"
-              type="file"
-              onChange={({ currentTarget: { files } }) => setPhotos(files)}
-              multiple
-            />
-
-            <FormHelperText fontSize="xs">3 of the room pictures!</FormHelperText>
-          </FormControl>
-
-          <FormControl isRequired>
-            <RadioGroup defaultValue="office" onChange={setType}>
-              <FormLabel htmlFor="room-type">Room Type</FormLabel>
-              <HStack spacing={5}>
-                <Radio colorScheme="red" value="office">
-                  Office
-                </Radio>
-                <Radio colorScheme="green" value="coworking-space">
-                  Coworking-Space
-                </Radio>
-              </HStack>
-            </RadioGroup>
-
-            <FormHelperText fontSize="xs">The room type.</FormHelperText>
-          </FormControl>
+          <ControlledRadioGroup
+            types={['office', 'coworking-space']}
+            stateDispatch={setType}
+            formLabel="Room Type"
+            formHelper="The room type."
+            defaultValue="office"
+          />
 
           <FormControl isRequired>
             <FormLabel htmlFor="floor">Floor Number</FormLabel>
-            <Select isRequired errorBorderColor="green.500" size="lg">
+            <Select
+              isRequired
+              errorBorderColor="green.500"
+              size="lg"
+              onChange={({ currentTarget: { value } }) => setFloor(value)}
+              value={floor}
+            >
               {data.map((singleFloor) => (
-                <option value={singleFloor._id} onChange={(value) => setFloor(value)}>
+                <option key={singleFloor._id} value={singleFloor._id}>
                   {singleFloor.number}
                 </option>
               ))}
@@ -241,25 +221,12 @@ const CreateFloors = ({ data }) => {
             <FormHelperText fontSize="xs">The floor number.</FormHelperText>
           </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel htmlFor="price">Room Price</FormLabel>
-            <NumberInput
-              id="price"
-              defaultValue={1}
-              min={1}
-              onChange={(value) => setPrice(value)}
-              focusBorderColor="green.500"
-              size="lg"
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-
-            <FormHelperText fontSize="xs">The room price.</FormHelperText>
-          </FormControl>
+          <ControlledNumber
+            stateValue={price}
+            stateDispatch={setPrice}
+            formLabel="Room Price"
+            formHelper="The room price."
+          />
 
           <ButtonGroup variant="outline" spacing={6}>
             <Button type="submit" leftIcon={<Icon as={IoCreateOutline} />} colorScheme="teal">
