@@ -296,8 +296,64 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Hu Tao\",\r\n    \"description\": \"Hu Tao is a co-working space with a volcano background.\",\r\n    \"roomFeatures\": [\"Elegant volanic style\", \"Impressive heat!\"],\r\n    \"thumbnail\": \"hu-tao.jpg\",\r\n    \"photos\": [\"hu-tao-1.jpg\", \"hu-tao-2.jpg\", \"hu-tao-3.jpg\"],\r\n    \"price\": 65000,\r\n    \"type\": \"coworking-space\",\r\n    \"floor\": \"5fc0605d97166d0017d249d5\"\r\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Amber",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Amber is a room with bunny dolls to help relax your mind.",
+									"type": "text"
+								},
+								{
+									"key": "roomFeatures",
+									"value": "Room for girls!",
+									"type": "text"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/C:/Users/Nicho/Downloads/Amber.png"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/Nicho/Downloads/24b9ff2db313d27880ca16f78f0e705b_9033700253072950864.png"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/Nicho/Downloads/85886953_p0.jpg"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/Nicho/Downloads/pz4kzpm275861.png"
+								},
+								{
+									"key": "price",
+									"value": "250000",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "office",
+									"type": "text"
+								},
+								{
+									"key": "floor",
+									"value": "5fc0605d97166d0017d249d5",
+									"type": "text"
+								},
+								{
+									"key": "roomFeatures",
+									"value": "Impressive things inside!",
+									"type": "text"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -498,6 +554,26 @@
 								"api",
 								"v1",
 								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Unhandled And My Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/orders/my-managed-orders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"my-managed-orders"
 							]
 						}
 					},
