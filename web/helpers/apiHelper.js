@@ -27,3 +27,11 @@ export const get = async (url) => {
 
   return response.data;
 };
+
+export const patchAuth = async (data, url, token) => {
+  const response = await axios
+    .patch(url, data, { headers: { Authorization: `Bearer ${token}` } })
+    .catch((err) => err.response);
+
+  return response.data;
+};
