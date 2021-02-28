@@ -15,7 +15,8 @@
   "rules": {
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "no-underscore-dangle": "off"
   },
   "globals": {
     "React": "writable"
