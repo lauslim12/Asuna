@@ -32,7 +32,7 @@ const ControlledNumber = ({ stateValue, stateDispatch, formLabel, formHelper }) 
 );
 
 ControlledNumber.propTypes = {
-  stateValue: PropTypes.number.isRequired,
+  stateValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   stateDispatch: PropTypes.func.isRequired,
   formLabel: PropTypes.string.isRequired,
   formHelper: PropTypes.string.isRequired,
