@@ -45,6 +45,7 @@ const SingleMenuCard = forwardRef(
               transition: 'all 0.5s ease',
             }}
             onClick={() => (isClickable ? setModalOpen(true) : null)}
+            color="black"
           >
             <Heading fontSize="lg">{headingText}</Heading>
             <Text textAlign="center">{description}</Text>
