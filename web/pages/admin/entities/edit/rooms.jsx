@@ -122,7 +122,7 @@ const EditRooms = ({ roomData, floorData }) => {
 
   return (
     <Layout title={['Edit Room']}>
-      <FormOverlay>
+      <FormOverlay submitAction={handleSubmit}>
         <FormHeading formTitle="Edit a room!" />
 
         <VStack>
@@ -199,7 +199,7 @@ const EditRooms = ({ roomData, floorData }) => {
           formHelper="The room price."
         />
 
-        <FormActions submitAction={handleSubmit} cancelPath={webRoutes.adminEntities('rooms')} />
+        <FormActions cancelPath={webRoutes.adminEntities('rooms')} />
       </FormOverlay>
     </Layout>
   );

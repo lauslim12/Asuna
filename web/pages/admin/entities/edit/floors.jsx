@@ -72,7 +72,7 @@ const EditFloors = ({ data }) => {
 
   return (
     <Layout title={['Create Floor']}>
-      <FormOverlay>
+      <FormOverlay submitAction={handleSubmit}>
         <FormHeading formTitle="Edit a floor!" />
 
         <Text textAlign="center" fontSize="sm">
@@ -94,7 +94,7 @@ const EditFloors = ({ data }) => {
           formPlaceholder="Name of the floor..."
         />
 
-        <FormActions submitAction={handleSubmit} cancelPath={webRoutes.adminEntities('floors')} />
+        <FormActions cancelPath={webRoutes.adminEntities('floors')} />
       </FormOverlay>
     </Layout>
   );

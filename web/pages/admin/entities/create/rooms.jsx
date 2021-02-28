@@ -114,7 +114,7 @@ const CreateFloors = ({ data }) => {
 
   return (
     <Layout title={['Create Room']}>
-      <FormOverlay handleSubmit={handleSubmit}>
+      <FormOverlay submitAction={handleSubmit}>
         <FormHeading formTitle="Create a new room!" />
         <Text textAlign="center" fontSize="sm">
           Hello Owner! Please fill up some details first!

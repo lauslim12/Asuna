@@ -43,7 +43,7 @@ const CreateFloors = () => {
 
   return (
     <Layout title={['Create Floor']}>
-      <FormOverlay>
+      <FormOverlay submitAction={handleSubmit}>
         <FormHeading formTitle="Create a new floor!" />
 
         <Text textAlign="center" fontSize="sm">
@@ -65,7 +65,7 @@ const CreateFloors = () => {
           formPlaceholder="Name of the floor..."
         />
 
-        <FormActions submitAction={handleSubmit} cancelPath={webRoutes.adminHomepage} />
+        <FormActions cancelPath={webRoutes.adminHomepage} />
       </FormOverlay>
     </Layout>
   );
