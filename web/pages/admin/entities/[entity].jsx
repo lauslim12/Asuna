@@ -58,7 +58,7 @@ const AdminEntities = ({ data, entity }) => (
         return (
           <Grid p={4} templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={10}>
             {data.map((floor) => (
-              <FloorShowCard data={floor} />
+              <FloorShowCard key={floor._id} data={floor} />
             ))}
           </Grid>
         );
@@ -68,7 +68,7 @@ const AdminEntities = ({ data, entity }) => (
         return (
           <Grid p={4} templateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap={3}>
             {data.map((room) => (
-              <RoomShowCard data={room} />
+              <RoomShowCard key={room._id} data={room} />
             ))}
           </Grid>
         );
@@ -78,7 +78,7 @@ const AdminEntities = ({ data, entity }) => (
         return (
           <Grid p={4} templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={3}>
             {data.map((employee) => (
-              <EmployeeShowCard data={employee} />
+              <EmployeeShowCard key={employee._id} data={employee} />
             ))}
           </Grid>
         );
