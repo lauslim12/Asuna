@@ -118,3 +118,37 @@ exports.getAdminManagedOrders = asyncHandler(async (req, res, next) => {
     data: myOrders,
   });
 });
+
+exports.getEarnings = asyncHandler(async (req, res, next) => {
+  const allOrders = await Order.find(
+    { status: 'finished' },
+    'startDate endDate totalPrice'
+  );
+
+  const sumOfEarnings = await Order.aggregate([
+    {
+      $match: {
+        status: 'finished',
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: '$totalPrice',
+        },
+      },
+    },
+    {
+      $project: {
+        total: 1,
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: 'success',
+    total: sumOfEarnings[0].total,
+    data: allOrders,
+  });
+});

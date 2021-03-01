@@ -32,4 +32,11 @@ router.post(
   orderController.changeOrderStatus
 );
 
+router.get(
+  '/earnings',
+  authMiddleware.checkLoggedUser,
+  authMiddleware.routeGuard('admin', 'owner'),
+  orderController.getEarnings
+);
+
 module.exports = router;
