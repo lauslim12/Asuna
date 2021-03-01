@@ -65,6 +65,7 @@ const EditRooms = ({ roomData, floorData }) => {
     formData.append('price', price);
     formData.append('type', type);
     formData.append('floor', floor);
+    formData.append('lastModified', new Date(Date.now()));
 
     if (features.length > 1) {
       features.forEach((feature) => formData.append('roomFeatures', feature));
