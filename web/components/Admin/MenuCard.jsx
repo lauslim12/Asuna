@@ -94,14 +94,16 @@ const MenuCard = () => {
             gradientType="to-tr"
             isClickable
           />
-          <SingleMenuCard
-            headingText="See Earnings"
-            description="Check all earnings and see profits!"
-            icon={RiMoneyDollarBoxFill}
-            gradientStart="#8f94fb"
-            gradientEnd="#4e54c8"
-            gradientType="to-tl"
-          />
+          <NextLink href={webRoutes.adminEarnings} passHref>
+            <SingleMenuCard
+              headingText="See Earnings"
+              description="Check all earnings and see profits!"
+              icon={RiMoneyDollarBoxFill}
+              gradientStart="#8f94fb"
+              gradientEnd="#4e54c8"
+              gradientType="to-tl"
+            />
+          </NextLink>
         </Stack>
       </VStack>
     </>

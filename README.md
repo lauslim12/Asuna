@@ -62,7 +62,7 @@ Below table is used as a guide for the Front-End System.
 |     Admin: See All Orders     |     ✔️     |         ✔️        |            `/admin/orders`            |
 |     Admin: Accept Visitors    |           |                  |           `/admin/visitors`           |
 | Owner: Create & Edit Entities |     ✔️     |                  | `/admin/entities/create-:entity-name` |
-|      Owner: See Earnings      |           |                  |           `/admin/earnings`           |
+|      Owner: See Earnings      |     ✔️     |         ✔️        |           `/admin/earnings`           |
 |    Owner: List of Entities    |     ✔️     |         ✔️        |     `/admin/entities/:entity-name`    |
 
 Hopefully, the table will be all green soon.

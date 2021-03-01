@@ -3,6 +3,7 @@ export default {
   adminHomepage: '/admin',
   adminEntities: (entityName) => `/admin/entities/${entityName}`,
   adminCreateEntities: (entityName) => `/admin/entities/create/${entityName}`,
+  adminEarnings: '/admin/earnings',
   adminEditEntities: (entityName, id) => `/admin/entities/edit/${entityName}?id=${id}`,
   adminOrders: `/admin/orders`,
   homepage: '/',
