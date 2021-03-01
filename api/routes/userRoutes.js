@@ -18,4 +18,11 @@ router.get(
   userController.getUser
 );
 
+router.post(
+  '/make-employee',
+  authMiddleware.checkLoggedUser,
+  authMiddleware.routeGuard('admin', 'owner'),
+  userController.makeEmployee
+);
+
 module.exports = router;
