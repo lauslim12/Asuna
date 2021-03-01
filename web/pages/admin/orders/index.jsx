@@ -35,7 +35,7 @@ const Admin = ({ data }) => {
       <Box h="full" w="full">
         <Wrap p={3} spacing={7} justify="center">
           {data.map((el) => (
-            <OrderCardVertical data={el} />
+            <OrderCardVertical key={el._id} data={el} />
           ))}
         </Wrap>
       </Box>
