@@ -50,20 +50,20 @@ To prevent spamming of emails, I did not set up a hook that would instantly perf
 
 Below table is used as a guide for the Front-End System.
 
-|             Pages             | hasRoute? | hasBeenDesigned? |               routeName               |
-|:-----------------------------:|:---------:|:----------------:|:-------------------------------------:|
-|            Homepage           |     ✔️     |                  |                  `/`                  |
-|             Login             |     ✔️     |         ✔️        |                `/login`               |
-|            Register           |           |                  |              `/register`              |
-|          User Profile         |     ✔️     |                  |               `/profile`              |
-|         List of Rooms         |     ✔️     |         ✔️        |                `/rooms`               |
-|          Detail Room          |     ✔️     |                  |             `/rooms/:slug`            |
-|         Admin Homepage        |     ✔️     |         ✔️        |                `/admin`               |
-|     Admin: See All Orders     |     ✔️     |         ✔️        |            `/admin/orders`            |
-|     Admin: Accept Visitors    |           |                  |           `/admin/visitors`           |
-| Owner: Create & Edit Entities |     ✔️     |                  | `/admin/entities/create-:entity-name` |
-|      Owner: See Earnings      |     ✔️     |         ✔️        |           `/admin/earnings`           |
-|    Owner: List of Entities    |     ✔️     |         ✔️        |     `/admin/entities/:entity-name`    |
+|             Pages             | hasRoute? | hasBeenDesigned? |                                 routeName                                 |
+|:-----------------------------:|:---------:|:----------------:|:-------------------------------------------------------------------------:|
+|            Homepage           |     ✔️     |                  |                                    `/`                                    |
+|             Login             |     ✔️     |         ✔️        |                                  `/login`                                 |
+|            Register           |           |                  |                                `/register`                                |
+|          User Profile         |     ✔️     |                  |                                 `/profile`                                |
+|         List of Rooms         |     ✔️     |         ✔️        |                                  `/rooms`                                 |
+|          Detail Room          |     ✔️     |                  |                               `/rooms/:slug`                              |
+|         Admin Homepage        |     ✔️     |         ✔️        |                                  `/admin`                                 |
+|     Admin: See All Orders     |     ✔️     |         ✔️        |                              `/admin/orders`                              |
+|     Admin: Accept Visitors    |           |                  |                             `/admin/visitors`                             |
+| Owner: Create & Edit Entities |     ✔️     |         ✔️        | `/admin/entities/create/:entity-name` `/admin/entities/edit/:entity-name` |
+|      Owner: See Earnings      |     ✔️     |         ✔️        |                             `/admin/earnings`                             |
+|    Owner: List of Entities    |     ✔️     |         ✔️        |                       `/admin/entities/:entity-name`                      |
 
 Hopefully, the table will be all green soon.
 
