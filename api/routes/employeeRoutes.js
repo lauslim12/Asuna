@@ -20,4 +20,6 @@ router
   .patch(employeeController.updateEmployee)
   .delete(employeeController.deleteEmployee);
 
+router.post('/make-employee', employeeController.makeEmployee);
+
 module.exports = router;
