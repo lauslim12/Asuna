@@ -578,6 +578,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Earnings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/orders/earnings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"earnings"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
