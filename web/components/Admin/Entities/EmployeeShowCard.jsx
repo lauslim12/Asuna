@@ -1,5 +1,8 @@
 import { Badge, Box, Button, Image, Stack, VStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import PropTypes from 'prop-types';
+
+import webRoutes from '../../../helpers/webRoutes';
 
 const EmployeeShowCard = ({ data }) => {
   return (
@@ -44,7 +47,9 @@ const EmployeeShowCard = ({ data }) => {
 
       <Stack direction={['column', 'column', 'row']} justify="center" align="center" mt={3}>
         <Button size="xs" colorScheme="green" w="100px">
-          {`Edit ${data.user.firstName}`}
+          <NextLink href={webRoutes.adminEditEntities('employees', data._id)}>
+            {`Edit ${data.user.firstName}`}
+          </NextLink>
         </Button>
         {data.user.role === 'admin' ? (
           <Button size="xs" colorScheme="orange" w="100px">

@@ -1,5 +1,6 @@
 import { Text, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import ControlledNumber from '../../../../components/Admin/Forms/ControlledNumber';
@@ -9,21 +10,54 @@ import FormActions from '../../../../components/Admin/Forms/FormActions';
 import FormHeading from '../../../../components/Admin/Forms/FormHeading';
 import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
-import { post, postAuth } from '../../../../helpers/apiHelper';
+import { getAuth, patchAuth, post } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';
 import webRoutes from '../../../../helpers/webRoutes';
 
-const CreateEmployees = () => {
-  const [user, setUser] = useState('');
-  const [salary, setSalary] = useState(1);
-  const [jobdesc, setJobdesc] = useState('security');
+export const getServerSideProps = async (ctx) => {
+  const token = ctx.req.cookies.jwt;
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: webRoutes.adminHomepage,
+        permanent: false,
+      },
+    };
+  }
+
+  const { data } = await getAuth(
+    `${process.env.PRIVATE_API_URL}/api/v1/employees/${ctx.query.id}`,
+    token
+  );
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: webRoutes.adminHomepage,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+const EditEmployees = ({ data }) => {
+  const [user, setUser] = useState(data.user.email);
+  const [salary, setSalary] = useState(data.salary);
+  const [jobdesc, setJobdesc] = useState(data.jobdesc);
   const router = useRouter();
   const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authorization = await post({ key: 'add_employee_key' }, '/api/checkAuth');
+    const authorization = await post({ key: 'edit_employee_key' }, '/api/checkAuth');
 
     if (authorization.status === 'fail') {
       return toast({
@@ -34,15 +68,15 @@ const CreateEmployees = () => {
       });
     }
 
-    const apiResponse = await postAuth(
+    const apiResponse = await patchAuth(
       { email: user, salary, jobdesc },
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/employees/make-employee`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/employees/${data._id}`,
       authorization.token
     );
 
     if (apiResponse.status === 'success') {
       toast({
-        title: 'Successfully created!',
+        title: 'Successfully edited!',
         description: 'Thank you! You will be redirected shortly.',
         status: 'success',
         isClosable: true,
@@ -98,4 +132,8 @@ const CreateEmployees = () => {
   );
 };
 
-export default CreateEmployees;
+EditEmployees.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default EditEmployees;
