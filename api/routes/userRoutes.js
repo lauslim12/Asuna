@@ -18,4 +18,18 @@ router.get(
   userController.getUser
 );
 
+router.patch(
+  '/make-admin',
+  authMiddleware.checkLoggedUser,
+  authMiddleware.routeGuard('admin', 'owner'),
+  userController.makeAdmin
+);
+
+router.patch(
+  '/revoke-admin',
+  authMiddleware.checkLoggedUser,
+  authMiddleware.routeGuard('admin', 'owner'),
+  userController.revokeAdmin
+);
+
 module.exports = router;
