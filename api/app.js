@@ -19,6 +19,7 @@ const floorRouter = require('./routes/floorRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const roomRouter = require('./routes/roomRoutes');
 const userRouter = require('./routes/userRoutes');
+const visitorRouter = require('./routes/visitorRoutes');
 
 // Utilities
 const AppError = require('./utils/appError');
@@ -83,6 +84,7 @@ app.use('/api/v1/floors', floorRouter);
 app.use('/api/v1/orders', orderRouter);
 app.use('/api/v1/rooms', roomRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/visitors', visitorRouter);
 
 // Defining undefined routes.
 // If we are able to reach this point - then no route match.
