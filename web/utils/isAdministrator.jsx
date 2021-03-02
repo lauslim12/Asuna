@@ -1,0 +1,25 @@
+import { getAuth } from '../helpers/apiHelper';
+import webRoutes from '../helpers/webRoutes';
+
+export default async (ctx) => {
+  // 1. Check if there is a token.
+  const token = ctx.req.cookies?.jwt || null;
+
+  // 2. Perform an authorized HTTP GET request to the private API to get user data.
+  const { data } = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/users/me`, token);
+
+  // 3. If there is no user, or the user is not an admin, then redirect to homepage.
+  if (!data || data.role !== 'admin') {
+    return {
+      redirect: {
+        destination: webRoutes.homepage,
+        permanent: false,
+      },
+    };
+  }
+
+  // 4. Return empty props.
+  return {
+    props: {},
+  };
+};
