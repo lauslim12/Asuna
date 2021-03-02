@@ -13,22 +13,12 @@ import Layout from '../../../../components/Layout';
 import { getAuth, patchAuth, post } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';
 import webRoutes from '../../../../helpers/webRoutes';
+import isAdministrator from '../../../../utils/isAdministrator';
 
-export const getServerSideProps = async (ctx) => {
-  const token = ctx.req.cookies.jwt;
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: webRoutes.adminHomepage,
-        permanent: false,
-      },
-    };
-  }
-
+export const getServerSideProps = isAdministrator(async (ctx) => {
   const { data } = await getAuth(
     `${process.env.PRIVATE_API_URL}/api/v1/employees/${ctx.query.id}`,
-    token
+    ctx.req.cookies?.jwt
   );
 
   if (!data) {
@@ -45,7 +35,7 @@ export const getServerSideProps = async (ctx) => {
       data,
     },
   };
-};
+});
 
 const EditEmployees = ({ data }) => {
   const [user, setUser] = useState(data.user.email);

@@ -17,8 +17,9 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { get, patchAuth, post } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
+import isAdministrator from '../../../../utils/isAdministrator';
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = isAdministrator(async (ctx) => {
   const roomData = await get(`${process.env.PRIVATE_API_URL}/api/v1/rooms/${ctx.query.id}`);
   const floorData = await get(`${process.env.PRIVATE_API_URL}/api/v1/floors`);
 
@@ -28,7 +29,7 @@ export const getServerSideProps = async (ctx) => {
       floorData: floorData.data,
     },
   };
-};
+});
 
 const EditRooms = ({ roomData, floorData }) => {
   const [name, setName] = useState(roomData.name);

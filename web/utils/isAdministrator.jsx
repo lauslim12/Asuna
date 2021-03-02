@@ -1,7 +1,8 @@
+/* eslint-disable no-return-await */
 import { getAuth } from '../helpers/apiHelper';
 import webRoutes from '../helpers/webRoutes';
 
-export default async (ctx) => {
+export default (GetServerSidePropsFunction) => async (ctx) => {
   // 1. Check if there is a token.
   const token = ctx.req.cookies?.jwt || null;
 
@@ -19,7 +20,5 @@ export default async (ctx) => {
   }
 
   // 4. Return empty props.
-  return {
-    props: {},
-  };
+  return await GetServerSidePropsFunction(ctx);
 };

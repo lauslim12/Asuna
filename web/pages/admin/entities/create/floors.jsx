@@ -10,6 +10,13 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { post } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
+import isAdministrator from '../../../../utils/isAdministrator';
+
+export const getServerSideProps = isAdministrator(() => {
+  return {
+    props: {},
+  };
+});
 
 const CreateFloors = () => {
   const [number, setNumber] = useState(1);

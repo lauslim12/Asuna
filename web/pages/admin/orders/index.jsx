@@ -4,22 +4,12 @@ import PropTypes from 'prop-types';
 import OrderCardVertical from '../../../components/Admin/OrderCardVertical';
 import Layout from '../../../components/Layout';
 import { getAuth } from '../../../helpers/apiHelper';
+import isAdministrator from '../../../utils/isAdministrator';
 
-export const getServerSideProps = async (ctx) => {
-  const token = ctx.req.cookies.jwt;
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/sign-in',
-        permanent: false,
-      },
-    };
-  }
-
+export const getServerSideProps = isAdministrator(async (ctx) => {
   const { data } = await getAuth(
     `${process.env.PRIVATE_API_URL}/api/v1/orders/my-managed-orders`,
-    token
+    ctx.req.cookies.jwt
   );
 
   return {
@@ -27,7 +17,7 @@ export const getServerSideProps = async (ctx) => {
       data,
     },
   };
-};
+});
 
 const Admin = ({ data }) => {
   return (

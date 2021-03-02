@@ -12,6 +12,13 @@ import Layout from '../../../../components/Layout';
 import { post, postAuth } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';
 import webRoutes from '../../../../helpers/webRoutes';
+import isAdministrator from '../../../../utils/isAdministrator';
+
+export const getServerSideProps = isAdministrator(() => {
+  return {
+    props: {},
+  };
+});
 
 const CreateEmployees = () => {
   const [user, setUser] = useState('');
