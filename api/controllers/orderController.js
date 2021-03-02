@@ -41,18 +41,27 @@ exports.changeOrderStatus = asyncHandler(async (req, res, next) => {
 
   const order = await Order.findById(req.params.id);
 
-  if (order.employee && order.employee !== req.user._id) {
+  if (order.employee && order.employee.toString() !== req.user._id.toString()) {
     return next(
       new AppError('You cannot update orders that are not yours!'),
       400
     );
   }
 
-  const updatedOrder = await Order.findByIdAndUpdate(
-    req.params.id,
-    { status, employee: req.user._id },
-    { new: true, runValidators: true }
-  );
+  let updatedOrder;
+  if (status === 'ordered') {
+    updatedOrder = await Order.findByIdAndUpdate(
+      req.params.id,
+      { status, employee: null },
+      { new: true, runValidators: true }
+    );
+  } else {
+    updatedOrder = await Order.findByIdAndUpdate(
+      req.params.id,
+      { status, employee: req.user._id },
+      { new: true, runValidators: true }
+    );
+  }
 
   res.status(200).json({
     status: 'success',
