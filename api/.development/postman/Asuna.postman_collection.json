@@ -663,6 +663,59 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Visitors",
+			"item": [
+				{
+					"name": "Get All Visitors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/visitors",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"visitors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create One Visitor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Dzulfiqar\",\r\n    \"lastName\": \"Ramadhan\",\r\n    \"address\": \"South Tangerang\",\r\n    \"email\": \"dzulfiqar12@yahoo.com\",\r\n    \"purpose\": \"Meeting with my boss.\",\r\n    \"room\": \"5c88fa8cf4afda39709c2955\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/visitors/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"visitors",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
