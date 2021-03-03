@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
-import ListOfRooms from '../../components/ListOfRooms';
+import ListOfRooms from '../../components/ListOfRooms/ListView';
 import { get } from '../../helpers/apiHelper';
 
 export const getServerSideProps = async () => {

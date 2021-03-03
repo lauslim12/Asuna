@@ -5,7 +5,7 @@ import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
 import RoomCard from './RoomCard';
 
-const ListOfRooms = ({ rooms, maxFloor }) => {
+const RoomsListView = ({ rooms, maxFloor }) => {
   const [roomsInFloor, setRoomsInFloor] = useState([]);
   const [currentFloor, setCurrentFloor] = useState(1);
 
@@ -47,9 +47,9 @@ const ListOfRooms = ({ rooms, maxFloor }) => {
   );
 };
 
-ListOfRooms.propTypes = {
+RoomsListView.propTypes = {
   rooms: PropTypes.instanceOf(Array).isRequired,
   maxFloor: PropTypes.number.isRequired,
 };
 
-export default ListOfRooms;
+export default RoomsListView;
