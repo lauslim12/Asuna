@@ -5,6 +5,8 @@ export default {
   adminCreateEntities: (entityName) => `/admin/entities/create/${entityName}`,
   adminEarnings: '/admin/earnings',
   adminEditEntities: (entityName, id) => `/admin/entities/edit/${entityName}?id=${id}`,
+  adminVisitors: '/admin/visitors',
+  adminVisitorCreate: (roomSlug) => `/admin/visitors/${roomSlug}`,
   adminOrders: `/admin/orders`,
   homepage: '/',
   listOfRooms: '/rooms',
