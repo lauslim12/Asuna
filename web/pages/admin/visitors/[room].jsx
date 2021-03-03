@@ -48,7 +48,7 @@ const VisitorsCreate = ({ roomData }) => {
       return setTimeout(() => router.push(webRoutes.adminHomepage), 1000);
     }
 
-    return FailedOperationToast(toast, apiResponse);
+    return FailedOperationToast(toast, apiResponse.response);
   };
 
   return (
