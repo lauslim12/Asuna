@@ -60,7 +60,7 @@ Below table is used as a guide for the Front-End System.
 |          Detail Room          |     ✔️     |                  |                               `/rooms/:slug`                              |
 |         Admin Homepage        |     ✔️     |         ✔️        |                                  `/admin`                                 |
 |     Admin: See All Orders     |     ✔️     |         ✔️        |                              `/admin/orders`                              |
-|     Admin: Accept Visitors    |           |                  |                             `/admin/visitors`                             |
+|     Admin: Accept Visitors    |     ✔️     |         ✔️        |                             `/admin/visitors`                             |
 | Owner: Create & Edit Entities |     ✔️     |         ✔️        | `/admin/entities/create/:entity-name` `/admin/entities/edit/:entity-name` |
 |      Owner: See Earnings      |     ✔️     |         ✔️        |                             `/admin/earnings`                             |
 |    Owner: List of Entities    |     ✔️     |         ✔️        |                       `/admin/entities/:entity-name`                      |
