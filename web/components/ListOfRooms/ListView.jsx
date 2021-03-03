@@ -1,11 +1,13 @@
 import { Grid, Heading, HStack, IconButton, Spacer, VStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
+import webRoutes from '../../helpers/webRoutes';
 import RoomCard from './RoomCard';
 
-const RoomsListView = ({ rooms, maxFloor }) => {
+const RoomsListView = ({ rooms, maxFloor, route }) => {
   const [roomsInFloor, setRoomsInFloor] = useState([]);
   const [currentFloor, setCurrentFloor] = useState(1);
 
@@ -40,7 +42,17 @@ const RoomsListView = ({ rooms, maxFloor }) => {
       </HStack>
       <Grid templateColumns="repeat(auto-fill, minmax(9rem, 1fr))" gap={2}>
         {roomsInFloor.map((room) => (
-          <RoomCard key={room.slug} roomData={room} />
+          <NextLink
+            key={room.slug}
+            href={
+              route === 'roomDetail'
+                ? webRoutes.roomDetail(room.slug)
+                : webRoutes.adminVisitorCreate(room.slug)
+            }
+            passHref
+          >
+            <RoomCard roomData={room} />
+          </NextLink>
         ))}
       </Grid>
     </VStack>
@@ -50,6 +62,7 @@ const RoomsListView = ({ rooms, maxFloor }) => {
 RoomsListView.propTypes = {
   rooms: PropTypes.instanceOf(Array).isRequired,
   maxFloor: PropTypes.number.isRequired,
+  route: PropTypes.oneOf(['roomDetail', 'visitors']).isRequired,
 };
 
 export default RoomsListView;
