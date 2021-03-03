@@ -18,6 +18,7 @@ import { useState } from 'react';
 import { RiLoginCircleFill, RiRewindFill } from 'react-icons/ri';
 
 import { post } from '../../helpers/apiHelper';
+import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -96,22 +97,11 @@ const LoginForm = () => {
               const apiResponse = await post({ username, password }, '/api/login');
 
               if (apiResponse.status === 'success') {
-                toast({
-                  title: 'Successfully authenticated!',
-                  description: 'Welcome! Please wait while you are being redirected!',
-                  status: 'success',
-                  isClosable: true,
-                });
-
+                SuccessfulOperationToast(toast, 'Welcome! Please wait for a second...');
                 return setTimeout(() => router.push('/'), 1000);
               }
 
-              return toast({
-                title: 'Failed to login!',
-                description: apiResponse.response.message,
-                status: 'error',
-                isClosable: true,
-              });
+              return FailedOperationToast(toast, apiResponse.response);
             }}
           >
             Sign In
