@@ -11,6 +11,7 @@ const Floor = require('../../models/floorModel');
 const Order = require('../../models/orderModel');
 const Room = require('../../models/roomModel');
 const User = require('../../models/userModel');
+const Visitor = require('../../models/visitorModel');
 
 // Configurations
 dotenv.config({ path: '../../.env' });
@@ -50,6 +51,7 @@ const importDevData = async () => {
     await Floor.create(floors);
     await Room.create(rooms);
     await Order.create(orders);
+    await Visitor.create();
 
     console.log('Data has been successfully inserted!');
   } catch (err) {
@@ -67,6 +69,7 @@ const deleteDevData = async () => {
     await Room.deleteMany();
     await User.deleteMany();
     await Order.deleteMany();
+    await Visitor.deleteMany();
 
     console.log('Data has been successfully deleted!');
   } catch (err) {
