@@ -72,6 +72,8 @@ Hopefully, the table will be all green soon.
 - NProgress
 - ScrollPreserver
 - Personal and secure authentication with `httpOnly` / `sameSite` cookies and JWT
+- `a11y` support
+- SSR / SSG
 
 ## License
 
