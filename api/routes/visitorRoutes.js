@@ -4,11 +4,14 @@ const visitorController = require('../controllers/visitorController');
 
 const router = express.Router();
 
-router.post(
-  '/',
+router.use(
   authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  visitorController.createVisitor
+  authMiddleware.routeGuard('admin', 'owner')
 );
+
+router
+  .route('/')
+  .get(visitorController.getAllVisitors)
+  .post(visitorController.createVisitor);
 
 module.exports = router;
