@@ -10,7 +10,7 @@ const FormActions = ({ cancelPath }) => {
   return (
     <ButtonGroup variant="outline" spacing={6}>
       <Button type="submit" leftIcon={<Icon as={IoCreateOutline} />} colorScheme="teal">
-        Edit
+        Submit
       </Button>
       <Button leftIcon={<Icon as={MdCancel} />} onClick={() => router.push(cancelPath)}>
         Cancel
