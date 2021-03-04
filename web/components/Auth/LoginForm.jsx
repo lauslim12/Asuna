@@ -1,19 +1,12 @@
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Icon,
-  Input,
-  Text,
-  useToast,
-} from '@chakra-ui/react';
+import { Text, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { RiLoginCircleFill, RiRewindFill } from 'react-icons/ri';
 
 import { post } from '../../helpers/apiHelper';
+import webRoutes from '../../helpers/webRoutes';
+import ControlledPassword from '../Admin/Forms/ControlledPassword';
+import ControlledText from '../Admin/Forms/ControlledText';
+import FormActions from '../Admin/Forms/FormActions';
 import FormHeading from '../Admin/Forms/FormHeading';
 import FormOverlay from '../Admin/Forms/FormOverlay';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
@@ -27,14 +20,22 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const apiResponse = await post({ username, password }, '/api/login');
+    const dataToBeSent = {
+      username,
+      password,
+      requestType: 'POST',
+      requestUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
+    };
+
+    const apiResponse = await post(dataToBeSent, '/api/authRequestHandler');
 
     if (apiResponse.status === 'success') {
-      SuccessfulOperationToast(toast, 'Welcome! Please wait for a second...');
+      SuccessfulOperationToast(toast, 'Welcome! Please wait to be redirected to the homepage!');
+
       return setTimeout(() => router.push('/'), 1000);
     }
 
-    return FailedOperationToast(toast, apiResponse.response);
+    return FailedOperationToast(toast, apiResponse.message);
   };
 
   return (
@@ -45,53 +46,23 @@ const LoginForm = () => {
         Hello! For us to provide better services, please login first!
       </Text>
 
-      <FormControl isRequired>
-        <FormLabel htmlFor="username">Username</FormLabel>
-        <Input
-          textAlign="center"
-          bg="white"
-          id="username"
-          placeholder="PatrickStar1350..."
-          value={username}
-          onChange={({ currentTarget: { value } }) => setUsername(value)}
-          focusBorderColor="green.500"
-          size="lg"
-        />
-        <FormHelperText fontSize="xs">Your username that you used to register.</FormHelperText>
-      </FormControl>
+      <ControlledText
+        stateValue={username}
+        stateDispatch={setUsername}
+        formLabel="Username"
+        formHelper="Your username that you used to register."
+        formPlaceholder="PatrickStar1350"
+      />
 
-      <FormControl isRequired>
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <Input
-          textAlign="center"
-          bg="white"
-          id="password"
-          type="password"
-          placeholder="••••••••"
-          value={password}
-          errorBorderColor="red.500"
-          minLength={8}
-          isInvalid={password.length < 8 && password.length > 0}
-          onChange={({ currentTarget: { value } }) => setPassword(value)}
-          focusBorderColor="green.500"
-          size="lg"
-        />
-        <FormHelperText fontSize="xs">Your password that you used to register.</FormHelperText>
-      </FormControl>
+      <ControlledPassword
+        stateValue={password}
+        stateDispatch={setPassword}
+        formLabel="Password"
+        formHelper="Your password that you used to register."
+        formPlaceholder="••••••••"
+      />
 
-      <ButtonGroup variant="outline" spacing={6}>
-        <Button
-          leftIcon={<Icon as={RiLoginCircleFill} />}
-          type="submit"
-          colorScheme="teal"
-          disabled={!username || !password || password.length < 8}
-        >
-          Sign In
-        </Button>
-        <Button leftIcon={<Icon as={RiRewindFill} />} colorScheme="blue">
-          Cancel
-        </Button>
-      </ButtonGroup>
+      <FormActions cancelPath={webRoutes.homepage} />
     </FormOverlay>
   );
 };

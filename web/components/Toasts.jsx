@@ -6,10 +6,10 @@ export const SuccessfulOperationToast = (toast, message) =>
     isClosable: true,
   });
 
-export const FailedOperationToast = (toast, apiResponse = {}) =>
+export const FailedOperationToast = (toast, message = null) =>
   toast({
     title: 'Failed!',
-    description: apiResponse.message || 'Error occurred. Please try again later!',
+    description: message || 'Error occurred. Please try again later!',
     status: 'error',
     isClosable: true,
   });
