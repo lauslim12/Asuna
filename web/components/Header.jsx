@@ -14,7 +14,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { FaMoon, FaSignInAlt } from 'react-icons/fa';
+import { FaLock, FaMoon, FaSignInAlt, FaTrello } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiOfficeBuilding, HiUser } from 'react-icons/hi';
 
@@ -72,6 +72,20 @@ const Header = () => {
               <Link flexShrink={0}>
                 <MenuItem icon={<Icon as={FaSignInAlt} />} command="⌘⇧N">
                   Sign In
+                </MenuItem>
+              </Link>
+            </NextLink>
+            <NextLink href={webRoutes.signUp} passHref>
+              <Link flexShrink={0}>
+                <MenuItem icon={<Icon as={FaTrello} />} command="⌘O">
+                  Sign Up
+                </MenuItem>
+              </Link>
+            </NextLink>
+            <NextLink href={webRoutes.adminHomepage} passHref>
+              <Link flexShrink={0}>
+                <MenuItem icon={<Icon as={FaLock} />} command="⌘X">
+                  Admin
                 </MenuItem>
               </Link>
             </NextLink>
