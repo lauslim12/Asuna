@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Heading, Icon, Stack, Text, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
-import { forwardRef, useState } from 'react';
+import { useState } from 'react';
 import { FaDatabase } from 'react-icons/fa';
 import { RiDoorOpenFill, RiMoneyDollarBoxFill } from 'react-icons/ri';
 import { SiFormstack } from 'react-icons/si';
@@ -9,53 +10,46 @@ import { SiFormstack } from 'react-icons/si';
 import webRoutes from '../../helpers/webRoutes';
 import CreationModal from './CreationModal';
 
-const SingleMenuCard = forwardRef(
-  (
-    {
-      onClick,
-      href,
-      headingText,
-      description,
-      icon,
-      gradientStart,
-      gradientEnd,
-      gradientType,
-      isClickable,
-    },
-    ref
-  ) => {
-    const [modalOpen, setModalOpen] = useState(false);
+const SingleMenuCard = ({
+  headingText,
+  description,
+  icon,
+  gradientStart,
+  gradientEnd,
+  gradientType,
+  isClickable,
+}) => {
+  const [modalOpen, setModalOpen] = useState(false);
 
-    return (
-      <a href={href} onClick={onClick} ref={ref}>
-        <VStack
-          bg="twitter.400"
-          p={5}
-          w={[275, 400]}
-          h={[175, 200]}
-          justify="center"
-          spacing={5}
-          borderRadius="md"
-          bgGradient={`linear(${gradientType}, ${gradientStart}, ${gradientEnd})`}
-          cursor="pointer"
-          _hover={{
-            opacity: 0.7,
-            transform: 'scale(1.05)',
-            transition: 'all 0.5s ease',
-          }}
-          onClick={() => (isClickable ? setModalOpen(true) : null)}
-          color="black"
-        >
-          <Heading fontSize="lg">{headingText}</Heading>
-          <Text textAlign="center">{description}</Text>
-          <Icon as={icon} boxSize="30px" />
-        </VStack>
+  return (
+    <>
+      <VStack
+        bg="twitter.400"
+        p={5}
+        w={[275, 400]}
+        h={[175, 200]}
+        justify="center"
+        spacing={5}
+        borderRadius="md"
+        bgGradient={`linear(${gradientType}, ${gradientStart}, ${gradientEnd})`}
+        cursor="pointer"
+        _hover={{
+          opacity: 0.7,
+          transform: 'scale(1.05)',
+          transition: 'all 0.5s ease',
+        }}
+        onClick={() => (isClickable ? setModalOpen(true) : null)}
+        color="black"
+      >
+        <Heading fontSize="lg">{headingText}</Heading>
+        <Text textAlign="center">{description}</Text>
+        <Icon as={icon} boxSize="30px" />
+      </VStack>
 
-        <CreationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-      </a>
-    );
-  }
-);
+      <CreationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
+  );
+};
 
 const MenuCard = () => {
   return (
@@ -64,24 +58,28 @@ const MenuCard = () => {
       <VStack spacing={5} mt={10}>
         <Stack direction={['column', 'column', 'row']} spacing={5}>
           <NextLink href={webRoutes.adminOrders} passHref>
-            <SingleMenuCard
-              headingText="All Orders"
-              description="See all orders here!"
-              icon={FaDatabase}
-              gradientStart="#a5dd72"
-              gradientEnd="#83c77c"
-              gradientType="to-br"
-            />
+            <a>
+              <SingleMenuCard
+                headingText="All Orders"
+                description="See all orders here!"
+                icon={FaDatabase}
+                gradientStart="#a5dd72"
+                gradientEnd="#83c77c"
+                gradientType="to-br"
+              />
+            </a>
           </NextLink>
           <NextLink href={webRoutes.adminVisitors} passHref>
-            <SingleMenuCard
-              headingText="Accept Visitors"
-              description="Check in a visitor here!"
-              icon={RiDoorOpenFill}
-              gradientStart="#ff4b2b"
-              gradientEnd="#ff416c"
-              gradientType="to-bl"
-            />
+            <a>
+              <SingleMenuCard
+                headingText="Accept Visitors"
+                description="Check in a visitor here!"
+                icon={RiDoorOpenFill}
+                gradientStart="#ff4b2b"
+                gradientEnd="#ff416c"
+                gradientType="to-bl"
+              />
+            </a>
           </NextLink>
         </Stack>
         <Stack direction={['column', 'column', 'row']} spacing={5}>
@@ -95,14 +93,16 @@ const MenuCard = () => {
             isClickable
           />
           <NextLink href={webRoutes.adminEarnings} passHref>
-            <SingleMenuCard
-              headingText="See Earnings"
-              description="Check all earnings and see profits!"
-              icon={RiMoneyDollarBoxFill}
-              gradientStart="#8f94fb"
-              gradientEnd="#4e54c8"
-              gradientType="to-tl"
-            />
+            <a>
+              <SingleMenuCard
+                headingText="See Earnings"
+                description="Check all earnings and see profits!"
+                icon={RiMoneyDollarBoxFill}
+                gradientStart="#8f94fb"
+                gradientEnd="#4e54c8"
+                gradientType="to-tl"
+              />
+            </a>
           </NextLink>
         </Stack>
       </VStack>
@@ -111,8 +111,6 @@ const MenuCard = () => {
 };
 
 SingleMenuCard.propTypes = {
-  onClick: PropTypes.func,
-  href: PropTypes.string,
   headingText: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.instanceOf(Object).isRequired,
@@ -124,8 +122,6 @@ SingleMenuCard.propTypes = {
 
 SingleMenuCard.defaultProps = {
   isClickable: false,
-  href: '',
-  onClick: () => null,
 };
 
 export default MenuCard;
