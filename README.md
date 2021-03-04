@@ -67,6 +67,36 @@ Below table is used as a guide for the Front-End System.
 
 Hopefully, the table will be all green soon.
 
+## Minor Implementations
+
+- CSS Reset
+- Fonts
+- Dark Mode Support
+- SEO
+- Asynchronous Font Loading
+- Logo and Favicon
+- Refactor and Split
+
+## Presentation Material
+
+- Section I: Introduction (2 mins.)
+- Introduction
+- Problem
+- Asuna: The Building Management System
+- Section II: Architecture (3 mins.)
+- Technology Stack
+- Client-Server Architecture
+- Asynchronous JavaScript Demo
+- CI/CD Explanation
+- Section III: Features (5 mins.)
+- Entities, Why Denormalize Database, Explain Features
+- QoL Features
+- Section IV: Demo (15 mins.)
+- Section V: Thoughts (5 mins.)
+- Further Development
+- Q&A
+- Closing
+
 ## QoL Features
 
 - NProgress
