@@ -54,7 +54,7 @@ Below table is used as a guide for the Front-End System.
 |:-----------------------------:|:---------:|:----------------:|:-------------------------------------------------------------------------:|
 |            Homepage           |     ✔️     |                  |                                    `/`                                    |
 |             Login             |     ✔️     |         ✔️        |                                  `/login`                                 |
-|            Register           |           |                  |                                `/register`                                |
+|            Register           |     ✔️     |         ✔️        |                                `/register`                                |
 |          User Profile         |     ✔️     |                  |                                 `/profile`                                |
 |         List of Rooms         |     ✔️     |         ✔️        |                                  `/rooms`                                 |
 |          Detail Room          |     ✔️     |                  |                               `/rooms/:slug`                              |

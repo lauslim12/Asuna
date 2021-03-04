@@ -13,4 +13,5 @@ export default {
   profile: '/profile',
   roomDetail: (roomSlug) => `/rooms/${roomSlug}`,
   signIn: '/sign-in',
+  signUp: '/sign-up',
 };
