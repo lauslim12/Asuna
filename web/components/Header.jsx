@@ -38,14 +38,14 @@ const Header = () => {
 
       <HStack spacing={3}>
         <IconButton
-          colorScheme="blue"
+          colorScheme="gray"
           aria-label="Activate Dark Mode"
           icon={<Icon as={FaMoon} />}
           variant="outline"
           onClick={() => toggleColorMode()}
         />
 
-        <Menu isLazy>
+        <Menu colorScheme="gray" variant="outline" isLazy>
           <MenuButton
             as={IconButton}
             aria-label="Navigation Menu"
