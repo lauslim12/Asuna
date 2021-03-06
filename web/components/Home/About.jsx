@@ -7,7 +7,7 @@ const About = () => {
         OUR ROOMS
       </Heading>
       <Box bg="teal.400" mb={5} p={2} transform="skewX(-20deg)" rounded="sm">
-        <Text align="center" fontWeight="bold">
+        <Text align="center" fontWeight="bold" fontSize={['sm', 'md', 'lg']}>
           We provide unique rooms with colorful environments.
         </Text>
       </Box>

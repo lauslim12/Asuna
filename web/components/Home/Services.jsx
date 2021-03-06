@@ -7,7 +7,7 @@ const Services = () => {
         OUR SERVICES
       </Heading>
       <Box bg="teal.400" mb={5} p={2} transform="skewX(-20deg)" rounded="sm">
-        <Text align="center" fontWeight="bold">
+        <Text align="center" fontWeight="bold" fontSize={['sm', 'md', 'lg']}>
           We provide services that do not exist in other companies.
         </Text>
       </Box>
