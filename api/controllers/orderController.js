@@ -161,3 +161,17 @@ exports.getEarnings = asyncHandler(async (req, res, next) => {
     data: allOrders,
   });
 });
+
+// Not documented yet.
+exports.getMyOrders = asyncHandler(async (req, res, next) => {
+  // 1. Get all Orders with the current user ID.
+  const myOrders = await Order.find({ user: req.user._id }).populate(
+    'room',
+    'name'
+  );
+
+  res.status(200).json({
+    status: 'success',
+    data: myOrders,
+  });
+});

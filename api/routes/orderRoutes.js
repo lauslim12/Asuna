@@ -5,38 +5,21 @@ const orderController = require('../controllers/orderController');
 const router = express.Router();
 
 router.get(
-  '/',
+  '/my-orders',
   authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  orderController.getAllOrders
+  orderController.getMyOrders
 );
 
-router.get(
-  '/my-managed-orders',
+// Encapsulation for easier handling.
+router.use(
   authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  orderController.getAdminManagedOrders
+  authMiddleware.routeGuard('admin', 'owner')
 );
 
-router.post(
-  '/place-order',
-  authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  orderController.placeOrder
-);
-
-router.post(
-  '/change-order-status/:id',
-  authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  orderController.changeOrderStatus
-);
-
-router.get(
-  '/earnings',
-  authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  orderController.getEarnings
-);
+router.get('/', orderController.getAllOrders);
+router.get('/my-managed-orders', orderController.getAdminManagedOrders);
+router.post('/place-order', orderController.placeOrder);
+router.post('/change-order-status/:id', orderController.changeOrderStatus);
+router.get('/earnings', orderController.getEarnings);
 
 module.exports = router;
