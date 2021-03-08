@@ -1,13 +1,16 @@
-import { Button, useToast } from '@chakra-ui/react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
+import EditProfile from '../../components/Profile/EditProfile';
+import LogoutArea from '../../components/Profile/LogoutArea';
+import ProfileHeading from '../../components/Profile/ProfileHeading';
+import TransactionHistory from '../../components/Profile/TransactionHistory';
 
 export const getServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.jwt;
   let apiResponse;
+  let orderResponse;
 
   if (!token) {
     return {
@@ -22,6 +25,10 @@ export const getServerSideProps = async (ctx) => {
     apiResponse = await axios.get(`${process.env.PRIVATE_API_URL}/api/v1/users/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
+    orderResponse = await axios.get(`${process.env.PRIVATE_API_URL}/api/v1/orders/my-orders`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
   } catch (err) {
     return {
       redirect: {
@@ -34,55 +41,23 @@ export const getServerSideProps = async (ctx) => {
   return {
     props: {
       myData: apiResponse.data,
+      myOrders: orderResponse.data,
     },
   };
 };
 
-const Profile = ({ myData }) => {
-  const toast = useToast();
-  const router = useRouter();
-  console.log(myData);
-
-  return (
-    <Layout title={['Profile']}>
-      <div>Test</div>
-      <Button
-        onClick={() => {
-          // Has to be done like this so Vercel removes the cookie perfectly.
-          axios
-            .post('api/logout', { isLoggedOut: true })
-            .then((res) => {
-              if (res.data.status === 'success') {
-                toast({
-                  title: 'Successfully logged out!',
-                  description: 'You will be redirected shortly...',
-                  status: 'success',
-                  isClosable: true,
-                });
-
-                return setTimeout(() => router.push('/'), 2000);
-              }
-
-              return null;
-            })
-            .catch(() => {
-              toast({
-                title: 'Failed to log out!',
-                description: 'Something has happened. Please try again!',
-                status: 'error',
-                isClosable: true,
-              });
-            });
-        }}
-      >
-        Logout
-      </Button>
-    </Layout>
-  );
-};
+const Profile = ({ myData, myOrders }) => (
+  <Layout title={['Profile']}>
+    <ProfileHeading userData={myData.data} />
+    <EditProfile userData={myData.data} />
+    <TransactionHistory userHistory={myOrders.data} />
+    <LogoutArea />
+  </Layout>
+);
 
 Profile.propTypes = {
   myData: PropTypes.instanceOf(Object).isRequired,
+  myOrders: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Profile;

@@ -55,7 +55,7 @@ Below table is used as a guide for the Front-End System.
 |            Homepage           |     ✔️     |         ✔️        |                                    `/`                                    |
 |             Login             |     ✔️     |         ✔️        |                                  `/login`                                 |
 |            Register           |     ✔️     |         ✔️        |                                `/register`                                |
-|          User Profile         |     ✔️     |                  |                                 `/profile`                                |
+|          User Profile         |     ✔️     |         ✔️        |                                 `/profile`                                |
 |         List of Rooms         |     ✔️     |         ✔️        |                                  `/rooms`                                 |
 |          Detail Room          |     ✔️     |         ✔️        |                               `/rooms/:slug`                              |
 |         Admin Homepage        |     ✔️     |         ✔️        |                                  `/admin`                                 |
@@ -76,6 +76,12 @@ Hopefully, the table will be all green soon.
 - Asynchronous Font Loading
 - Logo and Favicon
 - Refactor and Split
+- Error Pages
+- React Context
+- Color the Header and Footer
+- `useMemo`, `useEffect`, SSR, CSR
+- Query string masking in `NextLink`
+- Seed more data
 
 ## Presentation Material
 
