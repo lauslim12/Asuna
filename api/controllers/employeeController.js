@@ -35,7 +35,7 @@ exports.makeEmployee = asyncHandler(async (req, res, next) => {
 
   // 2. Get the user with 'email'.
   const user = await User.findOne({ email });
-  const employee = await Employee.find({ user: user._id });
+  const employee = await Employee.findOne({ user: user._id });
 
   if (!user) {
     return next(new AppError('There is no user with that email address!'), 400);
