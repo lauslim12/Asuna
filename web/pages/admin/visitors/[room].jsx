@@ -38,13 +38,22 @@ const VisitorsCreate = ({ roomData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const apiResponse = await post(
-      { firstName, lastName, address, email, purpose, room: roomData._id, entity: 'visitors' },
-      '/api/create'
-    );
+    const dataToBeSent = {
+      firstName,
+      lastName,
+      address,
+      email,
+      purpose,
+      room: roomData._id,
+      requestType: 'POST',
+      requestUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1/visitors`,
+    };
+
+    const apiResponse = await post(dataToBeSent, '/api/authRequestHandler');
 
     if (apiResponse.status === 'success') {
       SuccessfulOperationToast(toast, 'Successfully registered a new visitor!');
+
       return setTimeout(() => router.push(webRoutes.adminHomepage), 1000);
     }
 
