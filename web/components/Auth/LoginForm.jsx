@@ -27,7 +27,7 @@ const LoginForm = () => {
       requestUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
     };
 
-    const apiResponse = await post(dataToBeSent, '/api/authRequestHandler');
+    const apiResponse = await post(dataToBeSent, '/api/login');
 
     if (apiResponse.status === 'success') {
       SuccessfulOperationToast(toast, 'Welcome! Please wait to be redirected to the homepage!');
