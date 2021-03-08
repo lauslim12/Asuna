@@ -30,5 +30,21 @@
     "type": "coworking-space",
     "slug": "ganyu",
     "floor": "5fc0605d97166d0017d249d5"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2952",
+    "name": "Jean",
+    "description": "Jean is an office with dandelion decorations.",
+    "roomFeatures": [
+      "Spacious",
+      "Scented with incenses",
+      "Nice working environment"
+    ],
+    "thumbnail": "jean.png",
+    "photos": ["jean-1.jpg", "jean-2.jpg", "jean-3.jpg"],
+    "price": 225000,
+    "type": "office",
+    "slug": "jean",
+    "floor": "5fc0605d97166d0017d249d5"
   }
 ]
