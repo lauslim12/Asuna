@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
+import BookingForm from '../../components/RoomDetail/BookingForm';
+import Details from '../../components/RoomDetail/Details';
+import Hero from '../../components/RoomDetail/Hero';
+import Photos from '../../components/RoomDetail/Photos';
 import { get } from '../../helpers/apiHelper';
 
 export const getServerSideProps = async (ctx) => {
@@ -15,17 +19,20 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const RoomInfo = ({ roomData }) => {
-  return (
-    <Layout title={[roomData?.name || 'Room Not Found']}>
-      {roomData ? (
-        <div>{`This is the page for ${roomData.name}.`}</div>
-      ) : (
-        <div>No such room exist.</div>
-      )}
-    </Layout>
-  );
-};
+const RoomInfo = ({ roomData }) => (
+  <Layout title={[roomData?.name || 'Room Not Found']}>
+    {roomData ? (
+      <>
+        <Hero roomData={roomData} />
+        <Details roomData={roomData} />
+        <Photos roomData={roomData} />
+        <BookingForm roomData={roomData} />
+      </>
+    ) : (
+      <div>No such room exist.</div>
+    )}
+  </Layout>
+);
 
 RoomInfo.propTypes = {
   roomData: PropTypes.instanceOf(Object),

@@ -57,7 +57,7 @@ Below table is used as a guide for the Front-End System.
 |            Register           |     ✔️     |         ✔️        |                                `/register`                                |
 |          User Profile         |     ✔️     |                  |                                 `/profile`                                |
 |         List of Rooms         |     ✔️     |         ✔️        |                                  `/rooms`                                 |
-|          Detail Room          |     ✔️     |                  |                               `/rooms/:slug`                              |
+|          Detail Room          |     ✔️     |         ✔️        |                               `/rooms/:slug`                              |
 |         Admin Homepage        |     ✔️     |         ✔️        |                                  `/admin`                                 |
 |     Admin: See All Orders     |     ✔️     |         ✔️        |                              `/admin/orders`                              |
 |     Admin: Accept Visitors    |     ✔️     |         ✔️        |                             `/admin/visitors`                             |
