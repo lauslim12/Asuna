@@ -47,7 +47,9 @@ const Header = () => {
 
         {isAuthenticated ? (
           <NextLink href={webRoutes.profile} passHref>
-            Profile
+            <Button colorScheme="green" size="sm">
+              Profile
+            </Button>
           </NextLink>
         ) : (
           <NextLink href={webRoutes.signIn} passHref>
