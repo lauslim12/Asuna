@@ -26,21 +26,21 @@ const Details = ({ roomData }) => {
             SOME QUICK FACTS
           </Text>
           <HStack spacing={4}>
-            <Icon as={GiEscalator} fill="#55c57a" boxSize={7} />
+            <Icon as={GiEscalator} fill="#55c57a" boxSize={[4, 5, 7]} />
             <chakra.p textTransform="uppercase" fontWeight="bold" color="#777777">
               FLOOR
             </chakra.p>
             <chakra.p color="#777777">{roomData.floor.number}</chakra.p>
           </HStack>
           <HStack spacing={4}>
-            <Icon as={RiProfileFill} fill="#55c57a" boxSize={7} />
+            <Icon as={RiProfileFill} fill="#55c57a" boxSize={[4, 5, 7]} />
             <chakra.p textTransform="uppercase" fontWeight="bold" color="#777777">
               FLOOR ID
             </chakra.p>
             <chakra.p color="#777777">{roomData.floor.name}</chakra.p>
           </HStack>
           <HStack mb={10} spacing={4}>
-            <Icon as={IoMdConstruct} fill="#55c57a" boxSize={7} />
+            <Icon as={IoMdConstruct} fill="#55c57a" boxSize={[4, 5, 7]} />
             <chakra.p textTransform="uppercase" fontWeight="bold" color="#777777">
               CONSTRUCTED
             </chakra.p>
@@ -62,7 +62,7 @@ const Details = ({ roomData }) => {
             PRICE
           </Text>
           <HStack spacing={4} mb={10}>
-            <Icon as={FaMoneyBillAlt} fill="#55c57a" boxSize={7} />
+            <Icon as={FaMoneyBillAlt} fill="#55c57a" boxSize={[4, 5, 7]} />
             <chakra.p textTransform="uppercase" fontWeight="bold" color="#777777">
               IDR
             </chakra.p>
@@ -82,7 +82,7 @@ const Details = ({ roomData }) => {
             TYPE
           </Text>
           <HStack spacing={4}>
-            <Icon as={RiQuestionFill} fill="#55c57a" boxSize={7} />
+            <Icon as={RiQuestionFill} fill="#55c57a" boxSize={[4, 5, 7]} />
             <chakra.p textTransform="uppercase" fontWeight="bold" color="#777777">
               A(N)
             </chakra.p>

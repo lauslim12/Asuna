@@ -158,7 +158,7 @@ const BookingForm = ({ roomData }) => {
           </Grid>
 
           <VStack>
-            <Text>😄 And then, click the below button to make your request</Text>
+            <Text>😄 And then, make your request!</Text>
             <Button
               colorScheme="linkedin"
               w="200px"
