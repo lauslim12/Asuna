@@ -5,6 +5,7 @@ const roomSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'A room must have a name!'],
+    unique: true,
   },
   description: {
     type: String,
