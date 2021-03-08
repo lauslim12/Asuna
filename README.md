@@ -83,6 +83,7 @@ Hopefully, the table will be all green soon.
 - Query string masking in `NextLink`
 - Seed more data
 - Pagination, API Features
+- NPX NCU
 
 ## Presentation Material
 
