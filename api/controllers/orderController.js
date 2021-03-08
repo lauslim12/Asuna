@@ -84,7 +84,7 @@ exports.placeOrder = asyncHandler(async (req, res, next) => {
   if (duplicate) {
     return next(
       new AppError(
-        'The room that you want to has been reserved by someone else!',
+        'The room that you want to order has been reserved by someone else!',
         400
       )
     );
