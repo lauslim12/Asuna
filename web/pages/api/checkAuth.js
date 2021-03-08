@@ -11,8 +11,9 @@ export default async (req, res) => {
     });
   }
 
-  if (!req.body.key || !token) {
-    return res.status(401).json({
+  // The request technically succeeded, but returns an authorized user.
+  if (!req.body.key || !token || token === 'loggedOut') {
+    return res.status(200).json({
       status: 'fail',
       message: 'Not authorized!',
       authorized: false,
