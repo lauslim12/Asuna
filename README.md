@@ -79,9 +79,10 @@ Hopefully, the table will be all green soon.
 - Error Pages
 - React Context
 - Color the Header and Footer
-- `useMemo`, `useEffect`, SSR, CSR
+- `useMemo`, `useEffect`, `NextImage`, SSR, CSR
 - Query string masking in `NextLink`
 - Seed more data
+- Pagination, API Features
 
 ## Presentation Material
 
