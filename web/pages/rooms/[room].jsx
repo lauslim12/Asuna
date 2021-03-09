@@ -1,5 +1,7 @@
-import PropTypes from 'prop-types';
+import { Text, VStack } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
+import CustomSpinner from '../../components/CustomSpinner';
 import Layout from '../../components/Layout';
 import BookingForm from '../../components/RoomDetail/BookingForm';
 import Details from '../../components/RoomDetail/Details';
@@ -7,39 +9,43 @@ import Hero from '../../components/RoomDetail/Hero';
 import Photos from '../../components/RoomDetail/Photos';
 import { get } from '../../helpers/apiHelper';
 
-export const getServerSideProps = async (ctx) => {
-  const request = await get(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms/view/${ctx.params.room}`
-  );
+const RoomInfo = () => {
+  const [roomData, setRoomData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  return {
-    props: {
-      roomData: request.data || null,
-    },
-  };
-};
+  useEffect(() => {
+    const slug = window.location.href.split('/').pop();
 
-const RoomInfo = ({ roomData }) => (
-  <Layout title={[roomData?.name || 'Room Not Found']}>
-    {roomData ? (
+    get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms/view/${slug}`).then(({ data }) => {
+      setRoomData(data);
+      setIsLoading(false);
+    });
+  }, []);
+
+  const renderPage = () => {
+    if (isLoading) {
+      return <CustomSpinner />;
+    }
+
+    if (!roomData) {
+      return (
+        <VStack>
+          <Text>That room does not exist!</Text>
+        </VStack>
+      );
+    }
+
+    return (
       <>
         <Hero roomData={roomData} />
         <Details roomData={roomData} />
         <Photos roomData={roomData} />
         <BookingForm roomData={roomData} />
       </>
-    ) : (
-      <div>No such room exist.</div>
-    )}
-  </Layout>
-);
+    );
+  };
 
-RoomInfo.propTypes = {
-  roomData: PropTypes.instanceOf(Object),
-};
-
-RoomInfo.defaultProps = {
-  roomData: null,
+  return <Layout title={[roomData?.name || 'Room Not Found']}>{renderPage()}</Layout>;
 };
 
 export default RoomInfo;

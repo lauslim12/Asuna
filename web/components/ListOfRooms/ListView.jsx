@@ -4,12 +4,29 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
+import { get } from '../../helpers/apiHelper';
 import webRoutes from '../../helpers/webRoutes';
+import CustomSpinner from '../CustomSpinner';
 import RoomCard from './RoomCard';
 
-const RoomsListView = ({ rooms, maxFloor, route }) => {
+const RoomsListView = ({ route }) => {
+  const [rooms, setRooms] = useState([]);
+  const [maxFloor, setMaxFloor] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   const [roomsInFloor, setRoomsInFloor] = useState([]);
   const [currentFloor, setCurrentFloor] = useState(1);
+
+  useEffect(() => {
+    // 1. Fetch all possible data, set the max floor, and remove the loading spinner.
+    get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/rooms`)
+      .then(({ data }) => setRooms(data))
+      .then(() =>
+        get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/floors`).then(({ data }) => {
+          setMaxFloor(Math.max(...data.map((e) => e.number), 1));
+          setIsLoading(false);
+        })
+      );
+  }, []);
 
   useEffect(() => {
     const roomsInCurrentFloor = rooms.filter((room) => room.floor.number === currentFloor);
@@ -40,28 +57,31 @@ const RoomsListView = ({ rooms, maxFloor, route }) => {
           />
         </HStack>
       </HStack>
-      <Grid templateColumns="repeat(auto-fill, minmax(9rem, 1fr))" gap={2}>
-        {roomsInFloor.map((room) => (
-          <NextLink
-            key={room.slug}
-            href={
-              route === 'roomDetail'
-                ? webRoutes.roomDetail(room.slug)
-                : webRoutes.adminVisitorCreate(room.slug)
-            }
-            passHref
-          >
-            <RoomCard roomData={room} />
-          </NextLink>
-        ))}
-      </Grid>
+
+      {isLoading ? (
+        <CustomSpinner />
+      ) : (
+        <Grid templateColumns="repeat(auto-fill, minmax(9rem, 1fr))" gap={2}>
+          {roomsInFloor.map((room) => (
+            <NextLink
+              key={room.slug}
+              href={
+                route === 'roomDetail'
+                  ? webRoutes.roomDetail(room.slug)
+                  : webRoutes.adminVisitorCreate(room.slug)
+              }
+              passHref
+            >
+              <RoomCard roomData={room} />
+            </NextLink>
+          ))}
+        </Grid>
+      )}
     </VStack>
   );
 };
 
 RoomsListView.propTypes = {
-  rooms: PropTypes.instanceOf(Array).isRequired,
-  maxFloor: PropTypes.number.isRequired,
   route: PropTypes.oneOf(['roomDetail', 'visitors']).isRequired,
 };
 
