@@ -1,9 +1,11 @@
-import { Button, Grid, Heading, Icon, VStack } from '@chakra-ui/react';
+import { Button, Grid, Heading, Icon, useToast, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
 
+import { post } from '../../helpers/apiHelper';
 import ControlledText from '../Admin/Forms/ControlledText';
+import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const EditProfile = ({ userData }) => {
   const [username, setUsername] = useState(userData.username);
@@ -11,6 +13,29 @@ const EditProfile = ({ userData }) => {
   const [lastName, setLastName] = useState(userData.lastName);
   const [address, setAddress] = useState(userData.address);
   const [email, setEmail] = useState(userData.email);
+  const toast = useToast();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const dataToBeSent = {
+      username,
+      firstName,
+      lastName,
+      address,
+      email,
+      requestType: 'PATCH',
+      requestUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/update-me`,
+    };
+
+    const apiResponse = await post(dataToBeSent, '/api/authRequestHandler');
+
+    if (apiResponse.status === 'success') {
+      return SuccessfulOperationToast(toast, 'You have successfully updated your profile!');
+    }
+
+    return FailedOperationToast(toast, apiResponse.message);
+  };
 
   return (
     <VStack p={10} rounded="1rem" spacing={5} mt={10}>
@@ -58,7 +83,12 @@ const EditProfile = ({ userData }) => {
         />
       </Grid>
 
-      <Button colorScheme="yellow" size="lg" leftIcon={<Icon as={BsPencilSquare} />}>
+      <Button
+        colorScheme="yellow"
+        size="lg"
+        leftIcon={<Icon as={BsPencilSquare} />}
+        onClick={handleSubmit}
+      >
         Edit My Profile
       </Button>
     </VStack>

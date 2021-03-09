@@ -11,25 +11,16 @@ router.get('/logout', authController.logout);
 router.post('/register', authController.signup);
 router.post('/login', authController.login);
 
-router.get(
-  '/me',
-  authMiddleware.checkLoggedUser,
-  userMiddleware.getMe,
-  userController.getUser
-);
+// Routes below are for general users.
+router.use(authMiddleware.checkLoggedUser);
 
-router.patch(
-  '/make-admin',
-  authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  userController.makeAdmin
-);
+router.get('/me', userMiddleware.getMe, userController.getUser);
+router.patch('/update-me', userController.updateMe);
 
-router.patch(
-  '/revoke-admin',
-  authMiddleware.checkLoggedUser,
-  authMiddleware.routeGuard('admin', 'owner'),
-  userController.revokeAdmin
-);
+// Routes below are restricted for admins.
+router.use(authMiddleware.routeGuard('admin', 'owner'));
+
+router.patch('/make-admin', userController.makeAdmin);
+router.patch('/revoke-admin', userController.revokeAdmin);
 
 module.exports = router;
