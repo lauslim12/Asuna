@@ -84,6 +84,7 @@ Hopefully, the table will be all green soon.
 - Seed more data
 - Pagination, API Features
 - NPX NCU
+- Code and repo documentation (JSDoc)
 
 ## Presentation Material
 
