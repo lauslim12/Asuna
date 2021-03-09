@@ -50,6 +50,10 @@ exports.makeEmployee = asyncHandler(async (req, res, next) => {
     );
   }
 
+  if (jobdesc === 'owner') {
+    return next(new AppError('You cannot make someone an owner!', 400));
+  }
+
   // 2. Insert as normal.
   const newEmployee = await Employee.create({
     salary,

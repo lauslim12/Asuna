@@ -19,8 +19,4 @@ export default [
     _id: 'customer-service',
     name: 'Customer Service',
   },
-  {
-    _id: 'owner',
-    name: 'Owner',
-  },
 ];
