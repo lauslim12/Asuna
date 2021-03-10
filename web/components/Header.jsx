@@ -9,25 +9,15 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { FaMoon } from 'react-icons/fa';
 
-import { post } from '../helpers/apiHelper';
 import webRoutes from '../helpers/webRoutes';
+import UserContext from '../utils/userContext';
 
 const Header = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { state } = useContext(UserContext);
   const { toggleColorMode } = useColorMode();
-
-  useEffect(() => {
-    post({ key: 'get_authentication' }, '/api/checkAuth').then((res) => {
-      if (res.authorized) {
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-    });
-  }, []);
 
   return (
     <HStack as="nav" p={4} spacing={2}>
@@ -45,7 +35,7 @@ const Header = () => {
           Rooms
         </NextLink>
 
-        {isAuthenticated ? (
+        {state.isAuthenticated ? (
           <NextLink href={webRoutes.profile} passHref>
             <Button colorScheme="green" size="sm">
               Profile

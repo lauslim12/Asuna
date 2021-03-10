@@ -1,16 +1,17 @@
 import { Button, Grid, Heading, Icon, Select, Text, useToast, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { IoMdAirplane } from 'react-icons/io';
 
 import { post } from '../../helpers/apiHelper';
 import webRoutes from '../../helpers/webRoutes';
+import UserContext from '../../utils/userContext';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const BookingForm = ({ roomData }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { state } = useContext(UserContext);
   const [startMonth, setStartMonth] = useState('01');
   const [endMonth, setEndMonth] = useState('01');
   const [startYear, setStartYear] = useState(new Date().getFullYear());
@@ -64,23 +65,13 @@ const BookingForm = ({ roomData }) => {
     return FailedOperationToast(toast, response.message);
   };
 
-  useEffect(() => {
-    post({ key: 'get_authentication' }, '/api/checkAuth').then((res) => {
-      if (res.authorized) {
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-    });
-  }, []);
-
   return (
     <VStack bg="#f7f7f7" pt={10} pb={10} color="black" spacing={5}>
       <Heading textTransform="uppercase" letterSpacing="0.2rem" lineHeight={1.3}>
         Order Now! 🚀
       </Heading>
 
-      {isAuthenticated ? (
+      {state.isAuthenticated ? (
         <>
           <Grid
             templateColumns={{ lg: 'repeat(2, 1fr)' }}

@@ -1,10 +1,13 @@
 import { Button, Heading, useToast, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
 
 import { post } from '../../helpers/apiHelper';
+import UserContext from '../../utils/userContext';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const LogoutArea = () => {
+  const { dispatch } = useContext(UserContext);
   const toast = useToast();
   const router = useRouter();
 
@@ -14,6 +17,8 @@ const LogoutArea = () => {
       .then((response) => {
         if (response.status === 'success') {
           SuccessfulOperationToast(toast, 'You will be redirected shortly.');
+          dispatch({ type: 'logout' });
+
           return setTimeout(() => router.push('/'), 2000);
         }
 
