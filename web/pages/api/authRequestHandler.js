@@ -46,7 +46,7 @@ export default (req, res) => {
       });
     })
     .catch((err) => {
-      return res.status(500).json({
+      return res.status(err.response.status).json({
         status: 'fail',
         message: err.response.data.message,
       });
