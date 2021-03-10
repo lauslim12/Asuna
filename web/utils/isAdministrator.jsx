@@ -10,7 +10,7 @@ export default (GetServerSidePropsFunction) => async (ctx) => {
   const { data } = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/users/me`, token);
 
   // 3. If there is no user, or the user is not an admin, then redirect to homepage.
-  if (!data || data.role !== 'admin') {
+  if (!data || (data.role !== 'admin' && data.role !== 'owner')) {
     return {
       redirect: {
         destination: webRoutes.homepage,
