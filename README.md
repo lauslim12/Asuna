@@ -80,6 +80,7 @@ Hopefully, the table will be all green soon.
 - React Context
 - Color the Header and Footer
 - `useMemo`, `useEffect`, `NextImage`, SSR, CSR
+- Image optimization (`webp`)
 - Query string masking in `NextLink`
 - Seed more data
 - Pagination, API Features
