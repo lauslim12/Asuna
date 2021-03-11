@@ -40,8 +40,8 @@ const BookingForm = ({ roomData }) => {
   ];
 
   const handleOrder = async () => {
-    const startDate = new Date(`${startYear}-${startMonth}-01`);
-    const endDate = new Date(`${endYear}-${endMonth}-27`);
+    const startDate = new Date(startYear, startMonth, 1, 0, 0, 0);
+    const endDate = new Date(endYear, endMonth, 27, 0, 0, 0);
 
     const dataToBeSent = {
       requestedRoom: roomData._id,
@@ -70,6 +70,7 @@ const BookingForm = ({ roomData }) => {
       <Heading textTransform="uppercase" letterSpacing="0.2rem" lineHeight={1.3}>
         Order Now! 🚀
       </Heading>
+      <Text>The contract is from day 01 to day 27 of your final month!</Text>
 
       {state.isAuthenticated ? (
         <>
@@ -123,7 +124,7 @@ const BookingForm = ({ roomData }) => {
                 onChange={({ currentTarget: { value } }) => setStartMonth(value)}
               >
                 {allPossibleMonths.map((month, index) => (
-                  <option key={`start-month-${month}`} value={index + 1}>
+                  <option key={`start-month-${month}`} value={index}>
                     {month}
                   </option>
                 ))}
@@ -140,7 +141,7 @@ const BookingForm = ({ roomData }) => {
                 onChange={({ currentTarget: { value } }) => setEndMonth(value)}
               >
                 {allPossibleMonths.map((month, index) => (
-                  <option key={`end-month-${month}`} value={index + 1}>
+                  <option key={`end-month-${month}`} value={index}>
                     {month}
                   </option>
                 ))}
