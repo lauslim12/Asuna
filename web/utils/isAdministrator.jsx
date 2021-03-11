@@ -13,7 +13,7 @@ export default (GetServerSidePropsFunction) => async (ctx) => {
   if (!data || (data.role !== 'admin' && data.role !== 'owner')) {
     return {
       redirect: {
-        destination: webRoutes.homepage,
+        destination: webRoutes.unauthorized,
         permanent: false,
       },
     };

@@ -14,7 +14,11 @@ const Unauthorized = () => {
       </Heading>
 
       <ButtonGroup>
-        <Button colorScheme="green" leftIcon={<Icon as={FaKey} />}>
+        <Button
+          colorScheme="green"
+          leftIcon={<Icon as={FaKey} />}
+          onClick={() => router.push(webRoutes.signIn)}
+        >
           Sign In
         </Button>
         <Button
