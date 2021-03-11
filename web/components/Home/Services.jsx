@@ -17,7 +17,7 @@ const Services = () => {
         <Text>✨ Various types of rooms for your comfort</Text>
         <Text>🚀 Full stacked with features for convenience</Text>
         <Text>🤑 Low prices, extremely high quality rooms</Text>
-        <Text>🧑‍🤝‍🧑 Networking opportunities</Text>
+        <Text>🌏 Networking opportunities</Text>
         <Text>✔️ Modern IT systems</Text>
         <Text>🔥 Ready to help you anytime</Text>
         <Text>👍 Friendly owner</Text>
