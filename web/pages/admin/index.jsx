@@ -1,8 +1,8 @@
 import MenuCard from '../../components/Admin/MenuCard';
 import Layout from '../../components/Layout';
-import isAdministrator from '../../utils/isAdministrator';
+import withAdministrator from '../../utils/withAdministrator';
 
-export const getServerSideProps = isAdministrator(() => {
+export const getServerSideProps = withAdministrator(() => {
   return {
     props: {},
   };

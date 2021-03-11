@@ -10,9 +10,9 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { post } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
-import isAdministrator from '../../../../utils/isAdministrator';
+import withAdministrator from '../../../../utils/withAdministrator';
 
-export const getServerSideProps = isAdministrator(() => {
+export const getServerSideProps = withAdministrator(() => {
   return {
     props: {},
   };

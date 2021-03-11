@@ -6,6 +6,7 @@ import EditProfile from '../../components/Profile/EditProfile';
 import LogoutArea from '../../components/Profile/LogoutArea';
 import ProfileHeading from '../../components/Profile/ProfileHeading';
 import TransactionHistory from '../../components/Profile/TransactionHistory';
+import webRoutes from '../../helpers/webRoutes';
 
 export const getServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.jwt;
@@ -15,7 +16,7 @@ export const getServerSideProps = async (ctx) => {
   if (!token) {
     return {
       redirect: {
-        destination: '/sign-in',
+        destination: webRoutes.unauthorized,
         permanent: false,
       },
     };
@@ -32,7 +33,7 @@ export const getServerSideProps = async (ctx) => {
   } catch (err) {
     return {
       redirect: {
-        destination: '/sign-in',
+        destination: webRoutes.unauthorized,
         permanent: false,
       },
     };

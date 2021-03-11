@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { Image, Text, useToast, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -17,9 +16,9 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { get, patchAuth, post } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
-import isAdministrator from '../../../../utils/isAdministrator';
+import withAdministrator from '../../../../utils/withAdministrator';
 
-export const getServerSideProps = isAdministrator(async (ctx) => {
+export const getServerSideProps = withAdministrator(async (ctx) => {
   const roomData = await get(`${process.env.PRIVATE_API_URL}/api/v1/rooms/${ctx.query.id}`);
   const floorData = await get(`${process.env.PRIVATE_API_URL}/api/v1/floors`);
 

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import OrderCardVertical from '../../../components/Admin/OrderCardVertical';
 import Layout from '../../../components/Layout';
 import { getAuth } from '../../../helpers/apiHelper';
-import isAdministrator from '../../../utils/isAdministrator';
+import withAdministrator from '../../../utils/withAdministrator';
 
-export const getServerSideProps = isAdministrator(async (ctx) => {
+export const getServerSideProps = withAdministrator(async (ctx) => {
   const { data } = await getAuth(
     `${process.env.PRIVATE_API_URL}/api/v1/orders/my-managed-orders`,
     ctx.req.cookies.jwt
