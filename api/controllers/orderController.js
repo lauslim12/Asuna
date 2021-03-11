@@ -10,9 +10,11 @@ const getNumberOfMonths = (startDate, endDate) => {
   const startDateMonth = startDate.getMonth();
   const endDateMonth = endDate.getMonth();
 
-  return (
-    endDateMonth + 12 * endDateYear - (startDateMonth + 12 * startDateYear)
-  );
+  const numberOfMonths =
+    endDateMonth + 12 * endDateYear - (startDateMonth + 12 * startDateYear);
+
+  // Return with one inclusive.
+  return numberOfMonths + 1;
 };
 
 exports.getAllOrders = factory.getAll(Order);
@@ -74,9 +76,14 @@ exports.placeOrder = asyncHandler(async (req, res, next) => {
   const { requestedRoom, endDate, startDate } = req.body;
 
   // 2. Check if there is the same room (in Orders collection) whose end date is higher than the requested start date.
+  // Also, if an order is already cancelled, do not invalidate!
   // ex: Order.findOne({ $and: [{ room: requestedRoom }, { endDate: { $gte: requestedStartDate } }] })
   const duplicate = await Order.findOne({
-    $and: [{ room: requestedRoom }, { endDate: { $gte: startDate } }],
+    $and: [
+      { room: requestedRoom },
+      { endDate: { $gte: startDate } },
+      { status: { $ne: 'cancelled' } },
+    ],
   });
 
   // 3. If there is, invalidate the request.
@@ -167,7 +174,7 @@ exports.getMyOrders = asyncHandler(async (req, res, next) => {
   // 1. Get all Orders with the current user ID.
   const myOrders = await Order.find({ user: req.user._id }).populate(
     'room',
-    'name'
+    'name thumbnail'
   );
 
   res.status(200).json({
