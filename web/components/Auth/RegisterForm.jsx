@@ -1,9 +1,13 @@
-import { FormControl, FormHelperText, FormLabel, Input, Text, useToast } from '@chakra-ui/react';
+import 'react-datepicker/dist/react-datepicker.css';
+
+import { FormControl, FormLabel, Text, useColorMode, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import ReactDatePicker from 'react-datepicker';
 
 import { post } from '../../utils/apiHelper';
 import webRoutes from '../../utils/webRoutes';
+import ControlledPassword from '../Forms/ControlledPassword';
 import ControlledText from '../Forms/ControlledText';
 import FormActions from '../Forms/FormActions';
 import FormHeading from '../Forms/FormHeading';
@@ -19,23 +23,34 @@ const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const { colorMode } = useColorMode();
   const toast = useToast();
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const apiResponse = await post(
-      { firstName, lastName, address, birthdate, email, username, password, passwordConfirm },
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/register`
-    );
+    const dataToBeSent = {
+      firstName,
+      lastName,
+      address,
+      birthdate,
+      email,
+      username,
+      password,
+      passwordConfirm,
+      requestUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/register`,
+      requestType: 'POST',
+    };
+
+    const apiResponse = await post(dataToBeSent, '/api/authRequestHandler');
 
     if (apiResponse.status === 'success') {
-      SuccessfulOperationToast(toast, 'Welcome! Please wait for a second to log in...');
+      SuccessfulOperationToast(toast, 'Welcome! Please wait for a second to log in!');
       return setTimeout(() => router.push(webRoutes.signIn), 1000);
     }
 
-    return FailedOperationToast(toast, apiResponse.response);
+    return FailedOperationToast(toast, apiResponse.message);
   };
 
   return (
@@ -70,15 +85,17 @@ const RegisterForm = () => {
         formPlaceholder="South Jakarta"
       />
 
-      <FormControl>
-        <FormLabel>Birthdate</FormLabel>
+      <FormControl isRequired>
+        <FormLabel htmlFor="birthdate">Birthdate</FormLabel>
 
-        <input
-          type="date"
-          name="birthdate"
-          onChange={({ currentTarget: { value } }) => setBirthdate(value)}
-          required
-        />
+        <div className={colorMode === 'dark' ? 'dark-theme' : 'light-theme'}>
+          <ReactDatePicker
+            id="birthdate"
+            selected={birthdate}
+            onChange={(date) => setBirthdate(date)}
+            className="react-datapicker__input-text"
+          />
+        </div>
       </FormControl>
 
       <ControlledText
@@ -92,50 +109,26 @@ const RegisterForm = () => {
       <ControlledText
         stateValue={username}
         stateDispatch={setUsername}
-        formLabel="Usernam"
+        formLabel="Username"
         formHelper="Username to be used in this application."
         formPlaceholder="faizramdhani"
       />
 
-      <FormControl isRequired>
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <Input
-          textAlign="center"
-          bg="white"
-          id="password"
-          type="password"
-          placeholder="••••••••"
-          value={password}
-          errorBorderColor="red.500"
-          minLength={8}
-          isInvalid={password.length < 8 && password.length > 0}
-          onChange={({ currentTarget: { value } }) => setPassword(value)}
-          focusBorderColor="green.500"
-          size="lg"
-        />
-        <FormHelperText fontSize="xs">
-          Your password to be associated with your account.
-        </FormHelperText>
-      </FormControl>
+      <ControlledPassword
+        stateValue={password}
+        stateDispatch={setPassword}
+        formLabel="Password"
+        formHelper="Your password to be associated with your account."
+        formPlaceholder="••••••••"
+      />
 
-      <FormControl isRequired>
-        <FormLabel htmlFor="passwordC">Password Confirm</FormLabel>
-        <Input
-          textAlign="center"
-          bg="white"
-          id="passwordC"
-          type="password"
-          placeholder="••••••••"
-          value={passwordConfirm}
-          errorBorderColor="red.500"
-          minLength={8}
-          isInvalid={passwordConfirm.length < 8 && passwordConfirm.length > 0}
-          onChange={({ currentTarget: { value } }) => setPasswordConfirm(value)}
-          focusBorderColor="green.500"
-          size="lg"
-        />
-        <FormHelperText fontSize="xs">Confirm your password.</FormHelperText>
-      </FormControl>
+      <ControlledPassword
+        stateValue={passwordConfirm}
+        stateDispatch={setPasswordConfirm}
+        formLabel="Confirm Password"
+        formHelper="Confirm your password."
+        formPlaceholder="••••••••"
+      />
 
       <FormActions cancelPath={webRoutes.homepage} />
     </FormOverlay>
