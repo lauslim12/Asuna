@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Grid, Heading, HStack, IconButton, Spacer, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
@@ -70,7 +71,9 @@ const RoomsListView = ({ route }) => {
               }
               passHref
             >
-              <RoomCard roomData={room} />
+              <a>
+                <RoomCard roomData={room} />
+              </a>
             </NextLink>
           ))}
         </Grid>
