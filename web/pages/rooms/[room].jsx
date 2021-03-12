@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 
 import CustomSpinner from '../../components/CustomSpinner';
 import Layout from '../../components/Layout';
-import BookingForm from '../../components/RoomDetail/BookingForm';
-import Details from '../../components/RoomDetail/Details';
-import Hero from '../../components/RoomDetail/Hero';
-import Photos from '../../components/RoomDetail/Photos';
+import BookingForm from '../../components/Room/BookingForm';
+import Details from '../../components/Room/Details';
+import Hero from '../../components/Room/Hero';
+import Photos from '../../components/Room/Photos';
 import { get } from '../../helpers/apiHelper';
 
 const RoomInfo = () => {
