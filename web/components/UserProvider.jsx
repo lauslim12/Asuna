@@ -42,12 +42,7 @@ export const UserProvider = ({ children }) => {
    * First things first, when first time loading a component, authenticate a user quickly.
    */
   useEffect(() => {
-    const dataToBeSent = {
-      requestType: 'GET',
-      requestUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`,
-    };
-
-    post(dataToBeSent, '/api/authRequestHandler')
+    post({ key: 'check_auth_key' }, '/api/checkAuth')
       .then((res) => {
         if (res.status === 'success') {
           return dispatch({ type: 'login' });
