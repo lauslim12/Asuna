@@ -86,6 +86,10 @@ Hopefully, the table will be all green soon.
 - Pagination, API Features
 - NPX NCU
 - Code and repo documentation (JSDoc)
+- Transaction list in room detail
+- Refactor dates for admins
+- `await dynamic()`
+- Conditional rendering in admin page for admin/owners
 
 ## Presentation Material
 
