@@ -19,8 +19,8 @@ import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
-import { post } from '../../../helpers/apiHelper';
-import webRoutes from '../../../helpers/webRoutes';
+import { post } from '../../../utils/apiHelper';
+import webRoutes from '../../../utils/webRoutes';
 
 const RoomShowCard = ({ data }) => {
   const [currentData, setCurrentData] = useState(data);

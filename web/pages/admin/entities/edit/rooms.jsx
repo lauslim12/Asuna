@@ -3,19 +3,19 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import ControlledMultipleFiles from '../../../../components/Admin/Forms/ControlledMultipleFiles';
-import ControlledNumber from '../../../../components/Admin/Forms/ControlledNumber';
-import ControlledRadioGroup from '../../../../components/Admin/Forms/ControlledRadioGroup';
-import ControlledSelect from '../../../../components/Admin/Forms/ControlledSelect';
-import ControlledSingleFile from '../../../../components/Admin/Forms/ControlledSingleFile';
-import ControlledText from '../../../../components/Admin/Forms/ControlledText';
-import ControlledTextarea from '../../../../components/Admin/Forms/ControlledTextarea';
-import FormActions from '../../../../components/Admin/Forms/FormActions';
-import FormHeading from '../../../../components/Admin/Forms/FormHeading';
-import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
+import ControlledMultipleFiles from '../../../../components/Forms/ControlledMultipleFiles';
+import ControlledNumber from '../../../../components/Forms/ControlledNumber';
+import ControlledRadioGroup from '../../../../components/Forms/ControlledRadioGroup';
+import ControlledSelect from '../../../../components/Forms/ControlledSelect';
+import ControlledSingleFile from '../../../../components/Forms/ControlledSingleFile';
+import ControlledText from '../../../../components/Forms/ControlledText';
+import ControlledTextarea from '../../../../components/Forms/ControlledTextarea';
+import FormActions from '../../../../components/Forms/FormActions';
+import FormHeading from '../../../../components/Forms/FormHeading';
+import FormOverlay from '../../../../components/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
-import { get, patchAuth, post } from '../../../../helpers/apiHelper';
-import webRoutes from '../../../../helpers/webRoutes';
+import { get, patchAuth, post } from '../../../../utils/apiHelper';
+import webRoutes from '../../../../utils/webRoutes';
 import withAdministrator from '../../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(async (ctx) => {

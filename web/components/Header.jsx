@@ -12,8 +12,8 @@ import NextLink from 'next/link';
 import { useContext } from 'react';
 import { FaMoon } from 'react-icons/fa';
 
-import webRoutes from '../helpers/webRoutes';
 import UserContext from '../utils/userContext';
+import webRoutes from '../utils/webRoutes';
 
 const Header = () => {
   const { state } = useContext(UserContext);

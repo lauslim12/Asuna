@@ -2,7 +2,7 @@ import { Box, Button, Flex, Heading, Icon, Image, Stack, Tooltip } from '@chakra
 import NextLink from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 
 const Hero = () => {
   return (

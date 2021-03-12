@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import OrderCardVertical from '../../../components/Admin/OrderCardVertical';
 import Layout from '../../../components/Layout';
-import { getAuth } from '../../../helpers/apiHelper';
+import { getAuth } from '../../../utils/apiHelper';
 import withAdministrator from '../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(async (ctx) => {

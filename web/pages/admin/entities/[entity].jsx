@@ -6,8 +6,8 @@ import EmployeeShowCard from '../../../components/Admin/Entities/EmployeeShowCar
 import FloorShowCard from '../../../components/Admin/Entities/FloorShowCard';
 import RoomShowCard from '../../../components/Admin/Entities/RoomShowCard';
 import Layout from '../../../components/Layout';
-import { getAuth } from '../../../helpers/apiHelper';
-import webRoutes from '../../../helpers/webRoutes';
+import { getAuth } from '../../../utils/apiHelper';
+import webRoutes from '../../../utils/webRoutes';
 import withAdministrator from '../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(async (ctx) => {

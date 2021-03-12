@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useMemo, useReducer } from 'react';
 
-import { post } from '../helpers/apiHelper';
+import { post } from '../utils/apiHelper';
 import UserContext, { defaultState } from '../utils/userContext';
 
 /**

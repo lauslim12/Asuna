@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout';
-import ListOfRooms from '../../components/ListOfRooms/ListView';
+import ListOfRooms from '../../components/Rooms/ListView';
 
 const Rooms = () => {
   return (

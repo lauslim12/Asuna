@@ -2,7 +2,7 @@ import { Button, Heading, useToast, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 
-import { post } from '../../helpers/apiHelper';
+import { post } from '../../utils/apiHelper';
 import UserContext from '../../utils/userContext';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 

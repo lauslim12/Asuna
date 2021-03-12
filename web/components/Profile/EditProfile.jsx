@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
 
-import { post } from '../../helpers/apiHelper';
-import ControlledText from '../Admin/Forms/ControlledText';
+import { post } from '../../utils/apiHelper';
+import ControlledText from '../Forms/ControlledText';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const EditProfile = ({ userData }) => {

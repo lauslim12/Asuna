@@ -2,7 +2,7 @@ import { Button, ButtonGroup, Heading, Icon, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { FaBackward, FaKey } from 'react-icons/fa';
 
-import webRoutes from '../helpers/webRoutes';
+import webRoutes from '../utils/webRoutes';
 
 const Unauthorized = () => {
   const router = useRouter();

@@ -3,15 +3,15 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import ControlledText from '../../../components/Admin/Forms/ControlledText';
-import ControlledTextarea from '../../../components/Admin/Forms/ControlledTextarea';
-import FormActions from '../../../components/Admin/Forms/FormActions';
-import FormHeading from '../../../components/Admin/Forms/FormHeading';
-import FormOverlay from '../../../components/Admin/Forms/FormOverlay';
+import ControlledText from '../../../components/Forms/ControlledText';
+import ControlledTextarea from '../../../components/Forms/ControlledTextarea';
+import FormActions from '../../../components/Forms/FormActions';
+import FormHeading from '../../../components/Forms/FormHeading';
+import FormOverlay from '../../../components/Forms/FormOverlay';
 import Layout from '../../../components/Layout';
 import { FailedOperationToast, SuccessfulOperationToast } from '../../../components/Toasts';
-import { get, post } from '../../../helpers/apiHelper';
-import webRoutes from '../../../helpers/webRoutes';
+import { get, post } from '../../../utils/apiHelper';
+import webRoutes from '../../../utils/webRoutes';
 import withAdministrator from '../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(async (ctx) => {

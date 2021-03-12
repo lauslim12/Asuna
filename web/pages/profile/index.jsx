@@ -6,7 +6,7 @@ import EditProfile from '../../components/Profile/EditProfile';
 import LogoutArea from '../../components/Profile/LogoutArea';
 import ProfileHeading from '../../components/Profile/ProfileHeading';
 import TransactionHistory from '../../components/Profile/TransactionHistory';
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 
 export const getServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.jwt;

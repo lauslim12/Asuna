@@ -1,6 +1,6 @@
 /* eslint-disable no-return-await */
-import { getAuth } from '../helpers/apiHelper';
-import webRoutes from '../helpers/webRoutes';
+import { getAuth } from './apiHelper';
+import webRoutes from './webRoutes';
 
 export default (GetServerSidePropsFunction) => async (ctx) => {
   // 1. Check if there is a token.

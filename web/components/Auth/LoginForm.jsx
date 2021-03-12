@@ -2,14 +2,14 @@ import { Text, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
-import { post } from '../../helpers/apiHelper';
-import webRoutes from '../../helpers/webRoutes';
+import { post } from '../../utils/apiHelper';
 import UserContext from '../../utils/userContext';
-import ControlledPassword from '../Admin/Forms/ControlledPassword';
-import ControlledText from '../Admin/Forms/ControlledText';
-import FormActions from '../Admin/Forms/FormActions';
-import FormHeading from '../Admin/Forms/FormHeading';
-import FormOverlay from '../Admin/Forms/FormOverlay';
+import webRoutes from '../../utils/webRoutes';
+import ControlledPassword from '../Forms/ControlledPassword';
+import ControlledText from '../Forms/ControlledText';
+import FormActions from '../Forms/FormActions';
+import FormHeading from '../Forms/FormHeading';
+import FormOverlay from '../Forms/FormOverlay';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const LoginForm = () => {
