@@ -1,10 +1,12 @@
-import { chakra, HStack, Icon, Link, Tooltip, VStack } from '@chakra-ui/react';
+import { chakra, HStack, Icon, Link, Text, Tooltip, VStack } from '@chakra-ui/react';
 import { FaGithub, FaHeart } from 'react-icons/fa';
 
 const Footer = () => (
   <VStack as="footer" align="stretch" p={3} spacing={1} color="gray.500">
     <chakra.div fontSize="xs" textAlign="center">
-      <p>Asuna is an open-source, full-stack web application to manage a scalable building.</p>
+      <Text>
+        Asuna is an open-source, full-stack web application to manage a scalable building.
+      </Text>
     </chakra.div>
 
     <HStack spacing={4} justify="center">
