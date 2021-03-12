@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import '../styles/NProgress.scss';
 import '../styles/Selection.scss';
+import '../styles/DatePicker.scss';
 
 import { ChakraProvider } from '@chakra-ui/react';
 
