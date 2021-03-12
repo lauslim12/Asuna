@@ -5,7 +5,7 @@ import { AiFillProfile } from 'react-icons/ai';
 import { HiOfficeBuilding } from 'react-icons/hi';
 import { IoEnter } from 'react-icons/io5';
 
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 
 const CustomButton = ({ colorScheme, content, href, icon }) => (
   <NextLink href={href} passHref>

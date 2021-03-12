@@ -7,7 +7,7 @@ import { FaDatabase } from 'react-icons/fa';
 import { RiDoorOpenFill, RiMoneyDollarBoxFill } from 'react-icons/ri';
 import { SiFormstack } from 'react-icons/si';
 
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 import CreationModal from './CreationModal';
 
 const SingleMenuCard = ({

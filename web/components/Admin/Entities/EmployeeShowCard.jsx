@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
 import { patchAuth, post } from '../../../helpers/apiHelper';
-import webRoutes from '../../../helpers/webRoutes';
+import webRoutes from '../../../utils/webRoutes';
 
 const EmployeeShowCard = ({ data }) => {
   const [currentData, setCurrentData] = useState(data);

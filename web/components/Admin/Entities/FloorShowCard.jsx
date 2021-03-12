@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
 import { post } from '../../../helpers/apiHelper';
-import webRoutes from '../../../helpers/webRoutes';
+import webRoutes from '../../../utils/webRoutes';
 
 const FloorShowCard = ({ data }) => {
   const [currentData, setCurrentData] = useState(data);

@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
 import { get } from '../../helpers/apiHelper';
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 import CustomSpinner from '../CustomSpinner';
 import RoomCard from './RoomCard';
 

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import { post } from '../../helpers/apiHelper';
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 import ControlledText from '../Admin/Forms/ControlledText';
 import FormActions from '../Admin/Forms/FormActions';
 import FormHeading from '../Admin/Forms/FormHeading';

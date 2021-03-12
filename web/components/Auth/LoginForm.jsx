@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
 import { post } from '../../helpers/apiHelper';
-import webRoutes from '../../helpers/webRoutes';
 import UserContext from '../../utils/userContext';
+import webRoutes from '../../utils/webRoutes';
 import ControlledPassword from '../Admin/Forms/ControlledPassword';
 import ControlledText from '../Admin/Forms/ControlledText';
 import FormActions from '../Admin/Forms/FormActions';

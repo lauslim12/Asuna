@@ -2,7 +2,7 @@ import { Button, Heading, Icon, useColorMode, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { FaHome } from 'react-icons/fa';
 
-import webRoutes from '../helpers/webRoutes';
+import webRoutes from '../utils/webRoutes';
 
 const NotFoundPage = () => {
   const { colorMode } = useColorMode();

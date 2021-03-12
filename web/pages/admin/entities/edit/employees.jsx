@@ -12,7 +12,7 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { getAuth, patchAuth, post } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';
-import webRoutes from '../../../../helpers/webRoutes';
+import webRoutes from '../../../../utils/webRoutes';
 import withAdministrator from '../../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(async (ctx) => {

@@ -11,7 +11,7 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { post, postAuth } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';
-import webRoutes from '../../../../helpers/webRoutes';
+import webRoutes from '../../../../utils/webRoutes';
 import withAdministrator from '../../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(() => {

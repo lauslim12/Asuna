@@ -12,7 +12,7 @@ import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 
-import webRoutes from '../../helpers/webRoutes';
+import webRoutes from '../../utils/webRoutes';
 
 const CreationModal = ({ isOpen, onClose }) => {
   const cancelRef = useRef();
