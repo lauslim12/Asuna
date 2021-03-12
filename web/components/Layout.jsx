@@ -1,5 +1,6 @@
 import { chakra, Flex, Spacer } from '@chakra-ui/react';
 import Head from 'next/head';
+import { GoogleFonts } from 'next-google-fonts';
 import PropTypes from 'prop-types';
 
 import Footer from './Footer';
@@ -8,16 +9,10 @@ import Header from './Header';
 const Layout = ({ children, title }) => {
   return (
     <>
+      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" />
       <Head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <link rel="icon" href="favicon.png" type="image/png" />
-        <title>
-          {[...title.map((x) => x?.trim()).filter((x) => x), 'Project Asuna'].join(' · ')}
-        </title>
+        <title>{[...title.map((x) => x?.trim()).filter((x) => x), 'Asuna'].join(' · ')}</title>
       </Head>
-
       <Flex minH="100vh" direction="column" maxW="1200px" mx="auto">
         <Header />
 
