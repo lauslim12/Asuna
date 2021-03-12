@@ -69,12 +69,12 @@ Hopefully, the table will be all green soon.
 
 ## Minor Implementations
 
-- CSS Reset
-- Fonts
+- ~~CSS Reset~~
+- ~~Fonts~~
 - Dark Mode Support
 - SEO
-- Asynchronous Font Loading
-- Logo and Favicon
+- ~~Asynchronous Font Loading~~
+- ~~Logo and Favicon~~
 - Refactor and Split
 - Error Pages
 - React Context
