@@ -10,7 +10,7 @@ import FormHeading from '../../../../components/Forms/FormHeading';
 import FormOverlay from '../../../../components/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { post, postAuth } from '../../../../utils/apiHelper';
-import jobdescHelper from '../../../../helpers/jobdescHelper';
+import jobdescHelper from '../../../../utils/jobdescHelper';
 import webRoutes from '../../../../utils/webRoutes';
 import withAdministrator from '../../../../utils/withAdministrator';
 
