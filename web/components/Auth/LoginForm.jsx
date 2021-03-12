@@ -2,7 +2,7 @@ import { Text, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
-import { post } from '../../helpers/apiHelper';
+import { post } from '../../utils/apiHelper';
 import UserContext from '../../utils/userContext';
 import webRoutes from '../../utils/webRoutes';
 import ControlledPassword from '../Forms/ControlledPassword';

@@ -17,7 +17,7 @@ import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
-import { patchAuth, post } from '../../../helpers/apiHelper';
+import { patchAuth, post } from '../../../utils/apiHelper';
 import webRoutes from '../../../utils/webRoutes';
 
 const EmployeeShowCard = ({ data }) => {

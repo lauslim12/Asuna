@@ -2,7 +2,7 @@ import { FormControl, FormHelperText, FormLabel, Input, Text, useToast } from '@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { post } from '../../helpers/apiHelper';
+import { post } from '../../utils/apiHelper';
 import webRoutes from '../../utils/webRoutes';
 import ControlledText from '../Forms/ControlledText';
 import FormActions from '../Forms/FormActions';

@@ -1,5 +1,5 @@
 /* eslint-disable no-return-await */
-import { getAuth } from '../helpers/apiHelper';
+import { getAuth } from './apiHelper';
 import webRoutes from './webRoutes';
 
 export default (GetServerSidePropsFunction) => async (ctx) => {

@@ -5,7 +5,7 @@ import { useContext, useState } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { IoMdAirplane } from 'react-icons/io';
 
-import { post } from '../../helpers/apiHelper';
+import { post } from '../../utils/apiHelper';
 import UserContext from '../../utils/userContext';
 import webRoutes from '../../utils/webRoutes';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';

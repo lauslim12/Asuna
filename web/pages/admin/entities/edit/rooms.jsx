@@ -14,7 +14,7 @@ import FormActions from '../../../../components/Forms/FormActions';
 import FormHeading from '../../../../components/Forms/FormHeading';
 import FormOverlay from '../../../../components/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
-import { get, patchAuth, post } from '../../../../helpers/apiHelper';
+import { get, patchAuth, post } from '../../../../utils/apiHelper';
 import webRoutes from '../../../../utils/webRoutes';
 import withAdministrator from '../../../../utils/withAdministrator';
 

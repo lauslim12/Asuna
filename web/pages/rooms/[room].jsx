@@ -7,7 +7,7 @@ import BookingForm from '../../components/Room/BookingForm';
 import Details from '../../components/Room/Details';
 import Hero from '../../components/Room/Hero';
 import Photos from '../../components/Room/Photos';
-import { get } from '../../helpers/apiHelper';
+import { get } from '../../utils/apiHelper';
 
 const RoomInfo = () => {
   const [roomData, setRoomData] = useState([]);

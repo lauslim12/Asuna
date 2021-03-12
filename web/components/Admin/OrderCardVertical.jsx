@@ -17,7 +17,7 @@ import {
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import { post } from '../../helpers/apiHelper';
+import { post } from '../../utils/apiHelper';
 import dateDisplay from '../../utils/dateDisplay';
 
 const OrderCardVertical = ({ data }) => {

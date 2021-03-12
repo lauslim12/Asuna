@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
-import { get } from '../../helpers/apiHelper';
+import { get } from '../../utils/apiHelper';
 import webRoutes from '../../utils/webRoutes';
 import CustomSpinner from '../CustomSpinner';
 import RoomCard from './RoomCard';
