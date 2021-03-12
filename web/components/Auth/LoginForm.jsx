@@ -5,11 +5,11 @@ import { useContext, useState } from 'react';
 import { post } from '../../helpers/apiHelper';
 import UserContext from '../../utils/userContext';
 import webRoutes from '../../utils/webRoutes';
-import ControlledPassword from '../Admin/Forms/ControlledPassword';
-import ControlledText from '../Admin/Forms/ControlledText';
-import FormActions from '../Admin/Forms/FormActions';
-import FormHeading from '../Admin/Forms/FormHeading';
-import FormOverlay from '../Admin/Forms/FormOverlay';
+import ControlledPassword from '../Forms/ControlledPassword';
+import ControlledText from '../Forms/ControlledText';
+import FormActions from '../Forms/FormActions';
+import FormHeading from '../Forms/FormHeading';
+import FormOverlay from '../Forms/FormOverlay';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const LoginForm = () => {

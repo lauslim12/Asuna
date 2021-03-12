@@ -2,12 +2,12 @@ import { Text, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import ControlledNumber from '../../../../components/Admin/Forms/ControlledNumber';
-import ControlledSelect from '../../../../components/Admin/Forms/ControlledSelect';
-import ControlledText from '../../../../components/Admin/Forms/ControlledText';
-import FormActions from '../../../../components/Admin/Forms/FormActions';
-import FormHeading from '../../../../components/Admin/Forms/FormHeading';
-import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
+import ControlledNumber from '../../../../components/Forms/ControlledNumber';
+import ControlledSelect from '../../../../components/Forms/ControlledSelect';
+import ControlledText from '../../../../components/Forms/ControlledText';
+import FormActions from '../../../../components/Forms/FormActions';
+import FormHeading from '../../../../components/Forms/FormHeading';
+import FormOverlay from '../../../../components/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { post, postAuth } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';

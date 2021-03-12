@@ -4,10 +4,10 @@ import { useState } from 'react';
 
 import { post } from '../../helpers/apiHelper';
 import webRoutes from '../../utils/webRoutes';
-import ControlledText from '../Admin/Forms/ControlledText';
-import FormActions from '../Admin/Forms/FormActions';
-import FormHeading from '../Admin/Forms/FormHeading';
-import FormOverlay from '../Admin/Forms/FormOverlay';
+import ControlledText from '../Forms/ControlledText';
+import FormActions from '../Forms/FormActions';
+import FormHeading from '../Forms/FormHeading';
+import FormOverlay from '../Forms/FormOverlay';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const RegisterForm = () => {
