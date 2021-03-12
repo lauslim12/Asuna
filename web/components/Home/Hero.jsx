@@ -43,7 +43,7 @@ const Hero = () => {
         </Tooltip>
       </Stack>
       <Box w={['100%', '60%', '50%']} mb={[12, 0]}>
-        <Image src="hero.webp" size="100%" rounded="1rem" shadow="2xl" />
+        <Image src="hero.webp" size="100%" rounded="1rem" shadow="2xl" alt="Asuna's hero picture" />
       </Box>
     </Flex>
   );

@@ -14,13 +14,13 @@ const About = () => {
 
       <Stack spacing={4} w="full" direction={['column', 'column', 'row']} align="center">
         <Box w={['100%', '100%', '40%']} mb={[12, 0]}>
-          <Image size="100%" borderRadius="md" shadow="2xl" src="office-1.webp" />
+          <Image size="100%" borderRadius="md" shadow="2xl" src="office-1.webp" alt="Room 1" />
         </Box>
         <Box w={['100%', '100%', '40%']} mb={[12, 0]}>
-          <Image size="100%" borderRadius="md" shadow="2xl" src="office-2.webp" />
+          <Image size="100%" borderRadius="md" shadow="2xl" src="office-2.webp" alt="Room 2" />
         </Box>
         <Box w={['100%', '100%', '40%']} mb={[12, 0]}>
-          <Image size="100%" borderRadius="md" shadow="2xl" src="office-3.webp" />
+          <Image size="100%" borderRadius="md" shadow="2xl" src="office-3.webp" alt="Room 3" />
         </Box>
       </Stack>
     </VStack>
