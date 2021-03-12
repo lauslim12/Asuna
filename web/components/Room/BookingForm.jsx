@@ -67,10 +67,15 @@ const BookingForm = ({ roomData }) => {
 
   return (
     <VStack bg="#f7f7f7" pt={10} pb={10} color="black" spacing={5}>
-      <Heading textTransform="uppercase" letterSpacing="0.2rem" lineHeight={1.3}>
+      <Heading
+        textTransform="uppercase"
+        letterSpacing="0.2rem"
+        lineHeight={1.3}
+        fontSize={['2xl', '3xl']}
+      >
         Order Now! 🚀
       </Heading>
-      <Text>The contract is from day 01 to day 27 of your final month!</Text>
+      <Text textAlign="center">The contract is from day 01 to day 27 of your final month!</Text>
 
       {state.isAuthenticated ? (
         <>
@@ -170,7 +175,7 @@ const BookingForm = ({ roomData }) => {
           </VStack>
         </>
       ) : (
-        <div>Please log in before ordering! 😢</div>
+        <Text align="center">Please log in before ordering! 😢</Text>
       )}
     </VStack>
   );
