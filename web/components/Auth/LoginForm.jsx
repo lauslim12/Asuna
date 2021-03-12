@@ -1,9 +1,10 @@
 import { Text, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { post } from '../../helpers/apiHelper';
 import webRoutes from '../../helpers/webRoutes';
+import UserContext from '../../utils/userContext';
 import ControlledPassword from '../Admin/Forms/ControlledPassword';
 import ControlledText from '../Admin/Forms/ControlledText';
 import FormActions from '../Admin/Forms/FormActions';
@@ -14,6 +15,7 @@ import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { dispatch } = useContext(UserContext);
   const toast = useToast();
   const router = useRouter();
 
@@ -31,6 +33,7 @@ const LoginForm = () => {
 
     if (apiResponse.status === 'success') {
       SuccessfulOperationToast(toast, 'Welcome! Please wait to be redirected to the homepage!');
+      dispatch({ type: 'login' });
 
       return setTimeout(() => router.push('/'), 1000);
     }

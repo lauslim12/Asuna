@@ -13,9 +13,9 @@ import Layout from '../../../../components/Layout';
 import { getAuth, patchAuth, post } from '../../../../helpers/apiHelper';
 import jobdescHelper from '../../../../helpers/jobdescHelper';
 import webRoutes from '../../../../helpers/webRoutes';
-import isAdministrator from '../../../../utils/isAdministrator';
+import withAdministrator from '../../../../utils/withAdministrator';
 
-export const getServerSideProps = isAdministrator(async (ctx) => {
+export const getServerSideProps = withAdministrator(async (ctx) => {
   const { data } = await getAuth(
     `${process.env.PRIVATE_API_URL}/api/v1/employees/${ctx.query.id}`,
     ctx.req.cookies?.jwt

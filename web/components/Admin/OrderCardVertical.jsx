@@ -18,6 +18,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { post } from '../../helpers/apiHelper';
+import dateDisplay from '../../utils/dateDisplay';
 
 const OrderCardVertical = ({ data }) => {
   const [currentData, setCurrentData] = useState(data);
@@ -62,10 +63,10 @@ const OrderCardVertical = ({ data }) => {
           <Heading fontSize="sm">Start/End Date</Heading>
           <HStack spacing={3}>
             <Badge fontSize="sm" colorScheme="red">
-              {new Date(currentData.startDate).toISOString().split('T')[0]}
+              {dateDisplay(currentData.startDate)}
             </Badge>
             <Badge fontSize="sm" colorScheme="linkedin">
-              {new Date(currentData.endDate).toISOString().split('T')[0]}
+              {dateDisplay(currentData.endDate)}
             </Badge>
           </HStack>
         </VStack>

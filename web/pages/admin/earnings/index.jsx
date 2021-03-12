@@ -20,8 +20,9 @@ import PropTypes from 'prop-types';
 import Layout from '../../../components/Layout';
 import { getAuth } from '../../../helpers/apiHelper';
 import webRoutes from '../../../helpers/webRoutes';
+import withAdministrator from '../../../utils/withAdministrator';
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = withAdministrator(async (ctx) => {
   const token = ctx.req.cookies.jwt;
   const response = await getAuth(`${process.env.PRIVATE_API_URL}/api/v1/orders/earnings`, token);
 
@@ -31,7 +32,7 @@ export const getServerSideProps = async (ctx) => {
       total: response.total || 0,
     },
   };
-};
+});
 
 const Earnings = ({ data, total }) => {
   const router = useRouter();

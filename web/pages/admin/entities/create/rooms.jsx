@@ -16,9 +16,9 @@ import FormOverlay from '../../../../components/Admin/Forms/FormOverlay';
 import Layout from '../../../../components/Layout';
 import { get, post, postAuth } from '../../../../helpers/apiHelper';
 import webRoutes from '../../../../helpers/webRoutes';
-import isAdministrator from '../../../../utils/isAdministrator';
+import withAdministrator from '../../../../utils/withAdministrator';
 
-export const getServerSideProps = isAdministrator(async () => {
+export const getServerSideProps = withAdministrator(async () => {
   const { data } = await get(`${process.env.PRIVATE_API_URL}/api/v1/floors`);
 
   return {

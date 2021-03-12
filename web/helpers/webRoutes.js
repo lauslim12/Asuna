@@ -14,4 +14,5 @@ export default {
   roomDetail: (roomSlug) => `/rooms/${roomSlug}`,
   signIn: '/sign-in',
   signUp: '/sign-up',
+  unauthorized: '/unauthorized',
 };

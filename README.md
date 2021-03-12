@@ -80,11 +80,16 @@ Hopefully, the table will be all green soon.
 - React Context
 - Color the Header and Footer
 - `useMemo`, `useEffect`, `NextImage`, SSR, CSR
+- Image optimization (`webp`)
 - Query string masking in `NextLink`
 - Seed more data
 - Pagination, API Features
 - NPX NCU
 - Code and repo documentation (JSDoc)
+- Transaction list in room detail
+- Refactor dates for admins
+- `await dynamic()`
+- Conditional rendering in admin page for admin/owners
 
 ## Presentation Material
 

@@ -1,7 +1,7 @@
 import { Grid, Heading, HStack, IconButton, Spacer, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
 import { get } from '../../helpers/apiHelper';
@@ -13,7 +13,6 @@ const RoomsListView = ({ route }) => {
   const [rooms, setRooms] = useState([]);
   const [maxFloor, setMaxFloor] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [roomsInFloor, setRoomsInFloor] = useState([]);
   const [currentFloor, setCurrentFloor] = useState(1);
 
   useEffect(() => {
@@ -28,11 +27,10 @@ const RoomsListView = ({ route }) => {
       );
   }, []);
 
-  useEffect(() => {
-    const roomsInCurrentFloor = rooms.filter((room) => room.floor.number === currentFloor);
-
-    setRoomsInFloor(roomsInCurrentFloor);
-  }, [rooms, currentFloor]);
+  const roomsInCurrentFloor = useMemo(
+    () => rooms.filter((room) => room.floor.number === currentFloor),
+    [rooms, currentFloor]
+  );
 
   return (
     <VStack align="stretch" spacing={4}>
@@ -62,7 +60,7 @@ const RoomsListView = ({ route }) => {
         <CustomSpinner />
       ) : (
         <Grid templateColumns="repeat(auto-fill, minmax(9rem, 1fr))" gap={2}>
-          {roomsInFloor.map((room) => (
+          {roomsInCurrentFloor.map((room) => (
             <NextLink
               key={room.slug}
               href={
