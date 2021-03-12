@@ -1,5 +1,5 @@
 import Layout from '../../../components/Layout';
-import ListOfRooms from '../../../components/ListOfRooms/ListView';
+import ListOfRooms from '../../../components/Rooms/ListView';
 import withAdministrator from '../../../utils/withAdministrator';
 
 export const getServerSideProps = withAdministrator(() => {
