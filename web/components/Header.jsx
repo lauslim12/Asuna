@@ -17,10 +17,16 @@ import webRoutes from '../utils/webRoutes';
 
 const Header = () => {
   const { state } = useContext(UserContext);
-  const { toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <HStack as="nav" p={4} spacing={2}>
+    <HStack
+      as="nav"
+      p={4}
+      spacing={2}
+      color={colorMode === 'dark' ? 'green.300' : 'green.500'}
+      fontWeight="bold"
+    >
       <NextLink href={webRoutes.homepage} passHref>
         <HStack spacing={2}>
           <Image src="/logo.webp" w={9} h={9} borderRadius="md" />
