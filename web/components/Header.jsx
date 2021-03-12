@@ -23,7 +23,7 @@ const Header = () => {
     <HStack as="nav" p={4} spacing={2}>
       <NextLink href={webRoutes.homepage} passHref>
         <HStack spacing={2}>
-          <Image src="/logo.png" w={6} h={6} borderRadius="md" />
+          <Image src="/logo.webp" w={9} h={9} borderRadius="md" />
           <chakra.span fontSize="lg">Asuna</chakra.span>
         </HStack>
       </NextLink>
