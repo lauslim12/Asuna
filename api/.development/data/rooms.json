@@ -46,5 +46,118 @@
     "type": "office",
     "slug": "jean",
     "floor": "5fc0605d97166d0017d249d5"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2953",
+    "name": "Barbara",
+    "description": "This room is frequented by idol Barbara to work on her projects!",
+    "roomFeatures": [
+      "Air conditioners",
+      "Elegant working environment",
+      "Spacious, one with nature"
+    ],
+    "thumbnail": "barbara.png",
+    "photos": ["barbara-1.jpg", "barbara-2.jpg", "barbara-3.jpg"],
+    "price": 75000,
+    "type": "coworking-space",
+    "slug": "barbara",
+    "floor": "5fc0605d97166d0017d249d5"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2954",
+    "name": "Noelle",
+    "description": "This room is a unique room. You will get served the finest tea here.",
+    "roomFeatures": [
+      "Delicious and refreshing tea",
+      "Perfect for work in the afternoon",
+      "Extremely spacious, filled with couches"
+    ],
+    "thumbnail": "noelle.png",
+    "photos": ["noelle-1.jpg", "noelle-2.jpg", "noelle-3.jpg"],
+    "price": 100000,
+    "type": "coworking-space",
+    "slug": "noelle",
+    "floor": "5fc0605d97166d0017d249d5"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2900",
+    "name": "Mafuyu",
+    "description": "This room is handled with care, and has some really cool snow decorations!",
+    "roomFeatures": [
+      "A meeting room for five",
+      "Good customer care",
+      "Elegant coworking-space for your personal needs"
+    ],
+    "thumbnail": "mafuyu.png",
+    "photos": ["mafuyu-1.jpg", "mafuyu-2.jpg", "mafuyu-3.jpg"],
+    "price": 65000,
+    "type": "coworking-space",
+    "slug": "mafuyu",
+    "floor": "604c1e73510c351a40712643"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2901",
+    "name": "Fumino",
+    "description": "To perfect your literature-style work, make sure to work here!",
+    "roomFeatures": [
+      "Decorated with ancient texts",
+      "Filled with antique tools",
+      "Modern-yet classic architecture"
+    ],
+    "thumbnail": "fumino.png",
+    "photos": ["fumino-1.jpg", "fumino-2.jpg", "fumino-3.jpg"],
+    "price": 175000,
+    "type": "office",
+    "slug": "fumino",
+    "floor": "604c1e73510c351a40712643"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2902",
+    "name": "Uruka",
+    "description": "This room is full of spirits! You will definitely enjoy working here.",
+    "roomFeatures": [
+      "Computer installed with games",
+      "Air conditioners",
+      "Good room wallpaper"
+    ],
+    "thumbnail": "uruka.png",
+    "photos": ["uruka-1.jpg", "uruka-2.jpg", "uruka-3.jpg"],
+    "price": 150000,
+    "type": "office",
+    "slug": "uruka",
+    "floor": "604c1e73510c351a40712643"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2903",
+    "name": "Miyuki",
+    "description": "One-of-a kind room, because there is a famous programmer working here!",
+    "roomFeatures": [
+      "Free consultation with a skilled software engineer",
+      "Air conditioners",
+      "Computer installed with WebStorm",
+      "Meeting room for six"
+    ],
+    "thumbnail": "miyuki.png",
+    "photos": ["miyuki-1.jpg", "miyuki-2.jpg", "miyuki-3.jpg"],
+    "price": 250000,
+    "type": "office",
+    "slug": "miyuki",
+    "floor": "604c1e73510c351a40712643"
+  },
+  {
+    "_id": "5c88fa8cf4afda39709c2904",
+    "name": "Erika",
+    "description": "A room like this will definitely make you feel at home!",
+    "roomFeatures": [
+      "Feels-at-home like environment",
+      "Forest-style decorations",
+      "Helpful customer care"
+    ],
+    "thumbnail": "erika.png",
+    "photos": ["erika-1.jpg", "erika-2.jpg", "erika-3.jpg"],
+    "price": 95000,
+    "type": "coworking-space",
+    "slug": "erika",
+    "floor": "604c1e73510c351a40712643"
   }
 ]
