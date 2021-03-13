@@ -28,8 +28,12 @@ const RoomsListView = ({ route }) => {
       );
   }, []);
 
+  // This is manual sorting. Edit this later with the API / backend for reduced overhead.
   const roomsInCurrentFloor = useMemo(
-    () => rooms.filter((room) => room.floor.number === currentFloor),
+    () =>
+      rooms
+        .filter((room) => room.floor.number === currentFloor)
+        .sort((a, b) => a.name.localeCompare(b.name)),
     [rooms, currentFloor]
   );
 
