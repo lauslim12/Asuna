@@ -90,6 +90,9 @@ Hopefully, the table will be all green soon.
 - Refactor dates for admins
 - `await dynamic()`
 - Conditional rendering in admin page for admin/owners
+- Discount and promo code, display in both FE/BE
+- Create API interface for creating promo codes
+- If have time, create frontend interface for visitors
 
 ## Presentation Material
 
