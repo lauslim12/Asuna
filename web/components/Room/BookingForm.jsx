@@ -1,21 +1,37 @@
-import { Button, Grid, Heading, Icon, Select, Text, useToast, VStack } from '@chakra-ui/react';
+import {
+  Button,
+  Editable,
+  EditableInput,
+  EditablePreview,
+  Grid,
+  Heading,
+  Icon,
+  Select,
+  Text,
+  useToast,
+  VStack,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { GiCancel } from 'react-icons/gi';
-import { IoMdAirplane } from 'react-icons/io';
+import { IoMdAirplane, IoMdPricetag } from 'react-icons/io';
 
 import { post } from '../../utils/apiHelper';
+import calculatePrice from '../../utils/calculatePrice';
+import currencyDisplay from '../../utils/currencyDisplay';
 import UserContext from '../../utils/userContext';
 import webRoutes from '../../utils/webRoutes';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const BookingForm = ({ roomData }) => {
   const { state } = useContext(UserContext);
-  const [startMonth, setStartMonth] = useState('01');
-  const [endMonth, setEndMonth] = useState('01');
+  const [code, setCode] = useState('Enter your promo code here!');
+  const [startMonth, setStartMonth] = useState(new Date().getMonth());
+  const [endMonth, setEndMonth] = useState(new Date().getMonth());
   const [startYear, setStartYear] = useState(new Date().getFullYear());
   const [endYear, setEndYear] = useState(new Date().getFullYear());
+  const [price, setPrice] = useState(roomData.price);
   const router = useRouter();
   const toast = useToast();
 
@@ -63,6 +79,14 @@ const BookingForm = ({ roomData }) => {
     }
 
     return FailedOperationToast(toast, response.message);
+  };
+
+  const handlePriceChange = async () => {
+    const startDate = new Date(startYear, startMonth, 1, 0, 0, 0);
+    const endDate = new Date(endYear, endMonth, 27, 0, 0, 0);
+    const discountedPrice = await calculatePrice(roomData.price, startDate, endDate, code);
+
+    setPrice(discountedPrice);
   };
 
   return (
@@ -156,6 +180,22 @@ const BookingForm = ({ roomData }) => {
 
           <VStack>
             <Text>😄 And then, make your request!</Text>
+            <Text>{`Estimated price: ${currencyDisplay(price)}`}</Text>
+
+            <Editable value={code} onChange={(value) => setCode(value)}>
+              <EditablePreview />
+              <EditableInput />
+            </Editable>
+
+            <Button
+              colorScheme="green"
+              w="200px"
+              leftIcon={<Icon as={IoMdPricetag} />}
+              onClick={handlePriceChange}
+            >
+              Check Price
+            </Button>
+
             <Button
               colorScheme="linkedin"
               w="200px"
@@ -164,6 +204,7 @@ const BookingForm = ({ roomData }) => {
             >
               Book Now
             </Button>
+
             <Button
               colorScheme="red"
               w="200px"
