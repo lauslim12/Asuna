@@ -12,6 +12,7 @@ const Order = require('../../models/orderModel');
 const Room = require('../../models/roomModel');
 const User = require('../../models/userModel');
 const Visitor = require('../../models/visitorModel');
+const Voucher = require('../../models/voucherModel');
 
 // Configurations
 dotenv.config({ path: '../../.env' });
@@ -41,6 +42,9 @@ const floors = JSON.parse(fs.readFileSync(`${__dirname}/floors.json`, 'utf-8'));
 const orders = JSON.parse(fs.readFileSync(`${__dirname}/orders.json`, 'utf-8'));
 const rooms = JSON.parse(fs.readFileSync(`${__dirname}/rooms.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const vouchers = JSON.parse(
+  fs.readFileSync(`${__dirname}/vouchers.json`, 'utf-8')
+);
 
 // Import the data to the database.
 // Do imports in order - not following the order might cause the import to fail (foreign key checks).
@@ -52,6 +56,7 @@ const importDevData = async () => {
     await Room.create(rooms);
     await Order.create(orders);
     await Visitor.create();
+    await Voucher.create(vouchers);
 
     console.log('Data has been successfully inserted!');
   } catch (err) {
@@ -70,6 +75,7 @@ const deleteDevData = async () => {
     await User.deleteMany();
     await Order.deleteMany();
     await Visitor.deleteMany();
+    await Voucher.deleteMany();
 
     console.log('Data has been successfully deleted!');
   } catch (err) {
