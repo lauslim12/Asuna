@@ -61,6 +61,7 @@ const BookingForm = ({ roomData }) => {
 
     const dataToBeSent = {
       requestedRoom: roomData._id,
+      voucher: code,
       startDate,
       endDate,
       requestType: 'POST',
