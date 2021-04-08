@@ -3,6 +3,7 @@ const asyncHandler = require('../utils/asyncHandler');
 const factory = require('../utils/handlerFactory');
 const Order = require('../models/orderModel');
 const Room = require('../models/roomModel');
+const Voucher = require('../models/voucherModel');
 
 const getNumberOfMonths = (startDate, endDate) => {
   const startDateYear = startDate.getFullYear();
@@ -97,13 +98,23 @@ exports.placeOrder = asyncHandler(async (req, res, next) => {
     );
   }
 
+  // Check for available vouchers.
+  const code = req.body.voucher || null;
+  let voucher;
+  let discount;
+
+  if (code) {
+    voucher = await Voucher.findOne({ code });
+    discount = voucher.discount || 0;
+  }
+
   // 4. If not, calculate the price.
   const room = await Room.findById(requestedRoom);
   const numberOfMonths = getNumberOfMonths(
     new Date(startDate),
     new Date(endDate)
   );
-  const totalPrice = room.price * numberOfMonths;
+  const totalPrice = room.price * numberOfMonths * (1 - discount);
 
   // ex: if it is office, then multiply per month, else multiply per hour.
   // 5. place the order with the 'processed' status.
