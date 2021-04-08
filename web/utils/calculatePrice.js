@@ -22,7 +22,7 @@ const calculatePrice = async (price, startDate, endDate, code = 'null') => {
 
   // Maximum of discount is 1 (100%), so the formula is reduced.
   const totalPrice = price * numberOfMonths;
-  const discountPrice = totalPrice * (1 - (response.discount || 0));
+  const discountPrice = totalPrice * (1 - (response?.discount || 0));
 
   return discountPrice;
 };
