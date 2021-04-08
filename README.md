@@ -71,18 +71,18 @@ Hopefully, the table will be all green soon.
 
 - ~~CSS Reset~~
 - ~~Fonts~~
-- Dark Mode Support
+- ~~Dark Mode Support~~
 - SEO
 - ~~Asynchronous Font Loading~~
 - ~~Logo and Favicon~~
 - Refactor and Split
-- Error Pages
-- React Context
-- Color the Header and Footer
+- ~~Error Pages~~
+- ~~React Context~~
+- ~~Color the Header and Footer~~
 - `useMemo`, `useEffect`, `NextImage`, SSR, CSR
 - Image optimization (`webp`)
 - Query string masking in `NextLink`
-- Seed more data
+- ~~Seed more data~~
 - Pagination, API Features
 - NPX NCU
 - Code and repo documentation (JSDoc)
