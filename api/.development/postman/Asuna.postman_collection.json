@@ -716,6 +716,78 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Vouchers",
+			"item": [
+				{
+					"name": "Get All Vouchers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/vouchers",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"vouchers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Voucher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/vouchers/ASUNA070400",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"vouchers",
+								"ASUNA070400"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create A Voucher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discount\": 0.2,\r\n    \"code\": \"dzulfiqar12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/vouchers",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"vouchers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
