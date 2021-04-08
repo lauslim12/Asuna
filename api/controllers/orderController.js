@@ -101,11 +101,14 @@ exports.placeOrder = asyncHandler(async (req, res, next) => {
   // Check for available vouchers.
   const code = req.body.voucher || null;
   let voucher;
-  let discount;
+  let disc = 0;
 
   if (code) {
     voucher = await Voucher.findOne({ code });
-    discount = voucher.discount || 0;
+
+    if (voucher) {
+      disc = voucher.discount;
+    }
   }
 
   // 4. If not, calculate the price.
@@ -114,7 +117,7 @@ exports.placeOrder = asyncHandler(async (req, res, next) => {
     new Date(startDate),
     new Date(endDate)
   );
-  const totalPrice = room.price * numberOfMonths * (1 - discount);
+  const totalPrice = room.price * numberOfMonths * (1 - disc);
 
   // ex: if it is office, then multiply per month, else multiply per hour.
   // 5. place the order with the 'processed' status.
