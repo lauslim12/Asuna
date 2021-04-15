@@ -1,8 +1,44 @@
 # Asuna
 
-Asuna is an open-source building management system.
+Asuna is an open-source building management system. This full-stack web application is open-source, under MIT License.
 
-## How to Use
+## Introduction
+
+Coworking space is one of the newest business trends in Indonesia and Asian countries in general (Bouncken, 2016). One of the most important metric that we have to understand in order for these kinds of business to flourish is the community of the coworking space. People enjoy coworking spaces with great facilities and good communities (Seo, 2017). If handled correctly, coworking space could make people feel connected to one another and cause them to enjoy the environment, and even create new social circles along the way (Bianchi, 2018).
+
+If I recall correctly, there have not been a single application to manage these coworking spaces with extremely flexibility. In this application, flexibility means the ability for one to create _n_ rooms and floors, where _n_ itself means infinite. In short, this application is an open-source building management system that allows one to create infinite number of rooms and floors for their own buildings. Users of this application could also place their orders online, shall this application comes to the production version.
+
+This application is built with performance and scalability in mind.
+
+## Architecture
+
+- JavaScript (main programming language)
+- Next.js (front-end)
+- Chakra UI (front-end framework)
+- Express.js (back-end)
+- MongoDB (database)
+- Vercel (front-end hosting)
+- Heroku (back-end hosting)
+- MongoDB Atlas (database on cloud)
+
+## Features
+
+- Simple, colorful, but intuitive UI.
+- Ability to create infinite amount of rooms and floors. Only your database limits these features.
+- Users can book a room, edit their own profile, and see their transactions.
+- Multiple role support: `user`, `admin`, `owner`.
+- Admins can perform CRUD operations on floors, rooms, employees.
+- Admins can see the earnings of the lifetime of this application.
+- Admins can create visitors via an interface in the admin panel.
+- Admins can create vouchers via API endpoints.
+- Dark mode support for the front-end.
+- High-performance support with preloaded pages, and caching.
+- Server-side rendering support for pages requiring authentication.
+- API-proxy via Next.js's serverless functions to provide extended security.
+- Personal and secure authentication with httpOnly / sameSite cookies and JWT.
+- Accessibility support (`a11y`).
+
+## Installation
 
 To use this repository, both front-end and back-end must be active simultaneously.
 
@@ -11,11 +47,47 @@ git clone https://github.com/lauslim12/Asuna.git
 cd Asuna
 ```
 
-Fill the environment variables in both `web` and `api`.
-
-Then, run both front-end and back-end with two terminals.
+Then, we have to fill the environment variables for both `web` and `api`. For the `web`, the settings are as follows.
 
 ```bash
+export JWT_COOKIE_EXPIRES_IN=<YOUR_VARIABLE>
+export PRIVATE_API_URL=<YOUR_VARIABLE>
+export NEXT_PUBLIC_API_URL=<YOUR_VARIABLE>
+```
+
+Alternatively, you can change the `.env.development` file and set the variables from there. Don't forget to rename it to `.env` so that it can be used.
+
+For the `api`, the settings are as follows.
+
+```bash
+export CLIENT_SIDE_URL=...
+export DATABASE_PASSWORD=
+export DATABASE_LOCAL=
+export DATABASE=
+export JWT_SECRET=
+export JWT_EXPIRES_IN=
+export JWT_COOKIE_EXPIRES_IN=
+```
+
+Or, same as above, change the `.env.development` file and rename it to `.env`.
+
+Then, we can simply just install the application.
+
+```bash
+npm install
+```
+
+Before starting our application, we migrate the database first.
+
+```bash
+npm run migrate
+```
+
+If the migration fails (usually because of the date validation), just change the date of the data whose schema fails. The error message should be clear enough.
+
+Start our application. Remember we need two terminal processes!
+
+```
 # terminal 1
 cd Asuna/web/
 npm run dev
@@ -25,11 +97,9 @@ cd Asuna/api
 npm run dev
 ```
 
-If necessary, run `npm run migrate` in the `api` folder first.
+You're done!
 
-Happy coding!
-
-## Development Notes - Deployment Guidelines
+## Deployment
 
 Before doing this, ensure that the current working directory is `Asuna`. In order to deploy the back-end, do the following command.
 
@@ -46,82 +116,20 @@ npx vercel --prod # production mode
 
 To prevent spamming of emails, I did not set up a hook that would instantly perform deployment after merging to the remote repository.
 
-## Implementation of the Front-End System
+## Contribution
 
-Below table is used as a guide for the Front-End System.
-
-|             Pages             | hasRoute? | hasBeenDesigned? |                                 routeName                                 |
-|:-----------------------------:|:---------:|:----------------:|:-------------------------------------------------------------------------:|
-|            Homepage           |     ✔️     |         ✔️        |                                    `/`                                    |
-|             Login             |     ✔️     |         ✔️        |                                  `/login`                                 |
-|            Register           |     ✔️     |         ✔️        |                                `/register`                                |
-|          User Profile         |     ✔️     |         ✔️        |                                 `/profile`                                |
-|         List of Rooms         |     ✔️     |         ✔️        |                                  `/rooms`                                 |
-|          Detail Room          |     ✔️     |         ✔️        |                               `/rooms/:slug`                              |
-|         Admin Homepage        |     ✔️     |         ✔️        |                                  `/admin`                                 |
-|     Admin: See All Orders     |     ✔️     |         ✔️        |                              `/admin/orders`                              |
-|     Admin: Accept Visitors    |     ✔️     |         ✔️        |                             `/admin/visitors`                             |
-| Owner: Create & Edit Entities |     ✔️     |         ✔️        | `/admin/entities/create/:entity-name` `/admin/entities/edit/:entity-name` |
-|      Owner: See Earnings      |     ✔️     |         ✔️        |                             `/admin/earnings`                             |
-|    Owner: List of Entities    |     ✔️     |         ✔️        |                       `/admin/entities/:entity-name`                      |
-
-Hopefully, the table will be all green soon.
-
-## Minor Implementations
-
-- ~~CSS Reset~~
-- ~~Fonts~~
-- ~~Dark Mode Support~~
-- SEO
-- ~~Asynchronous Font Loading~~
-- ~~Logo and Favicon~~
-- Refactor and Split
-- ~~Error Pages~~
-- ~~React Context~~
-- ~~Color the Header and Footer~~
-- `useMemo`, `useEffect`, `NextImage`, SSR, CSR
-- Image optimization (`webp`)
-- Query string masking in `NextLink`
-- ~~Seed more data~~
-- Pagination, API Features
-- NPX NCU
-- Code and repo documentation (JSDoc)
-- Transaction list in room detail
-- Refactor dates for admins
-- `await dynamic()`
-- Conditional rendering in admin page for admin/owners
-- Discount and promo code, display in both FE/BE
-- Create API interface for creating promo codes
-- If have time, create frontend interface for visitors
-
-## Presentation Material
-
-- Section I: Introduction (2 mins.)
-- Introduction
-- Problem
-- Asuna: The Building Management System
-- Section II: Architecture (3 mins.)
-- Technology Stack
-- Client-Server Architecture
-- Asynchronous JavaScript Demo
-- CI/CD Explanation
-- Section III: Features (5 mins.)
-- Entities, Why Denormalize Database, Explain Features
-- QoL Features
-- Section IV: Demo (15 mins.)
-- Section V: Thoughts (5 mins.)
-- Further Development
-- Q&A
-- Closing
-
-## QoL Features
-
-- NProgress
-- ScrollPreserver
-- Personal and secure authentication with `httpOnly` / `sameSite` cookies and JWT
-- `a11y` support
-- SSR / SSG
+I accept all kinds of contributions. Feel free to submit a pull request or submit an issue if you encounter any issues!
 
 ## License
 
-MIT License.
+This application is licensed under MIT License. Please see the `LICENSE` file for more information.
+
+## Credits
+
+- Federico Bianchi, N. C. (2018). Solidarity as a byproduct of professional collaboration: Social support and trust in a coworking space. Social Networks, 61-72.
+
+- Jongseok Seo, L. L.-S. (2017). Priorities of Coworking Space Operation Based on Comparison of the Hosts and Users' Perspectives. Sustainability, 1-8
+
+- Ricarda B. Bouncken, S. M. (2018). Coopetition in coworking-spaces: value creation and appropriation tensions in an entrepreneurial space. Review of Managerial Science Vol. 12, 385-410.
+
+- Ricarda B. Bouncken, T. C. (2016). Coworking-spaces in Asia: A business model design perspective. SMS Special Conference Hong Kong, 1-9.
