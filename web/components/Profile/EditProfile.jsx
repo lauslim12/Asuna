@@ -8,7 +8,6 @@ import ControlledText from '../Forms/ControlledText';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const EditProfile = ({ userData }) => {
-  const [username, setUsername] = useState(userData.username);
   const [firstName, setFirstName] = useState(userData.firstName);
   const [lastName, setLastName] = useState(userData.lastName);
   const [address, setAddress] = useState(userData.address);
@@ -19,7 +18,6 @@ const EditProfile = ({ userData }) => {
     e.preventDefault();
 
     const dataToBeSent = {
-      username,
       firstName,
       lastName,
       address,
@@ -42,14 +40,6 @@ const EditProfile = ({ userData }) => {
       <Heading fontSize="2xl">✍️ EDIT PROFILE</Heading>
 
       <Grid w="full" templateColumns={{ lg: 'repeat(2, 1fr)' }} gap={[5, 10]}>
-        <ControlledText
-          stateValue={username}
-          stateDispatch={setUsername}
-          formLabel="Username"
-          formHelper="Your username that you use to register"
-          formPlaceholder={username}
-        />
-
         <ControlledText
           stateValue={firstName}
           stateDispatch={setFirstName}
