@@ -10,7 +10,7 @@ router
   .get(roomController.getAllRooms)
   .post(
     authMiddleware.checkLoggedUser,
-    authMiddleware.routeGuard('admin', 'owner'),
+    authMiddleware.routeGuard('owner'),
     roomController.uploadRoomImages,
     roomMiddleware.resizeRoomImages,
     roomController.createRoom
@@ -28,7 +28,7 @@ router
   )
   .delete(
     authMiddleware.checkLoggedUser,
-    authMiddleware.routeGuard('admin', 'owner'),
+    authMiddleware.routeGuard('owner'),
     roomController.deleteRoom
   );
 
