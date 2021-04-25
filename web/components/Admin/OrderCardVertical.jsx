@@ -126,7 +126,7 @@ const OrderCardVertical = ({ data }) => {
                   if (apiResponse.status === 'success') {
                     toast({
                       title: 'Successfully updated!',
-                      description: 'This order is now yours to manage! Redirecting shortly...',
+                      description: 'This order is now yours to manage!',
                       status: 'success',
                       isClosable: true,
                     });
@@ -157,7 +157,7 @@ const OrderCardVertical = ({ data }) => {
                   if (apiResponse.status === 'success') {
                     toast({
                       title: 'Successfully updated!',
-                      description: 'This order is now accepted! Redirecting shortly...',
+                      description: 'This order is now accepted!',
                       status: 'success',
                       isClosable: true,
                     });
@@ -188,7 +188,7 @@ const OrderCardVertical = ({ data }) => {
                   if (apiResponse.status === 'success') {
                     toast({
                       title: 'Successfully updated!',
-                      description: 'This order is now finished! Redirecting shortly...',
+                      description: 'This order is now finished!',
                       status: 'success',
                       isClosable: true,
                     });
@@ -223,7 +223,7 @@ const OrderCardVertical = ({ data }) => {
               if (apiResponse.status === 'success') {
                 toast({
                   title: 'Successfully updated!',
-                  description: 'This order is now cancelled! Redirecting shortly...',
+                  description: 'This order is now cancelled!',
                   status: 'success',
                   isClosable: true,
                 });
