@@ -84,8 +84,6 @@ Before starting our application, we migrate the database first.
 npm run migrate
 ```
 
-If the migration fails (usually because of the date validation), just change the date of the data whose schema fails. The error message should be clear enough.
-
 Start our application. Remember we need two terminal processes!
 
 ```bash
@@ -98,7 +96,7 @@ cd Asuna/api
 npm run dev
 ```
 
-You're done!
+You're done! Open `http://localhost:3001` for the web frontend, and `http://localhost:3000` for the API backend.
 
 ## Deployment
 
