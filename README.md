@@ -2,6 +2,8 @@
 
 Asuna is an open-source building management system. This full-stack web application is open-source, under MIT License.
 
+![screenshot](./.github/screenshot.png)
+
 ## Introduction
 
 Coworking space is one of the newest business trends in Indonesia and Asian countries in general (Bouncken, 2016). One of the most important metric that we have to understand in order for these kinds of business to flourish is the community of the coworking space. People enjoy coworking spaces with great facilities and good communities (Seo, 2017). If handled correctly, coworking space could make people feel connected to one another and cause them to enjoy the environment, and even create new social circles along the way (Bianchi, 2018).
@@ -23,19 +25,20 @@ This application is built with performance and scalability in mind.
 
 ## Features
 
-- Simple, colorful, but intuitive UI.
-- Ability to create infinite amount of rooms and floors. Only your database limits these features.
+- Simple, colorful, but intuitive UI. This is subjective and differs according to the reader's interpretation.
+- Ability to create infinite amount of rooms and floors. Only the reader's database size limits the number.
 - Users can book a room, edit their own profile, and see their transactions.
-- Multiple role support: `user`, `admin`, `owner`.
+- Multiple role support: user, admin, owner.
 - Admins can perform CRUD operations on floors, rooms, employees.
+- Admins can manage the available orders from the users. An admin can change the status or cancel an available order.
 - Admins can see the earnings of the lifetime of this application.
 - Admins can create visitors via an interface in the admin panel.
 - Admins can create vouchers via API endpoints.
 - Dark mode support for the front-end.
-- High-performance support with preloaded pages, and caching.
+- High-performance support with pre-loaded pages, image lazy-loading, and caching.
 - Server-side rendering support for pages requiring authentication.
 - API-proxy via Next.js's serverless functions to provide extended security.
-- Personal and secure authentication with httpOnly / sameSite cookies and JWT.
+- Personal and secure authentication utilizing httpOnly / sameSite cookies and JWT (stateless but secure).
 - Accessibility support (`a11y`).
 
 ## Installation
@@ -83,11 +86,9 @@ Before starting our application, we migrate the database first.
 npm run migrate
 ```
 
-If the migration fails (usually because of the date validation), just change the date of the data whose schema fails. The error message should be clear enough.
-
 Start our application. Remember we need two terminal processes!
 
-```
+```bash
 # terminal 1
 cd Asuna/web/
 npm run dev
@@ -97,7 +98,7 @@ cd Asuna/api
 npm run dev
 ```
 
-You're done!
+You're done! Open `http://localhost:3001` for the web frontend, and `http://localhost:3000` for the API backend.
 
 ## Deployment
 
@@ -107,7 +108,7 @@ Before doing this, ensure that the current working directory is `Asuna`. In orde
 git subtree push --prefix api heroku master
 ```
 
-To deploy the front-end, do the following command.
+To deploy the front-end, do the following command. You have to be inside `Asuna/web`.
 
 ```bash
 npx vercel # preview mode
@@ -116,6 +117,20 @@ npx vercel --prod # production mode
 
 To prevent spamming of emails, I did not set up a hook that would instantly perform deployment after merging to the remote repository.
 
+## Update
+
+To update the dependencies, simply run:
+
+```bash
+cd Asuna/web
+npm run check-updates
+npm run update-deps
+
+cd Asuna/api
+npm run check-updates
+npm run update-deps
+```
+
 ## Contribution
 
 I accept all kinds of contributions. Feel free to submit a pull request or submit an issue if you encounter any issues!
@@ -123,13 +138,3 @@ I accept all kinds of contributions. Feel free to submit a pull request or submi
 ## License
 
 This application is licensed under MIT License. Please see the `LICENSE` file for more information.
-
-## Credits
-
-- Federico Bianchi, N. C. (2018). Solidarity as a byproduct of professional collaboration: Social support and trust in a coworking space. Social Networks, 61-72.
-
-- Jongseok Seo, L. L.-S. (2017). Priorities of Coworking Space Operation Based on Comparison of the Hosts and Users' Perspectives. Sustainability, 1-8
-
-- Ricarda B. Bouncken, S. M. (2018). Coopetition in coworking-spaces: value creation and appropriation tensions in an entrepreneurial space. Review of Managerial Science Vol. 12, 385-410.
-
-- Ricarda B. Bouncken, T. C. (2016). Coworking-spaces in Asia: A business model design perspective. SMS Special Conference Hong Kong, 1-9.

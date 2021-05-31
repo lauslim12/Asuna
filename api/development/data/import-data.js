@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Node imports
 const fs = require('fs');
 
@@ -6,13 +7,12 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 // Models
-const Employee = require('../../models/employeeModel');
-const Floor = require('../../models/floorModel');
-const Order = require('../../models/orderModel');
-const Room = require('../../models/roomModel');
-const User = require('../../models/userModel');
-const Visitor = require('../../models/visitorModel');
-const Voucher = require('../../models/voucherModel');
+const Employee = require('../../src/models/employeeModel');
+const Floor = require('../../src/models/floorModel');
+const Room = require('../../src/models/roomModel');
+const User = require('../../src/models/userModel');
+const Visitor = require('../../src/models/visitorModel');
+const Voucher = require('../../src/models/voucherModel');
 
 // Configurations
 dotenv.config({ path: '../../.env' });
@@ -39,7 +39,6 @@ const employees = JSON.parse(
   fs.readFileSync(`${__dirname}/employees.json`, 'utf-8')
 );
 const floors = JSON.parse(fs.readFileSync(`${__dirname}/floors.json`, 'utf-8'));
-const orders = JSON.parse(fs.readFileSync(`${__dirname}/orders.json`, 'utf-8'));
 const rooms = JSON.parse(fs.readFileSync(`${__dirname}/rooms.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const vouchers = JSON.parse(
@@ -54,7 +53,6 @@ const importDevData = async () => {
     await Employee.create(employees);
     await Floor.create(floors);
     await Room.create(rooms);
-    await Order.create(orders);
     await Visitor.create();
     await Voucher.create(vouchers);
 
@@ -73,7 +71,6 @@ const deleteDevData = async () => {
     await Floor.deleteMany();
     await Room.deleteMany();
     await User.deleteMany();
-    await Order.deleteMany();
     await Visitor.deleteMany();
     await Voucher.deleteMany();
 
@@ -85,9 +82,9 @@ const deleteDevData = async () => {
   process.exit();
 };
 
-if (process.argv[2] == '--import') {
+if (process.argv[2] === '--import') {
   importDevData();
-} else if (process.argv[2] == '--delete') {
+} else if (process.argv[2] === '--delete') {
   deleteDevData();
 } else {
   console.log(

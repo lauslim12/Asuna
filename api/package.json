@@ -1,14 +1,17 @@
 {
   "name": "asuna-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "API for Asuna",
-  "main": "server.js",
+  "main": "src/server.js",
+  "private": true,
   "scripts": {
-    "lint": "npx eslint . --ext .js",
+    "lint": "npx eslint . --ext .js --fix",
     "format": "prettier --write ./**/*.js",
-    "migrate": "cd .development/data && node import-data.js --delete && node import-data.js --import",
-    "start": "node server.js",
-    "dev": "nodemon server.js --trace-sync-io"
+    "migrate": "node development/data/import-data --delete && node development/data/import-data --import",
+    "check-updates": "npx ncu",
+    "update-deps": "npx ncu -u",
+    "start": "node src/server",
+    "dev": "nodemon src/server --trace-sync-io"
   },
   "repository": {
     "type": "git",
@@ -25,36 +28,37 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-mongo-sanitize": "^2.0.2",
-    "express-rate-limit": "^5.2.3",
-    "helmet": "^4.4.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-rate-limit": "^5.2.6",
+    "helmet": "^4.6.0",
     "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.14",
+    "mongoose": "^5.12.12",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
-    "sharp": "^0.27.2",
-    "slugify": "^1.4.6",
-    "validator": "^13.5.2",
+    "sharp": "^0.28.3",
+    "slugify": "^1.5.3",
+    "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1"
+    "npm-check-updates": "^11.6.0",
+    "prettier": "^2.3.0"
   },
   "engines": {
-    "node": "14.x",
-    "npm": "6.x"
+    "node": ">=14.x",
+    "npm": ">=6.x"
   }
 }
