@@ -2,6 +2,8 @@
 
 Asuna is an open-source building management system. This full-stack web application is open-source, under MIT License.
 
+![screenshot](./.github/screenshot.png)
+
 ## Introduction
 
 Coworking space is one of the newest business trends in Indonesia and Asian countries in general (Bouncken, 2016). One of the most important metric that we have to understand in order for these kinds of business to flourish is the community of the coworking space. People enjoy coworking spaces with great facilities and good communities (Seo, 2017). If handled correctly, coworking space could make people feel connected to one another and cause them to enjoy the environment, and even create new social circles along the way (Bianchi, 2018).
@@ -114,6 +116,20 @@ npx vercel --prod # production mode
 ```
 
 To prevent spamming of emails, I did not set up a hook that would instantly perform deployment after merging to the remote repository.
+
+## Update
+
+To update the dependencies, simply run:
+
+```bash
+cd Asuna/web
+npm run check-updates
+npm run update-deps
+
+cd Asuna/api
+npm run check-updates
+npm run update-deps
+```
 
 ## Contribution
 
