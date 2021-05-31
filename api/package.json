@@ -1,8 +1,9 @@
 {
   "name": "asuna-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "API for Asuna",
-  "main": "server.js",
+  "main": "src/server.js",
+  "private": true,
   "scripts": {
     "lint": "npx eslint . --ext .js --fix",
     "format": "prettier --write ./**/*.js",
