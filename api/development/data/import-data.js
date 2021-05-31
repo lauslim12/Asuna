@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 // Models
 const Employee = require('../../src/models/employeeModel');
 const Floor = require('../../src/models/floorModel');
-const Order = require('../../src/models/orderModel');
 const Room = require('../../src/models/roomModel');
 const User = require('../../src/models/userModel');
 const Visitor = require('../../src/models/visitorModel');
@@ -40,7 +39,6 @@ const employees = JSON.parse(
   fs.readFileSync(`${__dirname}/employees.json`, 'utf-8')
 );
 const floors = JSON.parse(fs.readFileSync(`${__dirname}/floors.json`, 'utf-8'));
-const orders = JSON.parse(fs.readFileSync(`${__dirname}/orders.json`, 'utf-8'));
 const rooms = JSON.parse(fs.readFileSync(`${__dirname}/rooms.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const vouchers = JSON.parse(
@@ -55,7 +53,6 @@ const importDevData = async () => {
     await Employee.create(employees);
     await Floor.create(floors);
     await Room.create(rooms);
-    await Order.create(orders);
     await Visitor.create();
     await Voucher.create(vouchers);
 
@@ -74,7 +71,6 @@ const deleteDevData = async () => {
     await Floor.deleteMany();
     await Room.deleteMany();
     await User.deleteMany();
-    await Order.deleteMany();
     await Visitor.deleteMany();
     await Voucher.deleteMany();
 
