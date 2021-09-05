@@ -1,8 +1,12 @@
 # Asuna
 
-Asuna is an open-source building management system. This full-stack web application is open-source, under MIT License.
+Project Asuna is an open-source building management system. This full-stack web application is open-source, under MIT License and is published in Indian Journal of Economics and Business, Vol. 20 No. 2 (July - December 2021).
+
+Check out the research paper [by clicking me](http://www.ashwinanokha.com/ijeb-vol20-2-2021.php)!
 
 ![screenshot](./.github/screenshot.png)
+
+Authors: Nicholas Dwiarto Wirasbawa, M. Dzulfiqar Ramadhan Wibawanto, Albert Kosasi, Seng Hansun.
 
 ## Introduction
 
