@@ -12,7 +12,7 @@ Authors: Nicholas Dwiarto Wirasbawa, M. Dzulfiqar Ramadhan Wibawanto, Albert Kos
 
 Coworking space is one of the newest business trends in Indonesia and Asian countries in general (Bouncken, 2016). One of the most important metric that we have to understand in order for these kinds of business to flourish is the community of the coworking space. People enjoy coworking spaces with great facilities and good communities (Seo, 2017). If handled correctly, coworking space could make people feel connected to one another and cause them to enjoy the environment, and even create new social circles along the way (Bianchi, 2018).
 
-If I recall correctly, there have not been a single application to manage these coworking spaces with extremely flexibility. In this application, flexibility means the ability for one to create _n_ rooms and floors, where _n_ itself means infinite. In short, this application is an open-source building management system that allows one to create infinite number of rooms and floors for their own buildings. Users of this application could also place their orders online, shall this application comes to the production version.
+There have not been a single application to manage these coworking spaces with extremely flexibility. In this application, flexibility means the ability for one to create _n_ rooms and floors, where _n_ itself means infinite. In short, this application is an open-source building management system that allows one to create infinite number of rooms and floors for their own buildings. Users of this application could also place their orders online, shall this application comes to the production version.
 
 This application is built with performance and scalability in mind.
 
@@ -141,4 +141,8 @@ I accept all kinds of contributions. Feel free to submit a pull request or submi
 
 ## License
 
-This application is licensed under MIT License. Please see the `LICENSE` file for more information.
+This application is licensed under MIT License, and the research paper is under Creative Commons. For the application's license, please see the `LICENSE` file for more information.
+
+## Credits
+
+In some parts of the website, we use assets from Unsplash and Genshin Impact (for the room picture only). All rights reserved to their respective owners. We have both acknowledged and cited all of the assets' respective owners in the research paper properly.
