@@ -5,13 +5,12 @@
   "main": "src/server.js",
   "private": true,
   "scripts": {
-    "lint": "npx eslint . --ext .js --fix",
-    "format": "prettier --write ./**/*.js",
-    "migrate": "node development/data/import-data --delete && node development/data/import-data --import",
-    "check-updates": "npx ncu",
-    "update-deps": "npx ncu -u",
     "start": "node src/server",
-    "dev": "nodemon src/server --trace-sync-io"
+    "dev": "nodemon src/server --trace-sync-io",
+    "migrate": "node development/data/migrate --delete && node development/data/migrate --import",
+    "format-check": "prettier --write ./**/*.js",
+    "eslint-check": "eslint . --ext .js",
+    "lint": "yarn format-check && yarn eslint-check"
   },
   "repository": {
     "type": "git",
@@ -54,7 +53,6 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.7",
-    "npm-check-updates": "^11.6.0",
     "prettier": "^2.3.0"
   },
   "engines": {
