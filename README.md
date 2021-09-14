@@ -4,7 +4,7 @@ Project Asuna is an open-source building management system. This full-stack web 
 
 Check out the research paper [by clicking me](http://www.ashwinanokha.com/ijeb-vol20-2-2021.php)!
 
-![screenshot](./.github/screenshot.png)
+![screenshot](./assets/screenshot.png)
 
 Authors: Nicholas Dwiarto Wirasbawa, M. Dzulfiqar Ramadhan Wibawanto, Albert Kosasi, Seng Hansun.
 
@@ -20,9 +20,9 @@ There have not been a single application to manage these coworking spaces with e
 
 This application is built with performance and scalability in mind.
 
-## Architecture
+## Tech Stack
 
-- JavaScript (main programming language)
+- JavaScript (programming language)
 - Next.js (front-end)
 - Chakra UI (front-end framework)
 - Express.js (back-end)
@@ -49,16 +49,26 @@ This application is built with performance and scalability in mind.
 - Personal and secure authentication utilizing httpOnly / sameSite cookies and JWT (stateless but secure).
 - Accessibility support (`a11y`).
 
+## Requirements
+
+- [Node.js 14+](https://nodejs.org/)
+- [Yarn 1.22+](https://yarnpkg.com/)
+- [MongoDB Atlas](https://www.mongodb.com/)
+
 ## Installation
 
-To use this repository, both front-end and back-end must be active simultaneously.
+To use this repository, both front-end and back-end must be active simultaneously. We will describe on how to set up each parts. As an initial setup, please clone the repository first.
+
+- Clone the repository first.
 
 ```bash
 git clone https://github.com/lauslim12/Asuna.git
 cd Asuna
 ```
 
-Then, we have to fill the environment variables for both `web` and `api`. For the `web`, the settings are as follows.
+### Web Setup
+
+- Then, we have to fill the environment variables for both `web` and `api`. For the `web`, the settings are as follows.
 
 ```bash
 export JWT_COOKIE_EXPIRES_IN=<YOUR_VARIABLE>
@@ -66,77 +76,88 @@ export PRIVATE_API_URL=<YOUR_VARIABLE>
 export NEXT_PUBLIC_API_URL=<YOUR_VARIABLE>
 ```
 
-Alternatively, you can change the `.env.development` file and set the variables from there. Don't forget to rename it to `.env` so that it can be used.
+- Alternatively, you can change the `.env.development` file and set the variables from there. Don't forget to rename it to `.env.local` so that it can be used.
 
-For the `api`, the settings are as follows.
+```bash
+nano .env.development
+mv .env.development .env.local
+```
+
+- Install the website!
+
+```bash
+yarn --frozen-lockfile
+```
+
+- Start the website in development mode.
+
+```bash
+yarn dev
+```
+
+- Start the website in production mode.
+
+```bash
+yarn build
+yarn start
+```
+
+### API Setup
+
+- You need to spawn another terminal process. For the `api`, the environment variables that you need to fill are as follows.
 
 ```bash
 export CLIENT_SIDE_URL=...
-export DATABASE_PASSWORD=
-export DATABASE_LOCAL=
-export DATABASE=
+export DATABASE= # this has to be your 'complete URL string' - complete with username, password, and database name
 export JWT_SECRET=
 export JWT_EXPIRES_IN=
 export JWT_COOKIE_EXPIRES_IN=
 ```
 
-Or, same as above, change the `.env.development` file and rename it to `.env`.
-
-Then, we can simply just install the application.
+- Or, same as above, change the `.env.development` file and rename it to `.env`.
 
 ```bash
-npm install
+nano .env.development
+mv .env.development .env
 ```
 
-Before starting our application, we migrate the database first.
+- Then, we can just install the application.
 
 ```bash
-npm run migrate
+yarn --frozen-lockfile
 ```
 
-Start our application. Remember we need two terminal processes!
+- Before starting our API, we migrate the database first with dummy data.
 
 ```bash
-# terminal 1
-cd Asuna/web/
-npm run dev
-
-# terminal 2
-cd Asuna/api
-npm run dev
+yarn migrate
 ```
 
-You're done! Open `http://localhost:3001` for the web frontend, and `http://localhost:3000` for the API backend.
+- Start our API. Remember we need two terminal processes, one for web, and one for API!
+
+```bash
+yarn dev
+```
+
+- Or you can also start the API in production mode.
+
+```bash
+yarn start
+```
+
+You're totally done! Open `http://localhost:3001` for the web frontend, and `http://localhost:3000` for the API backend.
 
 ## Deployment
 
-Before doing this, ensure that the current working directory is `Asuna`. In order to deploy the back-end, do the following command.
+GitHub Actions have already been set in this repository to implement the CI/CD part of the web application. It will deploy the frontend to [Vercel](https://vercel.com/), and will deploy the backend to [Heroku](https://www.heroku.com/).
+
+## Updating
+
+To update the dependencies, you can run the following commands in both `api` and `web`.
 
 ```bash
-git subtree push --prefix api heroku master
-```
-
-To deploy the front-end, do the following command. You have to be inside `Asuna/web`.
-
-```bash
-npx vercel # preview mode
-npx vercel --prod # production mode
-```
-
-To prevent spamming of emails, I did not set up a hook that would instantly perform deployment after merging to the remote repository.
-
-## Update
-
-To update the dependencies, simply run:
-
-```bash
-cd Asuna/web
-npm run check-updates
-npm run update-deps
-
-cd Asuna/api
-npm run check-updates
-npm run update-deps
+yarn outdated
+yarn upgrade-interactive --latest
 ```
 
 ## Contribution
