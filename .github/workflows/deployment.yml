@@ -18,7 +18,9 @@ jobs:
         with:
           node-version: "16"
           cache: "yarn"
-          cache-dependency-path: "**/yarn.lock"
+          cache-dependency-path: |
+            ./web/yarn.lock
+            ./api/yarn.lock
 
       - name: Install all frontend dependencies
         run: yarn --frozen-lockfile
@@ -44,7 +46,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy production version to Vercel
+      - name: Deploy website (production version) to Vercel
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
