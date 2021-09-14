@@ -1,12 +1,12 @@
 [
   {
     "_id": "5c8a1d5b0190b214360dc056",
-    "firstName": "Nicholas",
-    "lastName": "Dwiarto Wirasbawa",
-    "address": "Jl. Pertanian Raya, Jakarta Selatan",
-    "birthdate": "2000-04-07",
-    "email": "nicholasdwiarto@yahoo.com",
-    "username": "nicholasdwiarto",
+    "firstName": "Mark",
+    "lastName": "Transformer",
+    "address": "United States of America",
+    "birthdate": "2000-04-01",
+    "email": "mark-transformer@yahoo.com",
+    "username": "mark",
     "password": "test1234",
     "passwordConfirm": "test1234",
     "role": "owner"
