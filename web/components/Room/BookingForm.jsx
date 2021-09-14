@@ -26,7 +26,7 @@ import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
 const BookingForm = ({ roomData }) => {
   const { state } = useContext(UserContext);
-  const [code, setCode] = useState('Enter your promo code here!');
+  const [code, setCode] = useState('Enter your promo code by clicking me or leave this alone!');
   const [startMonth, setStartMonth] = useState(new Date().getMonth());
   const [endMonth, setEndMonth] = useState(new Date().getMonth());
   const [startYear, setStartYear] = useState(new Date().getFullYear());
@@ -183,7 +183,7 @@ const BookingForm = ({ roomData }) => {
             <Text>😄 And then, make your request!</Text>
             <Text>{`Estimated price: ${currencyDisplay(price)}`}</Text>
 
-            <Editable value={code} onChange={(value) => setCode(value)}>
+            <Editable value={code} onChange={(value) => setCode(value)} isPreviewFocusable>
               <EditablePreview />
               <EditableInput />
             </Editable>

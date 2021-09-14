@@ -1,17 +1,15 @@
 {
   "name": "asuna-web",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Web for Asuna",
   "private": true,
   "scripts": {
-    "lint": "npx eslint . --ext .jsx --fix",
-    "format": "prettier --write --config ./.prettierrc ./**/*.{js,jsx}",
-    "format:check": "prettier --check --config ./.prettierrc ./**/*.{js,jsx}",
-    "check-updates": "npx ncu",
-    "update-deps": "npx ncu -u",
     "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start -p 3001"
+    "start": "next start -p 3001",
+    "format-check": "prettier --check --config ./.prettierrc ./**/*.{js,jsx}",
+    "eslint-check": "eslint . --ext .jsx",
+    "lint": "yarn format-check && yarn eslint-check"
   },
   "repository": {
     "type": "git",
@@ -31,7 +29,7 @@
     "cookies": "^0.8.0",
     "focus-visible": "^5.2.0",
     "framer-motion": "^4.1.17",
-    "next": "10.2.3",
+    "next": "11.1.2",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
@@ -43,15 +41,14 @@
   "devDependencies": {
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "npm-check-updates": "^11.6.0",
-    "prettier": "^2.3.0",
-    "vercel": "^23.0.0"
+    "prettier": "^2.3.0"
   }
 }

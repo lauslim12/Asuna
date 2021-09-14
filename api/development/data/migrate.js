@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 // Node imports
 const fs = require('fs');
+const path = require('path');
 
 // Third-party imports
 const dotenv = require('dotenv');
@@ -15,18 +16,11 @@ const Visitor = require('../../src/models/visitorModel');
 const Voucher = require('../../src/models/voucherModel');
 
 // Configurations
-dotenv.config({ path: '../../.env' });
+dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
 
 // Mongoose
-const DB = process.env.DATABASE;
-
 mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.DATABASE)
   .then(() => {
     console.log('Database connection successfull!');
   })

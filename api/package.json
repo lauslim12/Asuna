@@ -1,17 +1,16 @@
 {
   "name": "asuna-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "API for Asuna",
   "main": "src/server.js",
   "private": true,
   "scripts": {
-    "lint": "npx eslint . --ext .js --fix",
-    "format": "prettier --write ./**/*.js",
-    "migrate": "node development/data/import-data --delete && node development/data/import-data --import",
-    "check-updates": "npx ncu",
-    "update-deps": "npx ncu -u",
     "start": "node src/server",
-    "dev": "nodemon src/server --trace-sync-io"
+    "dev": "nodemon src/server --trace-sync-io",
+    "migrate": "node development/data/migrate --delete && node development/data/migrate --import",
+    "format-check": "prettier --check --config ./.prettierrc ./**/*.js",
+    "eslint-check": "eslint . --ext .js",
+    "lint": "yarn format-check && yarn eslint-check"
   },
   "repository": {
     "type": "git",
@@ -35,10 +34,10 @@
     "helmet": "^4.6.0",
     "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.12",
+    "mongoose": "^6.0.5",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
-    "sharp": "^0.28.3",
+    "sharp": "^0.29.1",
     "slugify": "^1.5.3",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
@@ -50,11 +49,10 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.7",
-    "npm-check-updates": "^11.6.0",
     "prettier": "^2.3.0"
   },
   "engines": {
