@@ -4,6 +4,8 @@ Project Asuna is an open-source building management system. This full-stack web 
 
 Check out the research paper [by clicking me](http://www.ashwinanokha.com/ijeb-vol20-2-2021.php)!
 
+Check out the live version of the application by clicking on the link in the repository's description.
+
 ![screenshot](./assets/screenshot.png)
 
 Authors: Nicholas Dwiarto Wirasbawa, M. Dzulfiqar Ramadhan Wibawanto, Albert Kosasi, Seng Hansun.
@@ -66,7 +68,15 @@ git clone https://github.com/lauslim12/Asuna.git
 cd Asuna
 ```
 
+For the next steps, it is assumed that your working directory is `Asuna`, the root directory of this repository.
+
 ### Web Setup
+
+- Switch to the `web` directory.
+
+```bash
+cd web
+```
 
 - Then, we have to fill the environment variables for both `web` and `api`. For the `web`, the settings are as follows.
 
@@ -104,7 +114,13 @@ yarn start
 
 ### API Setup
 
-- You need to spawn another terminal process. For the `api`, the environment variables that you need to fill are as follows.
+- You need to spawn another terminal process. Change to the `api` directory.
+
+```bash
+cd api
+```
+
+- For the `api`, the environment variables that you need to fill are as follows.
 
 ```bash
 export CLIENT_SIDE_URL=...
