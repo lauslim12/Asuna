@@ -6,8 +6,38 @@ on:
     branches: [lumine]
 
 jobs:
+  node:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: "yarn"
+          cache-dependency-path: "**/yarn.lock"
+
+      - name: Install all frontend dependencies
+        run: yarn --frozen-lockfile
+        working-directory: ./web
+
+      - name: Lint web frontend
+        run: yarn lint
+        working-directory: ./web
+
+      - name: Install all backend dependencies
+        run: yarn --frozen-lockfile
+        working-directory: ./api
+
+      - name: Lint API backend
+        run: yarn lint
+
   vercel:
     runs-on: ubuntu-20.04
+    needs: node
 
     steps:
       - name: Checkout code
@@ -24,6 +54,7 @@ jobs:
 
   heroku:
     runs-on: ubuntu-20.04
+    needs: node
 
     steps:
       - name: Checkout code
