@@ -12,7 +12,7 @@ Please follow this for the sake of the code to be as readable and maintainable a
 - Before you submit your pull request, ensure that you run the following procedures.
 
 ```bash
-npm run lint # for both 'api' and 'web'!
+yarn lint # for both 'api' and 'web'!
 ```
 
 ## Commit Style Guide
