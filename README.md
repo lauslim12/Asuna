@@ -28,10 +28,10 @@ This application is built with performance and scalability in mind.
 - Next.js (front-end)
 - Chakra UI (front-end framework)
 - Express.js (back-end)
-- MongoDB (database)
+- MongoDB (Atlas) (database, and database on cloud)
 - Vercel (front-end hosting)
 - Heroku (back-end hosting)
-- MongoDB Atlas (database on cloud)
+- GitHub Actions (CI/CD)
 
 ## Features
 
