@@ -8,7 +8,7 @@
     "start": "node src/server",
     "dev": "nodemon src/server --trace-sync-io",
     "migrate": "node development/data/migrate --delete && node development/data/migrate --import",
-    "format-check": "prettier --write ./**/*.js",
+    "format-check": "prettier --check --config ./.prettierrc ./**/*.js",
     "eslint-check": "eslint . --ext .js",
     "lint": "yarn format-check && yarn eslint-check"
   },
