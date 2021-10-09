@@ -188,7 +188,7 @@ This application is licensed under MIT License, and the research paper is under 
 
 ## Acknowledgements
 
-In some parts of the website, we use assets from Unsplash and Genshin Impact (for the room picture only) in order to make a user-friendly interface and as an example on how to implement a simple personal brand (both which of the outcomes of this research project). All rights reserved to their respective owners. We have both acknowledged and cited all of the assets' respective owners in the research paper and in this repository properly.
+In some parts of the website, we use assets from Unsplash and Genshin Impact (for the room picture only) in order to make a user-friendly interface and as an example on how to implement a simple personal brand (two topics that we also investigate and research here, as stated above). All rights reserved to their respective owners. We have both acknowledged and cited all of the assets' respective owners in the research paper and in this repository properly.
 
 ## References
 
