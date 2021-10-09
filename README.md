@@ -8,7 +8,7 @@ Check out the live version of the application by clicking on the link in the rep
 
 ## Disclaimer
 
-Project Asuna is **strictly non-commercial** and is used for **education and research purposes only**. You can use this as a base if you want to create a scalable system with the accompanying tech stack, but please do not use this project 'as it is' in your production scenarios. All of the assets in this website are dummy data and dummy assets, and all rights reserved to their original owners of the assets.
+Project Asuna is **strictly non-commercial** and is used for **education and academic research purposes only**. You can use this as a base if you want to create a scalable system with the accompanying tech stack, but please do not use this project 'as it is' in your production scenarios. All of the assets in this website are dummy data and dummy assets, and all rights reserved to their original owners of the assets.
 
 ## Abstract
 
