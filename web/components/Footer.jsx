@@ -7,6 +7,7 @@ const Footer = () => (
       <Text>
         Asuna is an open-source, full-stack web application to manage a scalable building.
       </Text>
+      <Text>Images used in this website belong to their respective owners.</Text>
     </chakra.div>
 
     <HStack spacing={4} justify="center">
