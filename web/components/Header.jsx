@@ -15,7 +15,7 @@ import { FaMoon } from 'react-icons/fa';
 import UserContext from '../utils/userContext';
 import webRoutes from '../utils/webRoutes';
 
-const Header = () => {
+function Header() {
   const { state } = useContext(UserContext);
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -66,6 +66,6 @@ const Header = () => {
       </HStack>
     </HStack>
   );
-};
+}
 
 export default Header;

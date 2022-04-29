@@ -20,7 +20,7 @@ export const getServerSideProps = withAdministrator(() => {
   };
 });
 
-const CreateEmployees = () => {
+function CreateEmployees() {
   const [user, setUser] = useState('');
   const [salary, setSalary] = useState(1);
   const [jobdesc, setJobdesc] = useState('security');
@@ -103,6 +103,6 @@ const CreateEmployees = () => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 export default CreateEmployees;

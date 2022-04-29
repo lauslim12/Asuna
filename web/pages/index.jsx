@@ -5,7 +5,7 @@ import Padding from '../components/Home/Padding';
 import Services from '../components/Home/Services';
 import Layout from '../components/Layout';
 
-const Home = () => {
+function Home() {
   return (
     <Layout title={['Home']}>
       <Hero />
@@ -32,6 +32,6 @@ const Home = () => {
       <Go />
     </Layout>
   );
-};
+}
 
 export default Home;

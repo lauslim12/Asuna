@@ -34,7 +34,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const Earnings = ({ data, total }) => {
+function Earnings({ data, total }) {
   const router = useRouter();
 
   return (
@@ -82,7 +82,7 @@ const Earnings = ({ data, total }) => {
       </VStack>
     </Layout>
   );
-};
+}
 
 Earnings.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

@@ -33,16 +33,5 @@
     "username": "alfatah",
     "password": "test1234",
     "passwordConfirm": "test1234"
-  },
-  {
-    "_id": "5c8a1dfa2f8fb814b56fa180",
-    "firstName": "Marcus",
-    "lastName": "Wibisono",
-    "address": "Jl. Terogong Raya, Jakarta Selatan",
-    "birthdate": "2000-01-02",
-    "email": "marcus.wibisono@gmail.com",
-    "username": "marcus",
-    "password": "test1234",
-    "passwordConfirm": "test1234"
   }
 ]

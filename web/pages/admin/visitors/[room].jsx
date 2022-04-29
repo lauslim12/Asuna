@@ -26,7 +26,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const VisitorsCreate = ({ roomData }) => {
+function VisitorsCreate({ roomData }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
@@ -109,7 +109,7 @@ const VisitorsCreate = ({ roomData }) => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 VisitorsCreate.propTypes = {
   roomData: PropTypes.instanceOf(Object).isRequired,

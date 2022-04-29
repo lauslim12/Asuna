@@ -8,12 +8,12 @@ export const getServerSideProps = withAdministrator(() => {
   };
 });
 
-const Visitors = () => {
+function Visitors() {
   return (
     <Layout title={['Visitors']}>
       <ListOfRooms route="visitors" />
     </Layout>
   );
-};
+}
 
 export default Visitors;

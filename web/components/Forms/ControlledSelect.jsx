@@ -3,33 +3,35 @@ import { FormControl, FormHelperText, FormLabel, Select } from '@chakra-ui/react
 import PropTypes from 'prop-types';
 
 // '_id' because of MongoDB's id.
-const ControlledSelect = ({
+function ControlledSelect({
   stateValue,
   stateDispatch,
   formLabel,
   formHelper,
   optionValues,
   keyToDisplay,
-}) => (
-  <FormControl isRequired>
-    <FormLabel>{formLabel}</FormLabel>
-    <Select
-      isRequired
-      errorBorderColor="green.500"
-      size="lg"
-      onChange={({ currentTarget: { value } }) => stateDispatch(value)}
-      value={stateValue}
-    >
-      {optionValues.map((value) => (
-        <option key={value._id} value={value._id}>
-          {value[keyToDisplay]}
-        </option>
-      ))}
-    </Select>
+}) {
+  return (
+    <FormControl isRequired>
+      <FormLabel>{formLabel}</FormLabel>
+      <Select
+        isRequired
+        errorBorderColor="green.500"
+        size="lg"
+        onChange={({ currentTarget: { value } }) => stateDispatch(value)}
+        value={stateValue}
+      >
+        {optionValues.map((value) => (
+          <option key={value._id} value={value._id}>
+            {value[keyToDisplay]}
+          </option>
+        ))}
+      </Select>
 
-    <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
-  </FormControl>
-);
+      <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
+    </FormControl>
+  );
+}
 
 ControlledSelect.propTypes = {
   stateValue: PropTypes.string.isRequired,

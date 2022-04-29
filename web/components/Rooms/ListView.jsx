@@ -10,7 +10,7 @@ import webRoutes from '../../utils/webRoutes';
 import CustomSpinner from '../CustomSpinner';
 import RoomCard from './RoomCard';
 
-const RoomsListView = ({ route }) => {
+function RoomsListView({ route }) {
   const [rooms, setRooms] = useState([]);
   const [maxFloor, setMaxFloor] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -84,7 +84,7 @@ const RoomsListView = ({ route }) => {
       )}
     </VStack>
   );
-};
+}
 
 RoomsListView.propTypes = {
   route: PropTypes.oneOf(['roomDetail', 'visitors']).isRequired,

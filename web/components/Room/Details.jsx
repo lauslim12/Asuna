@@ -5,7 +5,7 @@ import { GiEscalator } from 'react-icons/gi';
 import { IoMdConstruct } from 'react-icons/io';
 import { RiProfileFill, RiQuestionFill } from 'react-icons/ri';
 
-const Details = ({ roomData }) => {
+function Details({ roomData }) {
   const allFeatures = roomData.roomFeatures.join(', ');
 
   return (
@@ -148,7 +148,7 @@ const Details = ({ roomData }) => {
       </Flex>
     </Flex>
   );
-};
+}
 
 Details.propTypes = {
   roomData: PropTypes.instanceOf(Object).isRequired,

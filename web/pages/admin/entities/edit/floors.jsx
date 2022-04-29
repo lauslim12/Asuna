@@ -32,7 +32,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const EditFloors = ({ data }) => {
+function EditFloors({ data }) {
   const [number, setNumber] = useState(data.number);
   const [name, setName] = useState(data.name);
   const router = useRouter();
@@ -99,7 +99,7 @@ const EditFloors = ({ data }) => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 EditFloors.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

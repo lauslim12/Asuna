@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import webRoutes from '../../utils/webRoutes';
 
-const Hero = () => {
+function Hero() {
   return (
     <Flex
       align="center"
@@ -47,6 +47,6 @@ const Hero = () => {
       </Box>
     </Flex>
   );
-};
+}
 
 export default Hero;

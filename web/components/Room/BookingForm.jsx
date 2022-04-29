@@ -24,7 +24,7 @@ import UserContext from '../../utils/userContext';
 import webRoutes from '../../utils/webRoutes';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
-const BookingForm = ({ roomData }) => {
+function BookingForm({ roomData }) {
   const { state } = useContext(UserContext);
   const [code, setCode] = useState('Enter your promo code by clicking me or leave this alone!');
   const [startMonth, setStartMonth] = useState(new Date().getMonth());
@@ -221,7 +221,7 @@ const BookingForm = ({ roomData }) => {
       )}
     </VStack>
   );
-};
+}
 
 BookingForm.propTypes = {
   roomData: PropTypes.instanceOf(Object).isRequired,

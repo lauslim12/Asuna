@@ -14,7 +14,7 @@ import { useRef } from 'react';
 
 import webRoutes from '../../utils/webRoutes';
 
-const CreationModal = ({ isOpen, onClose }) => {
+function CreationModal({ isOpen, onClose }) {
   const cancelRef = useRef();
 
   return (
@@ -45,7 +45,7 @@ const CreationModal = ({ isOpen, onClose }) => {
       </AlertDialogOverlay>
     </AlertDialog>
   );
-};
+}
 
 CreationModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,

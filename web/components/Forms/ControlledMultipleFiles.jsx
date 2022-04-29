@@ -1,19 +1,21 @@
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const ControlledMultipleFiles = ({ stateDispatch, formLabel, formHelper, isRequired }) => (
-  <FormControl isRequired>
-    <FormLabel>{formLabel}</FormLabel>
-    <input
-      type="file"
-      onChange={({ currentTarget: { files } }) => stateDispatch(files)}
-      multiple
-      required={!!isRequired}
-    />
+function ControlledMultipleFiles({ stateDispatch, formLabel, formHelper, isRequired }) {
+  return (
+    <FormControl isRequired>
+      <FormLabel>{formLabel}</FormLabel>
+      <input
+        type="file"
+        onChange={({ currentTarget: { files } }) => stateDispatch(files)}
+        multiple
+        required={!!isRequired}
+      />
 
-    <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
-  </FormControl>
-);
+      <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
+    </FormControl>
+  );
+}
 
 ControlledMultipleFiles.propTypes = {
   stateDispatch: PropTypes.func.isRequired,

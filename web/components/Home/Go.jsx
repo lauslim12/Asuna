@@ -7,15 +7,17 @@ import { IoEnter } from 'react-icons/io5';
 
 import webRoutes from '../../utils/webRoutes';
 
-const CustomButton = ({ colorScheme, content, href, icon }) => (
-  <NextLink href={href} passHref>
-    <Button colorScheme={colorScheme} leftIcon={<Icon as={icon} />}>
-      {content}
-    </Button>
-  </NextLink>
-);
+function CustomButton({ colorScheme, content, href, icon }) {
+  return (
+    <NextLink href={href} passHref>
+      <Button colorScheme={colorScheme} leftIcon={<Icon as={icon} />}>
+        {content}
+      </Button>
+    </NextLink>
+  );
+}
 
-const Go = () => {
+function Go() {
   return (
     <VStack spacing={5} mb={5} px={8}>
       <Heading as="h1" size="xl" fontWeight="bold" textAlign="center" mb={5}>
@@ -44,7 +46,7 @@ const Go = () => {
       </Stack>
     </VStack>
   );
-};
+}
 
 CustomButton.propTypes = {
   colorScheme: PropTypes.string.isRequired,

@@ -20,7 +20,7 @@ import { useState } from 'react';
 import { post } from '../../utils/apiHelper';
 import dateDisplay from '../../utils/dateDisplay';
 
-const OrderCardVertical = ({ data }) => {
+function OrderCardVertical({ data }) {
   const [currentData, setCurrentData] = useState(data);
   const toast = useToast();
 
@@ -249,7 +249,7 @@ const OrderCardVertical = ({ data }) => {
       </Stack>
     </WrapItem>
   );
-};
+}
 
 OrderCardVertical.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

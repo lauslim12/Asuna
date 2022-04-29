@@ -23,7 +23,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const AdminEntities = ({ data, entity }) => {
+function AdminEntities({ data, entity }) {
   const entitiesToRender = () => {
     if (entity === 'floors') {
       return (
@@ -80,7 +80,7 @@ const AdminEntities = ({ data, entity }) => {
       )}
     </Layout>
   );
-};
+}
 
 AdminEntities.propTypes = {
   data: PropTypes.instanceOf(Object),

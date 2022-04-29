@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Footer from './Footer';
 import Header from './Header';
 
-const Layout = ({ children, title }) => {
+function Layout({ children, title }) {
   return (
     <>
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -28,7 +28,7 @@ const Layout = ({ children, title }) => {
       </Flex>
     </>
   );
-};
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

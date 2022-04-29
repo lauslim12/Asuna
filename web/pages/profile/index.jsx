@@ -47,14 +47,16 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Profile = ({ myData, myOrders }) => (
-  <Layout title={['Profile']}>
-    <ProfileHeading userData={myData.data} />
-    <EditProfile userData={myData.data} />
-    <TransactionHistory userHistory={myOrders.data} />
-    <LogoutArea />
-  </Layout>
-);
+function Profile({ myData, myOrders }) {
+  return (
+    <Layout title={['Profile']}>
+      <ProfileHeading userData={myData.data} />
+      <EditProfile userData={myData.data} />
+      <TransactionHistory userHistory={myOrders.data} />
+      <LogoutArea />
+    </Layout>
+  );
+}
 
 Profile.propTypes = {
   myData: PropTypes.instanceOf(Object).isRequired,

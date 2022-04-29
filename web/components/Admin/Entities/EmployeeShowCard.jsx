@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { patchAuth, post } from '../../../utils/apiHelper';
 import webRoutes from '../../../utils/webRoutes';
 
-const EmployeeShowCard = ({ data }) => {
+function EmployeeShowCard({ data }) {
   const [currentData, setCurrentData] = useState(data);
   const [modalData, setModalData] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -138,121 +138,113 @@ const EmployeeShowCard = ({ data }) => {
     });
   };
 
-  return (
-    <>
-      {currentData ? (
-        <Box
-          borderWidth={1}
-          borderColor="white"
-          borderRadius="md"
-          p={4}
-          boxShadow="0 30px 60px rgba(0, 0, 0, 0.15)"
-        >
-          <AlertDialog
-            isOpen={isOpen}
-            leastDestructiveRef={cancelRef}
-            onClose={() => setIsOpen(false)}
-          >
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  Delete Entity
-                </AlertDialogHeader>
+  return currentData ? (
+    <Box
+      borderWidth={1}
+      borderColor="white"
+      borderRadius="md"
+      p={4}
+      boxShadow="0 30px 60px rgba(0, 0, 0, 0.15)"
+    >
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={() => setIsOpen(false)}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Delete Entity
+            </AlertDialogHeader>
 
-                <AlertDialogBody>
-                  {`Are you sure to delete ${modalData.user?.firstName}? You cannot undo this action afterwards.`}
-                </AlertDialogBody>
+            <AlertDialogBody>
+              {`Are you sure to delete ${modalData.user?.firstName}? You cannot undo this action afterwards.`}
+            </AlertDialogBody>
 
-                <AlertDialogFooter>
-                  <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button
-                    colorScheme="red"
-                    onClick={() => handleDelete(modalData._id, 'employees')}
-                    ml={3}
-                  >
-                    Delete
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          </AlertDialog>
-
-          <Box mb={4} textAlign="center">
-            <Badge fontSize="sm" colorScheme="red">
-              {`${currentData.user.firstName} ${currentData.user.lastName}`}
-            </Badge>
-          </Box>
-
-          <Stack direction={['column', 'column', 'row']} spacing={3}>
-            <VStack spacing={3}>
-              <Box>
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/images/users/${currentData.user.photo}`}
-                  h="100px"
-                  w="100px"
-                  borderRadius="full"
-                />
-              </Box>
-              <Badge colorScheme="blue" textAlign="center">
-                {`Joined ${new Date(currentData.joinDate).toISOString().split('T')[0]}`}
-              </Badge>
-            </VStack>
-
-            <VStack spacing={3} justify="center">
-              {currentData.user.role === 'admin' ? (
-                <Badge colorScheme="red">Is an Admin</Badge>
-              ) : (
-                <Badge colorScheme="twitter">Is not an Admin</Badge>
-              )}
-              <Badge colorScheme="green">{`Is a ${currentData.jobdesc}`}</Badge>
-              <Badge colorScheme="yellow">{`Salary is Rp. ${currentData.salary} / month`}</Badge>
-            </VStack>
-          </Stack>
-
-          <Stack direction={['column', 'column', 'row']} justify="center" align="center" mt={3}>
-            <Button size="xs" colorScheme="green" w="100px">
-              <NextLink href={webRoutes.adminEditEntities('employees', currentData._id)}>
-                {`Edit ${currentData.user.firstName}`}
-              </NextLink>
-            </Button>
-            {currentData.user.role === 'admin' ? (
-              <Button
-                size="xs"
-                colorScheme="orange"
-                w="100px"
-                onClick={() => handleRevokeAdmin(currentData.user._id)}
-              >
-                Revoke Admin
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
+                Cancel
               </Button>
-            ) : (
               <Button
-                size="xs"
-                colorScheme="linkedin"
-                w="100px"
-                onClick={() => handleMakeAdmin(currentData.user._id)}
+                colorScheme="red"
+                onClick={() => handleDelete(modalData._id, 'employees')}
+                ml={3}
               >
-                Make Admin
+                Delete
               </Button>
-            )}
-            <Button
-              size="xs"
-              colorScheme="red"
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+
+      <Box mb={4} textAlign="center">
+        <Badge fontSize="sm" colorScheme="red">
+          {`${currentData.user.firstName} ${currentData.user.lastName}`}
+        </Badge>
+      </Box>
+
+      <Stack direction={['column', 'column', 'row']} spacing={3}>
+        <VStack spacing={3}>
+          <Box>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_API_URL}/images/users/${currentData.user.photo}`}
+              h="100px"
               w="100px"
-              onClick={() => {
-                setModalData(currentData);
-                setIsOpen(true);
-              }}
-            >
-              {`Fire ${currentData.user.firstName}`}
-            </Button>
-          </Stack>
-        </Box>
-      ) : null}
-    </>
-  );
-};
+              borderRadius="full"
+            />
+          </Box>
+          <Badge colorScheme="blue" textAlign="center">
+            {`Joined ${new Date(currentData.joinDate).toISOString().split('T')[0]}`}
+          </Badge>
+        </VStack>
+
+        <VStack spacing={3} justify="center">
+          {currentData.user.role === 'admin' ? (
+            <Badge colorScheme="red">Is an Admin</Badge>
+          ) : (
+            <Badge colorScheme="twitter">Is not an Admin</Badge>
+          )}
+          <Badge colorScheme="green">{`Is a ${currentData.jobdesc}`}</Badge>
+          <Badge colorScheme="yellow">{`Salary is Rp. ${currentData.salary} / month`}</Badge>
+        </VStack>
+      </Stack>
+
+      <Stack direction={['column', 'column', 'row']} justify="center" align="center" mt={3}>
+        <Button size="xs" colorScheme="green" w="100px">
+          <NextLink href={webRoutes.adminEditEntities('employees', currentData._id)}>
+            {`Edit ${currentData.user.firstName}`}
+          </NextLink>
+        </Button>
+        {currentData.user.role === 'admin' ? (
+          <Button
+            size="xs"
+            colorScheme="orange"
+            w="100px"
+            onClick={() => handleRevokeAdmin(currentData.user._id)}
+          >
+            Revoke Admin
+          </Button>
+        ) : (
+          <Button
+            size="xs"
+            colorScheme="linkedin"
+            w="100px"
+            onClick={() => handleMakeAdmin(currentData.user._id)}
+          >
+            Make Admin
+          </Button>
+        )}
+        <Button
+          size="xs"
+          colorScheme="red"
+          w="100px"
+          onClick={() => {
+            setModalData(currentData);
+            setIsOpen(true);
+          }}
+        >
+          {`Fire ${currentData.user.firstName}`}
+        </Button>
+      </Stack>
+    </Box>
+  ) : null;
+}
 
 EmployeeShowCard.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

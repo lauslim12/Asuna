@@ -1,7 +1,7 @@
 import { Badge, Box, Heading, Image, useColorMode, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const ProfileHeading = ({ userData }) => {
+function ProfileHeading({ userData }) {
   const { colorMode } = useColorMode();
 
   return (
@@ -26,7 +26,7 @@ const ProfileHeading = ({ userData }) => {
       </VStack>
     </VStack>
   );
-};
+}
 
 ProfileHeading.propTypes = {
   userData: PropTypes.instanceOf(Object).isRequired,
