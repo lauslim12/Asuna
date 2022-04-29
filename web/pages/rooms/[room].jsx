@@ -9,7 +9,7 @@ import Hero from '../../components/Room/Hero';
 import Photos from '../../components/Room/Photos';
 import { get } from '../../utils/apiHelper';
 
-const RoomInfo = () => {
+function RoomInfo() {
   const [roomData, setRoomData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -46,6 +46,6 @@ const RoomInfo = () => {
   };
 
   return <Layout title={[roomData?.name || 'Room Not Found']}>{renderPage()}</Layout>;
-};
+}
 
 export default RoomInfo;

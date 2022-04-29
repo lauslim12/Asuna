@@ -30,7 +30,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const EditRooms = ({ roomData, floorData }) => {
+function EditRooms({ roomData, floorData }) {
   const [name, setName] = useState(roomData.name);
   const [description, setDescription] = useState(roomData.description);
   const [roomFeatures, setRoomFeatures] = useState(roomData.roomFeatures.join(','));
@@ -204,7 +204,7 @@ const EditRooms = ({ roomData, floorData }) => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 EditRooms.propTypes = {
   roomData: PropTypes.instanceOf(Object).isRequired,

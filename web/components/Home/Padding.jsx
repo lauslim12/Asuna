@@ -1,7 +1,7 @@
 import { Heading, Text, useColorMode, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const Padding = ({ title, text, bgDark, bgLight }) => {
+function Padding({ title, text, bgDark, bgLight }) {
   const { colorMode } = useColorMode();
 
   return (
@@ -27,7 +27,7 @@ const Padding = ({ title, text, bgDark, bgLight }) => {
       <Text textAlign="center">{text}</Text>
     </VStack>
   );
-};
+}
 
 Padding.propTypes = {
   title: PropTypes.string.isRequired,

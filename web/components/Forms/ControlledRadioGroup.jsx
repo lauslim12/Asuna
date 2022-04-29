@@ -9,22 +9,24 @@ import {
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const ControlledRadioGroup = ({ types, stateDispatch, formLabel, formHelper, defaultValue }) => (
-  <FormControl isRequired>
-    <RadioGroup defaultValue={defaultValue} onChange={stateDispatch}>
-      <FormLabel>{formLabel}</FormLabel>
-      <HStack spacing={5}>
-        {types.map((type) => (
-          <Radio key={type} colorScheme="red" value={type}>
-            <chakra.p textTransform="capitalize">{type}</chakra.p>
-          </Radio>
-        ))}
-      </HStack>
-    </RadioGroup>
+function ControlledRadioGroup({ types, stateDispatch, formLabel, formHelper, defaultValue }) {
+  return (
+    <FormControl isRequired>
+      <RadioGroup defaultValue={defaultValue} onChange={stateDispatch}>
+        <FormLabel>{formLabel}</FormLabel>
+        <HStack spacing={5}>
+          {types.map((type) => (
+            <Radio key={type} colorScheme="red" value={type}>
+              <chakra.p textTransform="capitalize">{type}</chakra.p>
+            </Radio>
+          ))}
+        </HStack>
+      </RadioGroup>
 
-    <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
-  </FormControl>
-);
+      <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
+    </FormControl>
+  );
+}
 
 ControlledRadioGroup.propTypes = {
   types: PropTypes.arrayOf(String).isRequired,

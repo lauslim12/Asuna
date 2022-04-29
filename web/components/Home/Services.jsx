@@ -1,6 +1,6 @@
 import { Box, Grid, Heading, Text, VStack } from '@chakra-ui/react';
 
-const Services = () => {
+function Services() {
   return (
     <VStack spacing={5} mb={16} px={8} minH="50vh">
       <Heading as="h1" size="xl" fontWeight="bold" letterSpacing="0.5rem" textAlign="center">
@@ -26,6 +26,6 @@ const Services = () => {
       </Grid>
     </VStack>
   );
-};
+}
 
 export default Services;

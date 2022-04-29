@@ -1,29 +1,25 @@
 import { FormControl, FormHelperText, FormLabel, Textarea } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const ControlledTextarea = ({
-  stateValue,
-  stateDispatch,
-  formLabel,
-  formHelper,
-  formPlaceholder,
-}) => (
-  <FormControl isRequired>
-    <FormLabel>{formLabel}</FormLabel>
-    <Textarea
-      id="description"
-      autoComplete="off"
-      placeholder={formPlaceholder}
-      value={stateValue}
-      onChange={({ currentTarget: { value } }) => stateDispatch(value)}
-      focusBorderColor="green.500"
-      size="lg"
-      isRequired
-    />
+function ControlledTextarea({ stateValue, stateDispatch, formLabel, formHelper, formPlaceholder }) {
+  return (
+    <FormControl isRequired>
+      <FormLabel>{formLabel}</FormLabel>
+      <Textarea
+        id="description"
+        autoComplete="off"
+        placeholder={formPlaceholder}
+        value={stateValue}
+        onChange={({ currentTarget: { value } }) => stateDispatch(value)}
+        focusBorderColor="green.500"
+        size="lg"
+        isRequired
+      />
 
-    <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
-  </FormControl>
-);
+      <FormHelperText fontSize="xs">{formHelper}</FormHelperText>
+    </FormControl>
+  );
+}
 
 ControlledTextarea.propTypes = {
   stateValue: PropTypes.string.isRequired,

@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { done, start } from 'nprogress';
 import { useEffect } from 'react';
 
-const NProgress = () => {
+function NProgress() {
   useEffect(() => {
     // timeout prevents shallow routing from causing the progress bar to show
     let startTimeout;
@@ -30,6 +30,6 @@ const NProgress = () => {
   }, []);
 
   return null;
-};
+}
 
 export default NProgress;

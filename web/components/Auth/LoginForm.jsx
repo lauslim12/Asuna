@@ -12,7 +12,7 @@ import FormHeading from '../Forms/FormHeading';
 import FormOverlay from '../Forms/FormOverlay';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
-const LoginForm = () => {
+function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { dispatch } = useContext(UserContext);
@@ -68,6 +68,6 @@ const LoginForm = () => {
       <FormActions cancelPath={webRoutes.homepage} />
     </FormOverlay>
   );
-};
+}
 
 export default LoginForm;

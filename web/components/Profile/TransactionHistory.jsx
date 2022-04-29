@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import TransactionCard from './TransactionCard';
 
-const TransactionHistory = ({ userHistory }) => {
+function TransactionHistory({ userHistory }) {
   return (
     <Box p={10}>
       <Heading fontSize="2xl" p={5} textAlign="center">
@@ -21,7 +21,7 @@ const TransactionHistory = ({ userHistory }) => {
       )}
     </Box>
   );
-};
+}
 
 TransactionHistory.propTypes = {
   userHistory: PropTypes.instanceOf(Object).isRequired,

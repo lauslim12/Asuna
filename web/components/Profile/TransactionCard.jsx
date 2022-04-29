@@ -16,39 +16,41 @@ const renderBadges = (status) => {
   return <Badge colorScheme="twitter">{status}</Badge>;
 };
 
-const TransactionCard = ({ transaction }) => (
-  <VStack
-    align="stretch"
-    borderWidth={1}
-    borderColor="gray.200"
-    borderRadius="md"
-    p={4}
-    spacing={2}
-  >
-    <VStack>{renderBadges(transaction.status)}</VStack>
+function TransactionCard({ transaction }) {
+  return (
+    <VStack
+      align="stretch"
+      borderWidth={1}
+      borderColor="gray.200"
+      borderRadius="md"
+      p={4}
+      spacing={2}
+    >
+      <VStack>{renderBadges(transaction.status)}</VStack>
 
-    <Center minH={0} flex={1}>
-      <Image
-        src={`${process.env.NEXT_PUBLIC_API_URL}/images/thumbnails/${transaction.room.thumbnail}`}
-        h="full"
-        borderRadius="full"
-      />
-    </Center>
+      <Center minH={0} flex={1}>
+        <Image
+          src={`${process.env.NEXT_PUBLIC_API_URL}/images/thumbnails/${transaction.room.thumbnail}`}
+          h="full"
+          borderRadius="full"
+        />
+      </Center>
 
-    <VStack spacing={2}>
-      <Text>{transaction.room.name}</Text>
-      <Text fontSize="xs">{currencyDisplay(transaction.totalPrice)}</Text>
+      <VStack spacing={2}>
+        <Text>{transaction.room.name}</Text>
+        <Text fontSize="xs">{currencyDisplay(transaction.totalPrice)}</Text>
+      </VStack>
+
+      <VStack>
+        <Badge colorScheme="green">Start</Badge>
+        <Text fontSize="xs">{dateDisplay(transaction.startDate)}</Text>
+
+        <Badge colorScheme="blue">End</Badge>
+        <Text fontSize="xs">{dateDisplay(transaction.endDate)}</Text>
+      </VStack>
     </VStack>
-
-    <VStack>
-      <Badge colorScheme="green">Start</Badge>
-      <Text fontSize="xs">{dateDisplay(transaction.startDate)}</Text>
-
-      <Badge colorScheme="blue">End</Badge>
-      <Text fontSize="xs">{dateDisplay(transaction.endDate)}</Text>
-    </VStack>
-  </VStack>
-);
+  );
+}
 
 TransactionCard.propTypes = {
   transaction: PropTypes.instanceOf(Object).isRequired,

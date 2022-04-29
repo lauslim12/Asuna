@@ -10,7 +10,7 @@ import { SiFormstack } from 'react-icons/si';
 import webRoutes from '../../utils/webRoutes';
 import CreationModal from './CreationModal';
 
-const SingleMenuCard = ({
+function SingleMenuCard({
   headingText,
   description,
   icon,
@@ -18,7 +18,7 @@ const SingleMenuCard = ({
   gradientEnd,
   gradientType,
   isClickable,
-}) => {
+}) {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -49,9 +49,9 @@ const SingleMenuCard = ({
       <CreationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
-};
+}
 
-const MenuCard = () => {
+function MenuCard() {
   return (
     <>
       <Heading fontSize="md">Welcome, Admin!</Heading>
@@ -108,7 +108,7 @@ const MenuCard = () => {
       </VStack>
     </>
   );
-};
+}
 
 SingleMenuCard.propTypes = {
   headingText: PropTypes.string.isRequired,

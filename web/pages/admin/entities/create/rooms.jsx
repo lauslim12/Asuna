@@ -28,7 +28,7 @@ export const getServerSideProps = withAdministrator(async () => {
   };
 });
 
-const CreateFloors = ({ data }) => {
+function CreateFloors({ data }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [roomFeatures, setRoomFeatures] = useState('');
@@ -187,7 +187,7 @@ const CreateFloors = ({ data }) => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 CreateFloors.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

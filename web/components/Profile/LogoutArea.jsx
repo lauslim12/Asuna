@@ -6,7 +6,7 @@ import { post } from '../../utils/apiHelper';
 import UserContext from '../../utils/userContext';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
-const LogoutArea = () => {
+function LogoutArea() {
   const { dispatch } = useContext(UserContext);
   const toast = useToast();
   const router = useRouter();
@@ -36,6 +36,6 @@ const LogoutArea = () => {
       </Button>
     </VStack>
   );
-};
+}
 
 export default LogoutArea;

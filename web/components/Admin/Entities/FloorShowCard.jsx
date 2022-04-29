@@ -23,7 +23,7 @@ import { useRef, useState } from 'react';
 import { post } from '../../../utils/apiHelper';
 import webRoutes from '../../../utils/webRoutes';
 
-const FloorShowCard = ({ data }) => {
+function FloorShowCard({ data }) {
   const [currentData, setCurrentData] = useState(data);
   const [modalData, setModalData] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -56,98 +56,90 @@ const FloorShowCard = ({ data }) => {
     });
   };
 
-  return (
-    <>
-      {currentData ? (
-        <Flex>
-          <AlertDialog
-            isOpen={isOpen}
-            leastDestructiveRef={cancelRef}
-            onClose={() => setIsOpen(false)}
-          >
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  Delete Entity
-                </AlertDialogHeader>
+  return currentData ? (
+    <Flex>
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={() => setIsOpen(false)}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Delete Entity
+            </AlertDialogHeader>
 
-                <AlertDialogBody>
-                  {`Are you sure to delete ${modalData.name}? You cannot undo this action afterwards.`}
-                </AlertDialogBody>
+            <AlertDialogBody>
+              {`Are you sure to delete ${modalData.name}? You cannot undo this action afterwards.`}
+            </AlertDialogBody>
 
-                <AlertDialogFooter>
-                  <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button
-                    colorScheme="red"
-                    onClick={() => handleDelete(modalData._id, 'floors')}
-                    ml={3}
-                  >
-                    Delete
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          </AlertDialog>
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
+                Cancel
+              </Button>
+              <Button
+                colorScheme="red"
+                onClick={() => handleDelete(modalData._id, 'floors')}
+                ml={3}
+              >
+                Delete
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
 
-          <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
-            <Heading fontSize="xl">FLOOR</Heading>
+      <VStack bg="blue.400" p={5} borderTopLeftRadius="md" borderBottomLeftRadius="md">
+        <Heading fontSize="xl">FLOOR</Heading>
 
-            <Spacer />
+        <Spacer />
 
-            <Heading>{currentData.number}</Heading>
-          </VStack>
+        <Heading>{currentData.number}</Heading>
+      </VStack>
 
-          <VStack
-            p={5}
-            direction="column"
-            align="center"
-            bg={bg}
-            borderTopRightRadius="md"
-            borderBottomRightRadius="md"
-            w="175px"
-          >
-            <Heading fontSize="md">{currentData.name}</Heading>
+      <VStack
+        p={5}
+        direction="column"
+        align="center"
+        bg={bg}
+        borderTopRightRadius="md"
+        borderBottomRightRadius="md"
+        w="175px"
+      >
+        <Heading fontSize="md">{currentData.name}</Heading>
 
-            <Spacer />
+        <Spacer />
 
-            <VStack>
-              <Badge colorScheme="red">
-                {`Since ${new Date(currentData.createdAt).toISOString().split('T')[0]}`}
-              </Badge>
-              <Badge colorScheme="red">
-                {`Modified ${new Date(currentData.lastModified).toISOString().split('T')[0]}`}
-              </Badge>
-            </VStack>
+        <VStack>
+          <Badge colorScheme="red">
+            {`Since ${new Date(currentData.createdAt).toISOString().split('T')[0]}`}
+          </Badge>
+          <Badge colorScheme="red">
+            {`Modified ${new Date(currentData.lastModified).toISOString().split('T')[0]}`}
+          </Badge>
+        </VStack>
 
-            <Spacer />
+        <Spacer />
 
-            <HStack>
-              <ButtonGroup>
-                <Button size="xs" colorScheme="orange">
-                  <NextLink href={webRoutes.adminEditEntities('floors', currentData._id)}>
-                    Edit
-                  </NextLink>
-                </Button>
-                <Button
-                  size="xs"
-                  colorScheme="red"
-                  onClick={() => {
-                    setModalData(data);
-                    setIsOpen(true);
-                  }}
-                >
-                  Delete
-                </Button>
-              </ButtonGroup>
-            </HStack>
-          </VStack>
-        </Flex>
-      ) : null}
-    </>
-  );
-};
+        <HStack>
+          <ButtonGroup>
+            <Button size="xs" colorScheme="orange">
+              <NextLink href={webRoutes.adminEditEntities('floors', currentData._id)}>
+                Edit
+              </NextLink>
+            </Button>
+            <Button
+              size="xs"
+              colorScheme="red"
+              onClick={() => {
+                setModalData(data);
+                setIsOpen(true);
+              }}
+            >
+              Delete
+            </Button>
+          </ButtonGroup>
+        </HStack>
+      </VStack>
+    </Flex>
+  ) : null;
+}
 
 FloorShowCard.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

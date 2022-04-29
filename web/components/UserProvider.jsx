@@ -35,7 +35,7 @@ const UserReducer = (initialState, action) => {
 /**
  * Provider function to help provide the values for the Context.
  */
-export const UserProvider = ({ children }) => {
+export function UserProvider({ children }) {
   const [state, dispatch] = useReducer(UserReducer, defaultState);
 
   /**
@@ -68,7 +68,7 @@ export const UserProvider = ({ children }) => {
    * Return a new provider.
    */
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
-};
+}
 
 UserProvider.propTypes = {
   children: PropTypes.node.isRequired,

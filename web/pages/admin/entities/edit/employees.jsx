@@ -37,7 +37,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const EditEmployees = ({ data }) => {
+function EditEmployees({ data }) {
   const [user, setUser] = useState(data.user.email);
   const [salary, setSalary] = useState(data.salary);
   const [jobdesc, setJobdesc] = useState(data.jobdesc);
@@ -120,7 +120,7 @@ const EditEmployees = ({ data }) => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 EditEmployees.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,

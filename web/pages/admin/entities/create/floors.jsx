@@ -18,7 +18,7 @@ export const getServerSideProps = withAdministrator(() => {
   };
 });
 
-const CreateFloors = () => {
+function CreateFloors() {
   const [number, setNumber] = useState(1);
   const [name, setName] = useState('');
   const router = useRouter();
@@ -76,6 +76,6 @@ const CreateFloors = () => {
       </FormOverlay>
     </Layout>
   );
-};
+}
 
 export default CreateFloors;

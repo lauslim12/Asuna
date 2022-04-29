@@ -14,7 +14,7 @@ import FormHeading from '../Forms/FormHeading';
 import FormOverlay from '../Forms/FormOverlay';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
-const RegisterForm = () => {
+function RegisterForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
@@ -133,6 +133,6 @@ const RegisterForm = () => {
       <FormActions cancelPath={webRoutes.homepage} />
     </FormOverlay>
   );
-};
+}
 
 export default RegisterForm;

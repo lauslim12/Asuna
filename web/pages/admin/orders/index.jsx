@@ -19,7 +19,7 @@ export const getServerSideProps = withAdministrator(async (ctx) => {
   };
 });
 
-const Admin = ({ data }) => {
+function Admin({ data }) {
   return (
     <Layout title={['Admin']}>
       <Box h="full" w="full">
@@ -31,7 +31,7 @@ const Admin = ({ data }) => {
       </Box>
     </Layout>
   );
-};
+}
 
 Admin.propTypes = {
   data: PropTypes.arrayOf(Object).isRequired,

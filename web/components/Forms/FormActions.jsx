@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { IoCreateOutline } from 'react-icons/io5';
 import { MdCancel } from 'react-icons/md';
 
-const FormActions = ({ cancelPath }) => {
+function FormActions({ cancelPath }) {
   const router = useRouter();
 
   return (
@@ -17,7 +17,7 @@ const FormActions = ({ cancelPath }) => {
       </Button>
     </ButtonGroup>
   );
-};
+}
 
 FormActions.propTypes = {
   cancelPath: PropTypes.string.isRequired,

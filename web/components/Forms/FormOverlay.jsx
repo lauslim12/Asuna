@@ -1,7 +1,7 @@
 import { Flex, useColorMode, useColorModeValue, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const FormOverlay = ({ submitAction, children }) => {
+function FormOverlay({ submitAction, children }) {
   const { colorMode } = useColorMode();
   const bg = useColorModeValue('#fafafa');
 
@@ -28,7 +28,7 @@ const FormOverlay = ({ submitAction, children }) => {
       </VStack>
     </Flex>
   );
-};
+}
 
 FormOverlay.propTypes = {
   submitAction: PropTypes.func.isRequired,

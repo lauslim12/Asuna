@@ -15,7 +15,7 @@ import scrollPreserver from '../utils/scrollPreserver';
 const fallbackFonts =
   '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
-const App = ({ Component, pageProps }) => {
+function App({ Component, pageProps }) {
   scrollPreserver();
 
   return (
@@ -42,6 +42,6 @@ const App = ({ Component, pageProps }) => {
       </ChakraProvider>
     </UserContextProvider>
   );
-};
+}
 
 export default App;

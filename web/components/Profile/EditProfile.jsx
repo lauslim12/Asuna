@@ -7,7 +7,7 @@ import { post } from '../../utils/apiHelper';
 import ControlledText from '../Forms/ControlledText';
 import { FailedOperationToast, SuccessfulOperationToast } from '../Toasts';
 
-const EditProfile = ({ userData }) => {
+function EditProfile({ userData }) {
   const [firstName, setFirstName] = useState(userData.firstName);
   const [lastName, setLastName] = useState(userData.lastName);
   const [address, setAddress] = useState(userData.address);
@@ -83,7 +83,7 @@ const EditProfile = ({ userData }) => {
       </Button>
     </VStack>
   );
-};
+}
 
 EditProfile.propTypes = {
   userData: PropTypes.instanceOf(Object).isRequired,

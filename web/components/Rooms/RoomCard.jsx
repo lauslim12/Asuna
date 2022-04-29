@@ -1,7 +1,7 @@
 import { Center, Image, Text, useColorMode, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
-const RoomCard = ({ roomData }) => {
+function RoomCard({ roomData }) {
   const { colorMode } = useColorMode();
   const darkHover = {
     background: 'gray.700',
@@ -45,7 +45,7 @@ const RoomCard = ({ roomData }) => {
       </VStack>
     </VStack>
   );
-};
+}
 
 RoomCard.propTypes = {
   roomData: PropTypes.instanceOf(Object).isRequired,

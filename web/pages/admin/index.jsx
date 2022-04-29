@@ -8,12 +8,12 @@ export const getServerSideProps = withAdministrator(() => {
   };
 });
 
-const AdminHomepage = () => {
+function AdminHomepage() {
   return (
     <Layout title={['Admin']}>
       <MenuCard />
     </Layout>
   );
-};
+}
 
 export default AdminHomepage;

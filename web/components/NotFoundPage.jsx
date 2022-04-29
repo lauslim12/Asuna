@@ -4,7 +4,7 @@ import { FaHome } from 'react-icons/fa';
 
 import webRoutes from '../utils/webRoutes';
 
-const NotFoundPage = () => {
+function NotFoundPage() {
   const { colorMode } = useColorMode();
   const router = useRouter();
 
@@ -31,6 +31,6 @@ const NotFoundPage = () => {
       </Button>
     </VStack>
   );
-};
+}
 
 export default NotFoundPage;

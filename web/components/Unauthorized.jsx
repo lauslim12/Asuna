@@ -4,7 +4,7 @@ import { FaBackward, FaKey } from 'react-icons/fa';
 
 import webRoutes from '../utils/webRoutes';
 
-const Unauthorized = () => {
+function Unauthorized() {
   const router = useRouter();
 
   return (
@@ -31,6 +31,6 @@ const Unauthorized = () => {
       </ButtonGroup>
     </VStack>
   );
-};
+}
 
 export default Unauthorized;
