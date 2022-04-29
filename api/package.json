@@ -8,7 +8,7 @@
     "start": "node src/server",
     "dev": "nodemon src/server --trace-sync-io",
     "migrate": "node development/data/migrate --delete && node development/data/migrate --import",
-    "format-check": "prettier --check --config ./.prettierrc ./**/*.js",
+    "format-check": "prettier --check ./**/*.js",
     "eslint-check": "eslint . --ext .js",
     "lint": "yarn format-check && yarn eslint-check"
   },
@@ -58,5 +58,49 @@
   "engines": {
     "node": ">=14.x",
     "npm": ">=6.x"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "prettier",
+      "plugin:node/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "spaced-comment": "off",
+      "no-console": "warn",
+      "consistent-return": "off",
+      "func-names": "off",
+      "object-shorthand": "off",
+      "no-process-exit": "off",
+      "no-param-reassign": "off",
+      "no-return-await": "off",
+      "no-underscore-dangle": "off",
+      "class-methods-use-this": "off",
+      "prefer-destructuring": [
+        "error",
+        {
+          "object": true,
+          "array": false
+        }
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "req|res|next|val"
+        }
+      ]
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 80,
+    "endOfLine": "auto"
   }
 }

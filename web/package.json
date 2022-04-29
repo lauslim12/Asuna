@@ -7,7 +7,7 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start -p 3001",
-    "format-check": "prettier --check --config ./.prettierrc ./**/*.{js,jsx}",
+    "format-check": "prettier --check ./**/*.{js,jsx} --ignore-path ../.gitignore",
     "eslint-check": "eslint . --ext .jsx",
     "lint": "yarn format-check && yarn eslint-check"
   },
@@ -50,5 +50,47 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.6.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "airbnb/hooks",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "simple-import-sort",
+      "prettier"
+    ],
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2021,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {},
+        {
+          "usePrettierrc": true
+        }
+      ],
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "no-underscore-dangle": "off"
+    },
+    "globals": {
+      "React": "writable"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100,
+    "endOfLine": "auto"
   }
 }
