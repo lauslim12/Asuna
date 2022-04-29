@@ -2,7 +2,7 @@
 
 Project Asuna is an open-source, scalable, 'brand-ready', and user-friendly building management system. This full-stack web application is open-source, under MIT License, and the research about this is published in a free-for-all, strictly non-commercial open-access academic journal about science and technology.
 
-Check out the live version of the application by clicking on the link in the repository's description.
+**Research Paper: [Scalable Building Management System for Offices and Co-Working Spaces (2021)](http://www.ashwinanokha.com/resources/ijeb%20v20-2-30.%20Ijeb.pdf).**
 
 ![screenshot](./assets/screenshot.png)
 
