@@ -2,8 +2,8 @@ name: Deployment CI
 
 on:
   workflow_dispatch:
-  push:
-    branches: [lumine]
+#   push:
+#     branches: [lumine]
 
 jobs:
   vercel:
